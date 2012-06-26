@@ -44,7 +44,7 @@
 	<g:layoutHead/>
   	<r:layoutResources />
 </head>
-<body class="claro">
+<body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<div class="main">
 	  <header>
@@ -54,28 +54,26 @@
 			</div>
 			<div class="clear"></div>
 			<div class="logo-bg">
-				<h1><a href="${createLinkTo(dir:'')}">GC AUTOS</a></h1>
+				<h1><a href="${createLinkTo(dir:'/')}">GC AUTOS</a></h1>
 			</div>
 			<!-- menu -->
 			<nav>
 				<ul class="sf-menu sf-js-enabled sf-shadow">
-					<li class="active"><a href="${createLinkTo(dir:'')}"><g:message code="menu.accueil"/></a></li>
-					<!--<li class=""><a href="#">ABOUT</a>
-						<ul style="display: none; visibility: hidden; ">
-							<li><a href="#">- COMPLETE COMPUTER DIAGNOSTICS</a></li>
-							<li><a href="#">- COMPLETE SAFETY ANALYSIS</a></li>
-							<li><a href="#">- DRIVABILITY PROBLEMS</a></li>
-							<li><a href="#">- TUNE-UPS</a></li>
-							<li><a href="#">- OIL CHANGES</a></li>
-						</ul>
-					</li>-->
+					<li class="active"><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
 					<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
-					<li><a href="#">REPAIR</a></li>
-					<li><a href="#">PRICE LIST</a></li>
 					<sec:ifNotLoggedIn>
 						<li><g:link controller="login">Login</g:link></li>
 					</sec:ifNotLoggedIn>
 					<sec:ifLoggedIn>
+						<sec:ifAllGranted roles="ROLE_ADMIN">
+							<li class=""><a href="#">Admin menu</a>
+								<ul style="display: none; visibility: hidden;">
+									<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
+									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
+									<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
+								</ul>
+							</li>
+						</sec:ifAllGranted>
 						<li><g:link controller="logout">Logout (<sec:username/>)</g:link></li>
 					</sec:ifLoggedIn>
 				</ul>
@@ -84,6 +82,17 @@
 			</nav>
 			<!-- end menu -->
 			
+			<!-- menu -->
+			<nav style="z-index: 1;">
+				<sec:ifAllGranted roles="ROLE_ADMIN">
+					<div id="coordsMouse">aa</div>
+					<div id="coordsPhoto">aa</div>
+				</sec:ifAllGranted>
+			
+				<div class="clear"></div>	
+			</nav>
+			<!-- end menu -->
+
 		</header>
 		
 	  <div role="main">
@@ -105,6 +114,7 @@
 			</div>
 			<div class="clear"></div>
 		</footer>
+
 	</div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -119,10 +129,13 @@
   <script src="${resource(dir:'js',file:'tms_presets.js')}"></script>
   <script src="${resource(dir:'js',file:'slider.js')}"></script>
 
-        <script>
-	$(function() {
-		$( "#dateAchat" ).datepicker();
-	});
+  <script>
+		$(function() {
+			$( "#dateAchat" ).datepicker();
+		});
+		$(function() {
+			$( "#dateVente" ).datepicker();
+		});
 	</script>
 
 	<g:javascript library="application"/>

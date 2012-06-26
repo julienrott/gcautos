@@ -7,3 +7,12 @@ if (typeof jQuery !== 'undefined') {
 		});
 	})(jQuery);
 }
+
+
+function updateMenuStyle( menu ) {
+	if ( menu === "") menu = "accueil";
+	//dojo.addClass( menu, "current_page_item" );
+	if (dojo.byId(menu))
+		dojo.addClass( menu, "current" );
+}
+

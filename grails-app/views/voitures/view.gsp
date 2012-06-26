@@ -20,8 +20,12 @@
 					<g:formatNumber number="${voiture.prixVente }" format="###,##0" />&euro;
 				</span>
 			</p>
+
 			<div style="clear: both;">&nbsp;</div>
-			
+
+			<div>da:${formatDate(format:'dd/MM/yyyy',date:voiture?.dateAchat)}</div>
+			<div>dv:${formatDate(format:'dd/MM/yyyy',date:voiture?.dateVente)}</div>
+
 	        <p class="links">
 				<sec:ifAllGranted roles="ROLE_ADMIN">
 	        		<a href="${createLink(controller:'voitures', action:'update', id:"$voiture.id")}">modifier</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;

@@ -8,13 +8,6 @@
 			<!-- menu -->
 			<nav>
 				<sec:ifAllGranted roles="ROLE_ADMIN">
-	
-					<ul>
-						<li id="neuves"><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
-						<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-						<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
-					</ul>
-	
 					<div id="coordsMouse">aa</div>
 					<div id="coordsPhoto">aa</div>
 				</sec:ifAllGranted>

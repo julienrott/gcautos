@@ -7,7 +7,3 @@ if (typeof jQuery !== 'undefined') {
 		});
 	})(jQuery);
 }
-
-
-dojo.require("dojo.parser");
-       

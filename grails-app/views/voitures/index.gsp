@@ -5,24 +5,6 @@
     </head>
     <body>
 
-			<!-- menu -->
-			<nav>
-				<sec:ifAllGranted roles="ROLE_ADMIN">
-	
-					<ul class="sf-menu sf-js-enabled sf-shadow">
-						<li id="neuves"><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
-						<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-						<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
-					</ul>
-	
-					<div id="coordsMouse">aa</div>
-					<div id="coordsPhoto">aa</div>
-				</sec:ifAllGranted>
-				
-				<div class="clear"></div>	
-			</nav>
-			<!-- end menu -->
-
         <g:each in="${voitures}" var="v">
         	<div class="voitureListe rounded">
 				<p class="titrePrixVoiture">

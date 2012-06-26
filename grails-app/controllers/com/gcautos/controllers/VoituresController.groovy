@@ -3,6 +3,7 @@ package com.gcautos.controllers
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import com.gcautos.domain.Photo;
@@ -32,6 +33,9 @@ class VoituresController {
 		try{
 			log.debug "Save : params = $params"
 			def v = Voiture.get(params.id)
+			
+			params.dateAchat = Date.parse("dd/MM/yyyy", params.dateAchat)
+			params.dateVente = Date.parse("dd/MM/yyyy", params.dateVente)
 
 			if ( v ) {
 				log.debug "UPDATE"
@@ -40,6 +44,7 @@ class VoituresController {
 				log.debug "INSERT"
 				v = new Voiture( params )
 			}
+
 			if(!v.hasErrors() && v.save()) {
 				log.debug "OK"
 			} else {
@@ -57,10 +62,10 @@ class VoituresController {
 	
 	def view = {
 		voiture = Voiture.get(params.id)
-		if ( voiture.neuve )
+		/*if ( voiture.neuve )
 			menu = "neuves"
 		else
-			menu = "occasions"
+			menu = "occasions"*/
 	}
 	
 	@Secured(['ROLE_ADMIN'])
@@ -71,10 +76,10 @@ class VoituresController {
 	@Secured(['ROLE_ADMIN'])
 	def update = {
 		voiture = Voiture.get(params.id)
-		if ( voiture.neuve )
+		/*if ( voiture.neuve )
 			menu = "neuves"
 		else
-			menu = "occasions"
+			menu = "occasions"*/
 		render(view:'input')
 	}
 	

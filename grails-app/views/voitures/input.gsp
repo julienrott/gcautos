@@ -7,25 +7,6 @@
     </head>
     
     <body>
-
-			<!-- menu -->
-			<nav>
-				<sec:ifAllGranted roles="ROLE_ADMIN">
-	
-					<ul class="sf-menu sf-js-enabled sf-shadow">
-						<li id="neuves"><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
-						<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-						<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
-					</ul>
-	
-					<div id="coordsMouse">aa</div>
-					<div id="coordsPhoto">aa</div>
-				</sec:ifAllGranted>
-				
-				<div class="clear"></div>	
-			</nav>
-			<!-- end menu -->
-
     	<div id="post">
 			
 			<fieldset>
@@ -53,14 +34,14 @@
 						data-dojo-type="dijit.form.TextBox" />
 				</p>
 				<p>
-					<label for="dateAchat">Date d'achat-${voiture?.dateAchat}</label>
+					<label for="dateAchat">Date d'achat</label>
 					<g:textField id="dateAchat" name="dateAchat"
-							value="${voiture?.dateAchat}" />
+							value="${formatDate(format:'dd/MM/yyyy',date:voiture?.dateAchat)}" />
 				</p>
 				<p>
 					<label for="dateVente">Date de vente</label>
 					<g:textField id="dateVente" name="dateVente"
-							data-dojo-type="dijit.form.DateTextBox" value="2012-03-03"
+							value="${formatDate(format:'dd/MM/yyyy',date:voiture?.dateVente)}"
 							class="customDate" />
 				</p>
 				
