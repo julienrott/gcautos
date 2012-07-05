@@ -50,7 +50,7 @@ class PhotosService {
 				new File( photoPath + "/SMALL_$photo.titre" ) )
 	}
    
-   private static BufferedImage resize(InputStream p_image, int p_width, int p_height) {
+   public BufferedImage resize(InputStream p_image, int p_width, int p_height) {
 	   
 	   InputStream imageStream = new BufferedInputStream(p_image);
 	   Image image = (Image) ImageIO.read(imageStream);

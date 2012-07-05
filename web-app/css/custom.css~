@@ -15,7 +15,7 @@ a {
 }
 .main {
 	width: 990px;
-	margin: 11px auto;
+	margin: 0px auto;
 }
 .wrapper {
 	width: 100%;
@@ -219,7 +219,7 @@ h1 a {
 			text-decoration:underline;
 		}
 .strong-1 {
-	font:17px/23px Arial, sans-serif;
+	font: bold 17px/23px Arial, sans-serif;
 	color:#991111;
 }
 .strong-1 a{
@@ -611,5 +611,36 @@ nav {
 }
 
 p{
-	margin: 28px 0px;
+	--margin: 28px 0px;
+}
+
+#photos{
+	padding: 0 40px;
+}
+
+.content {
+	background: none repeat scroll 0 0 #FFFFFF;
+}
+
+.block {
+	color:#212121;
+	font: 13px/27px Arial,sans-serif;
+}
+
+.links a{
+	color:#212121;
+	font: 13px/27px Arial,sans-serif;
+}
+
+h2 a, h2 a:visited{
+	font: 700 27px/33px 'Open Sans', sans-serif;
+	color: #991111;
+}
+
+h2 a:hover, h2 a:active, h2 a:focus{
+	color: #494949;
+}
+
+.photoListe{
+
 }

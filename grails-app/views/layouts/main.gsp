@@ -95,7 +95,7 @@
 
 		</header>
 		
-	  <div role="main">
+	  <div role="main" class="content">
 			<g:layoutBody/>	
 	  </div>
 		

@@ -1,9 +1,8 @@
 <html>
     <head>
-    
-        <title><g:message code="menu.occasions"/></title>
-		<meta name="layout" content="main" />
-		
+      <title><g:message code="menu.occasions"/></title>
+			<meta name="layout" content="main" />
+			<r:require module="fileuploader" />
     </head>
     
     <body>
@@ -67,9 +66,16 @@
 			<g:submitButton name="Enregistrer" value="Enregistrer" />
 			
 		</g:form>
-		
+
 		<br/>
-	        
+		
+		<g:if test="${voiture?.id}">
+		  <uploader:uploader id="uploader" url="${[controller:'storage', action:'upload']}" params="${['id':voiture?.id]}" >
+				<uploader:onComplete>
+					updatePhotos();  
+				</uploader:onComplete>
+			</uploader:uploader>
+
 			<form id="frmFiles"
 			     action="${createLinkTo(dir:'storage/upload/')}" enctype="multipart/form-data">
 	        	<g:hiddenField name="id" value="${voiture?.id}"/>
@@ -77,6 +83,7 @@
 			</form>	
 				
 			<div id="btnUpload"><a href="#">Upload Files</a></div>
+		</g:if>
 		
 	        <div id="progressBar"></div>
 		
@@ -87,6 +94,7 @@
         </div>
 
         <script type="text/javascript">
+					
 /*			dojo.addOnLoad(initialize);
 			dojo.addOnLoad(function(){updatePhotos(true);});
 

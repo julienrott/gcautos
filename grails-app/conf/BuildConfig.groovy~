@@ -44,7 +44,14 @@ grails.project.dependency.resolution = {
 
         build ":tomcat:$grailsVersion"
 				
+				compile ':database-session:1.1.2'
+				compile ':spring-security-core:1.2.7.2'
+				compile ':webxml:1.4.1'
 				compile ':heroku:1.0.1'
 				compile ':cloud-support:1.0.8'
+
+				//compile ":jquery-ui:1.8.15"
+				//compile ":modernizr:2.5.3"
+				//compile ':uploadr:0.5.11'
     }
 }

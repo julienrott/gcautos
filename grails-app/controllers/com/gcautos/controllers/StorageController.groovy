@@ -1,9 +1,12 @@
 package com.gcautos.controllers
 
+import javax.imageio.ImageIO;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 
 import java.io.File;
+import java.awt.image.BufferedImage;
 
 import com.gcautos.domain.Photo;
 import com.gcautos.domain.Voiture;
@@ -14,8 +17,39 @@ class StorageController {
 	def photosService
 	
 	def index = { }
-	
+
 	def upload = {
+		log.error "upload params : ${params}"
+		
+		try {
+			def photo = new Photo()
+			photo.data = request.getInputStream().getBytes()
+			ByteArrayInputStream buff = new ByteArrayInputStream( photo.data )
+			BufferedImage croppedImage = photosService.resize(buff, 450, 450)
+			ByteArrayOutputStream baos = new ByteArrayOutputStream(1000);
+			ImageIO.write(croppedImage, "jpg", baos);
+			photo.data_small = baos.toByteArray();
+			photo.voiture = Voiture.get(params["id"])
+			photo.titre = request.getHeader('X-File-Name') as String
+			
+			if (photo.save()) {
+				log.error "upload ok"
+				
+				//photosService.writePhoto( photo.id )
+				
+				log.debug "resize ok"
+			} else {
+				log.error photo.errors
+			}
+
+			return render(text: [success:true] as JSON, contentType:'text/json')
+		} catch(Exception e) {
+			log.error "upload ${e}"
+			return render(text: [success:false] as JSON, contentType:'text/json')
+		}
+	}
+	
+	def uploadOLD = {
 		log.debug "upload params : ${params}"
 		
 		//Once you reach this point upload progress is complete

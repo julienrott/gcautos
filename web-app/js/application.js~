@@ -7,3 +7,21 @@ if (typeof jQuery !== 'undefined') {
 		});
 	})(jQuery);
 }
+
+
+function updateMenuStyle( menu ) {
+	if ( menu === "") menu = "accueil";
+	//dojo.addClass( menu, "current_page_item" );
+	if (dojo.byId(menu))
+		dojo.addClass( menu, "current" );
+}
+
+function updatePhotos(canDelete) {
+	$.ajax({url:'/gcautos/voitures/photos?id=' + $("#id")[0].value, dataType:'html'}).done(
+	function(res){
+		$('#photos').div.html(res);
+	});
+}
+
+
+$.ready(updatePhotos());

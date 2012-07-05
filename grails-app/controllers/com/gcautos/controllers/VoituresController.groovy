@@ -126,6 +126,20 @@ class VoituresController {
 			
 			def v = Voiture.get(params.id)
 			def photos = v.photos
+			render(template:"photos", model:["photos":photos])
+			
+		} catch(Exception e) {
+			log.error "photos : ${e}"
+		}
+	}
+	
+	def photosOLD = {
+		log.debug "photos params : ${params}"
+		
+		try {
+			
+			def v = Voiture.get(params.id)
+			def photos = v.photos
 			photos.each { photo ->
 				def path = "web-app/static/images/$v.id/SMALL_$photo.titre"
 				File f = new File(path)
@@ -147,7 +161,7 @@ class VoituresController {
 		try {
 			
 			def photo = Photo.get( params.id ) // get the record
-			response.outputStream << photo.data// write the image to the outputstream
+			response.outputStream << photo.data_small// write the image to the outputstream
 			response.outputStream.flush()
 			
 		} catch(Exception e) {

@@ -16,3 +16,12 @@ function updateMenuStyle( menu ) {
 		dojo.addClass( menu, "current" );
 }
 
+function updatePhotos(canDelete) {
+	$.ajax({url:'/gcautos/voitures/photos?id=' + $("#id")[0].value, dataType:'html'}).done(
+	function(res){
+		$('#photos').html(res);
+	});
+}
+
+
+$.ready(updatePhotos());

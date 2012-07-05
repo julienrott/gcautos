@@ -49,5 +49,12 @@ grails.project.dependency.resolution = {
 				compile ':webxml:1.4.1'
 				compile ':heroku:1.0.1'
 				compile ':cloud-support:1.0.8'
+
+				//compile ":jquery-ui:1.8.15"
+				//compile ":modernizr:2.5.3"
+				//compile ':uploadr:0.5.11'
     }
+		imageUpload {
+			temporaryFile = '/tmp/uploaded.file' // Path to where files will be uploaded
+		}
 }
