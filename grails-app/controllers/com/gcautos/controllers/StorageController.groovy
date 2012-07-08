@@ -25,7 +25,7 @@ class StorageController {
 			def photo = new Photo()
 			photo.data = request.getInputStream().getBytes()
 			ByteArrayInputStream buff = new ByteArrayInputStream( photo.data )
-			BufferedImage croppedImage = photosService.resize(buff, 450, 450)
+			BufferedImage croppedImage = photosService.resize(buff, 350, 350)
 			ByteArrayOutputStream baos = new ByteArrayOutputStream(1000);
 			ImageIO.write(croppedImage, "jpg", baos);
 			photo.data_small = baos.toByteArray();

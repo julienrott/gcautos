@@ -12,7 +12,7 @@ grails.project.dependency.resolution = {
         // uncomment to disable ehcache
         // excludes 'ehcache'
     }
-    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+    log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
 
     repositories {
@@ -53,6 +53,7 @@ grails.project.dependency.resolution = {
 				//compile ":jquery-ui:1.8.15"
 				//compile ":modernizr:2.5.3"
 				//compile ':uploadr:0.5.11'
+				compile ":javascript-validator:0.9"
     }
 		imageUpload {
 			temporaryFile = '/tmp/uploaded.file' // Path to where files will be uploaded

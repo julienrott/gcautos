@@ -95,7 +95,7 @@
 
 		</header>
 		
-	  <div role="main">
+	  <div role="main" class="content">
 			<g:layoutBody/>	
 	  </div>
 		
@@ -128,6 +128,7 @@
   <script src="${resource(dir:'js',file:'tms-0.3.js')}"></script>
   <script src="${resource(dir:'js',file:'tms_presets.js')}"></script>
   <script src="${resource(dir:'js',file:'slider.js')}"></script>
+	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
 
   <script>
 		$(function() {
@@ -135,6 +136,17 @@
 		});
 		$(function() {
 			$( "#dateVente" ).datepicker();
+		});
+
+		$(function() {
+			editor = tinyMCE.init({
+        // General options
+        mode: "exact",
+        theme: "advanced",
+        editor_selector: "mceEditor",
+        elements: 'editor',
+        editor_deselector: "mceNoEditor"
+    	});
 		});
 	</script>
 

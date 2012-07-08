@@ -8,11 +8,9 @@ class Voiture {
 	Date dateCreated
 	Date lastUpdated
 	
-	boolean neuve
-	
 	String titre
 	String description
-	int kilometrage
+	int kilometrage = 0
 	int prixAchat
 	int prixVente
 	
@@ -27,6 +25,7 @@ class Voiture {
 		dateAchat(nullable:true)
 		dateVente(nullable:true)
 		description(nullable:true)
+		kilometrage(nullable:true)
 	}
 	
 	static mapping = {

@@ -17,9 +17,18 @@ function updateMenuStyle( menu ) {
 }
 
 function updatePhotos(canDelete) {
-	$.ajax({url:'/gcautos/voitures/photos?id=' + $("#id")[0].value, dataType:'html'}).done(
-	function(res){
+	$.ajax({
+		url:'/gcautos/voitures/photos?id=' + $("#id")[0].value,
+		dataType:'html'
+	}).done(function(res){
 		$('#photos').html(res);
+		$('.deletePhoto').click(function(e){
+			var id = e.currentTarget.id;
+			$.ajax({
+				url:'/gcautos/voitures/deletePhoto?id=' + id,
+				dataType:'html'
+			}).done(updatePhotos);
+		});
 	});
 }
 

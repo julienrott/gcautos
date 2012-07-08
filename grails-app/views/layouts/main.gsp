@@ -82,17 +82,6 @@
 			</nav>
 			<!-- end menu -->
 			
-			<!-- menu -->
-			<nav style="z-index: 1;">
-				<sec:ifAllGranted roles="ROLE_ADMIN">
-					<div id="coordsMouse">aa</div>
-					<div id="coordsPhoto">aa</div>
-				</sec:ifAllGranted>
-			
-				<div class="clear"></div>	
-			</nav>
-			<!-- end menu -->
-
 		</header>
 		
 	  <div role="main" class="content">
@@ -128,6 +117,7 @@
   <script src="${resource(dir:'js',file:'tms-0.3.js')}"></script>
   <script src="${resource(dir:'js',file:'tms_presets.js')}"></script>
   <script src="${resource(dir:'js',file:'slider.js')}"></script>
+	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
 
   <script>
 		$(function() {
@@ -135,6 +125,17 @@
 		});
 		$(function() {
 			$( "#dateVente" ).datepicker();
+		});
+
+		$(function() {
+			editor = tinyMCE.init({
+        // General options
+        mode: "exact",
+        theme: "advanced",
+        editor_selector: "mceEditor",
+        elements: 'editor',
+        editor_deselector: "mceNoEditor"
+    	});
 		});
 	</script>
 

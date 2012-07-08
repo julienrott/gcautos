@@ -34,8 +34,8 @@ class VoituresController {
 			log.debug "Save : params = $params"
 			def v = Voiture.get(params.id)
 			
-			params.dateAchat = Date.parse("dd/MM/yyyy", params.dateAchat)
-			params.dateVente = Date.parse("dd/MM/yyyy", params.dateVente)
+			params.dateAchat = params.dateAchat != "" ? Date.parse("dd/MM/yyyy", params.dateAchat) : null
+			params.dateVente = params.dateVente != "" ? Date.parse("dd/MM/yyyy", params.dateVente) : null
 
 			if ( v ) {
 				log.debug "UPDATE"
@@ -53,8 +53,8 @@ class VoituresController {
 				}
 			}
 			def newParams = [id:v?.id]
-			redirect(action:view, params:newParams)
-			//redirect(action:occasions)
+			//redirect(action:view, params:newParams)
+			redirect(action:update, params:newParams)
 		} catch (Exception e) {
 			log.error("ERROR", e)
 		}
@@ -176,22 +176,6 @@ class VoituresController {
 		try {
 			def photo = Photo.get( params.id )
 			log.debug "deletePhoto photo.titre: ${photo.titre}"
-			File file = new File("web-app/static/images/${params.idVoiture}/SMALL_${photo.titre}")
-			log.debug "deletePhoto getAbsolutePath: " + file.getAbsolutePath()
-			log.debug "deletePhoto getCanonicalPath: " + file.getCanonicalPath()
-			if (file != null) {
-				log.debug "deletePhoto photo.titre: ${photo.titre} trouvee"
-				if (file.delete()) {
-					log.debug "deletePhoto photo.titre: ${photo.titre} supprim�e"
-				} else {
-					log.debug "deletePhoto photo.titre: ${photo.titre} non supprim�e"
-					log.debug "deletePhoto file: ${file.canonicalPath}"
-					FileUtils.forceDelete(new File(file.getCanonicalPath()))
-					log.debug "deletePhoto photo.titre: ${photo.titre} supprim�e par force !"
-				}
-			} else {
-				log.debug "deletePhoto photo.titre: ${photo.titre} non trouvee"
-			}
 			photo.delete()
 			log.debug "deletePhoto OK"
 			render true

@@ -4,21 +4,19 @@
 			<meta name="layout" content="main" />
     </head>
     <body>
-
+			<div class="subContent span-20">
         <g:each in="${voitures}" var="v">
         	<div class="voitureListe rounded">
 						<div class="titrePrixVoiture">
-							<h2 class="titreVoiture span-21" >
+							<h2 class="titreVoiture" >
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">${v.titre}</a>
 							</h2>
-							<h2 class="h2 span-4 last" >
+							<h2 class="h2" >
 								<g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;
 							</h2>
 						</div>
-				
-						<div class="span-24">
-							<p>${v.description}</p>
-						</div>
+
+						<div class="clear"></div>
 				
 						<div class="links span-24">
 							<sec:ifAllGranted roles="ROLE_ADMIN">
@@ -26,7 +24,12 @@
 				    		<a href="${createLink(controller:'voitures', action:'delete', id:"$v.id")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 			    		</sec:ifAllGranted>
 						</div>
-				
+
+						<div class="clear"></div>
+
+						<div class="span-24">
+							${v.description}
+						</div>
 						<div class="photoListe">
 							<g:if test="${v.photos?.titre?.size > 0}">
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
@@ -34,10 +37,34 @@
 											src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}")}"/>
 								</a>
 							</g:if>
+							<g:if test="${v.photos?.titre?.size > 1}">
+								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
+									<img class="photosVoituresListe round" 
+											src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[1]}")}"/>
+								</a>
+							</g:if>
 						</div>
 				
 					</div>
 					<div class="clear"></div>
         </g:each>
+			</div>
+
+			<div class="subContent span-4 last">
+				<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-6056271097061513";
+				/* gcautos */
+				google_ad_slot = "0844335337";
+				google_ad_width = 160;
+				google_ad_height = 600;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+			</div>
+
+			<div class="clear"></div>
+
     </body>
 </html>
