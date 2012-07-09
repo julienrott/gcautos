@@ -29,7 +29,6 @@ class Voiture {
 	}
 	
 	static mapping = {
-		id generator : 'native'
 		description type:'text'
 		photos sort:'id'
 	}
