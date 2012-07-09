@@ -53,7 +53,7 @@ class VoituresController {
 				}
 			}
 			def newParams = [id:v.id]
-			redirect(action:update, params:newParams)
+			redirect(action:update, params:newParams )
 		} catch (Exception e) {
 			log.error("ERROR", e)
 		}
