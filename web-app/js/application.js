@@ -17,15 +17,16 @@ function updateMenuStyle( menu ) {
 }
 
 function updatePhotos(canDelete) {
+	if ($("#id")[0])
 	$.ajax({
-		url:'/gcautos/voitures/photos?id=' + $("#id")[0].value,
+		url:urlContext+'/voitures/photos?id=' + $("#id")[0].value,
 		dataType:'html'
 	}).done(function(res){
 		$('#photos').html(res);
 		$('.deletePhoto').click(function(e){
 			var id = e.currentTarget.id;
 			$.ajax({
-				url:'/gcautos/voitures/deletePhoto?id=' + id,
+				url:urlContext+'/voitures/deletePhoto?id=' + id,
 				dataType:'html'
 			}).done(updatePhotos);
 		});

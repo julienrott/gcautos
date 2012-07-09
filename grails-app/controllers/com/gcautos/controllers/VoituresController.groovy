@@ -120,7 +120,11 @@ class VoituresController {
 	
 	def photos = {
 		log.debug "photos params : ${params}"
-		
+		if (!params.id) {
+			render ""
+			return
+		}
+
 		try {
 			
 			def v = Voiture.get(params.id)

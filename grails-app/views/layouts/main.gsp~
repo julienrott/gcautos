@@ -40,6 +40,10 @@
   <link rel="stylesheet" href="${resource(dir:'css',file:'custom.css')}">
   <link rel="stylesheet" href="${resource(dir:'css',file:'grid.css')}">
 	
+  <script type="text/javascript">
+		var urlContext = '${grailsApplication.config.grails.serverURL} ';
+	</script>
+
   <script src="${resource(dir:'js',file:'libs/modernizr-2.5.3.min.js')}"></script>
 	<g:layoutHead/>
   	<r:layoutResources />
@@ -82,17 +86,6 @@
 			</nav>
 			<!-- end menu -->
 			
-			<!-- menu -->
-			<nav style="z-index: 1;">
-				<sec:ifAllGranted roles="ROLE_ADMIN">
-					<div id="coordsMouse">aa</div>
-					<div id="coordsPhoto">aa</div>
-				</sec:ifAllGranted>
-			
-				<div class="clear"></div>	
-			</nav>
-			<!-- end menu -->
-
 		</header>
 		
 	  <div role="main" class="content">
@@ -130,7 +123,7 @@
   <script src="${resource(dir:'js',file:'slider.js')}"></script>
 	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
 
-  <script>
+  <script type="text/javascript">
 		$(function() {
 			$( "#dateAchat" ).datepicker();
 		});
