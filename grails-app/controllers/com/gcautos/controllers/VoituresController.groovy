@@ -120,6 +120,7 @@ class VoituresController {
 	
 	def photos = {
 		log.debug "photos params : ${params}"
+		cache shared:true, neverExpires:true
 		if (!params.id) {
 			render ""
 			return
@@ -160,7 +161,7 @@ class VoituresController {
 	
 	def showPhoto = {
 		log.debug "showPhoto params : ${params}"
-		
+		cache shared:true, neverExpires:true
 		try {
 			
 			def photo = Photo.get( params.id ) // get the record

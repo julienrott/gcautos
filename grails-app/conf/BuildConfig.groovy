@@ -54,6 +54,7 @@ grails.project.dependency.resolution = {
 				//compile ":modernizr:2.5.3"
 				//compile ':uploadr:0.5.11'
 				compile ":javascript-validator:0.9"
+				compile ":cache-headers:1.1.5"
     }
 		imageUpload {
 			temporaryFile = '/tmp/uploaded.file' // Path to where files will be uploaded
