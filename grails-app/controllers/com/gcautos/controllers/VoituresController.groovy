@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import com.gcautos.domain.Photo;
+import com.gcautos.domain.Service;
 import com.gcautos.domain.Voiture;
 
 import grails.plugins.springsecurity.Secured
@@ -19,13 +20,15 @@ class VoituresController {
 	def voitures
 	def voiture
 	def menu
+	def service
 	
 	
-    def index = { }
+  def index = { }
 	
 	def home={
-		voitures = Voiture.findAllByDateVenteIsNull()
-		render(view:"home")
+		voitures = Voiture.findAllByDateVenteIsNull(sort:"id", order:"desc", max:4)
+		service = Service.get(1)
+		render(view:"/index", model:[voitures:voitures, service:service])
 	}
 	
 	@Secured(['ROLE_ADMIN'])
@@ -120,7 +123,7 @@ class VoituresController {
 	
 	def photos = {
 		log.debug "photos params : ${params}"
-		cache shared:true, neverExpires:true
+		//cache shared:true, neverExpires:true
 		if (!params.id) {
 			render ""
 			return
@@ -160,12 +163,17 @@ class VoituresController {
 	}
 	
 	def showPhoto = {
-		log.debug "showPhoto params : ${params}"
-		cache shared:true, neverExpires:true
+		log.error "showPhoto params : ${params}"
+		//cache shared:true, neverExpires:true
 		try {
 			
 			def photo = Photo.get( params.id ) // get the record
-			response.outputStream << photo.data_small// write the image to the outputstream
+			switch (params.type)
+			{
+				case "small" : response.outputStream << photo.data_small; break;// write the image to the outputstream
+				case "slider" : response.outputStream << photo.data_slider; break;
+				case "small_homepage" : response.outputStream << photo.data_small_homepage; break;
+			}
 			response.outputStream.flush()
 			
 		} catch(Exception e) {

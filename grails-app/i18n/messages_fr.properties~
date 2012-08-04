@@ -17,3 +17,15 @@ default.not.unique.message=La propriété [{0}] de la classe [{1}] avec la valeu
 
 default.paginate.prev=Précédent
 default.paginate.next=Suivant
+
+# GC Autos
+menu.accueil = Accueil
+menu.occasions = V&eacute;hicules d'occasion
+menu.neufs = V&eacute;hicules neufs
+menu.vendues = V&eacute;hicules vendus
+menu.create.voiture = Ajouter une voiture
+menu.statistiques = Statistiques
+
+label.partager=Partager
+
+security.login.header = Connectez-vous à l'aide de vos identifiants

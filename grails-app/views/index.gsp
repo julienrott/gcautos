@@ -18,9 +18,6 @@
 				<li style="display: none; "><img src="img/slide-4.jpg" alt=""></li>
 			</ul>
 		</div>
-		<!--
-		<div class="pic" style="overflow: hidden; width: 990px; height: 415px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); background-position: 0px 0px; background-repeat: no-repeat no-repeat; "><div class="mask" style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0px; z-index: 1; "><div style="left: 0px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: 0px 0px; "></div><div style="left: 123px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -123px 0px; "></div><div style="left: 246px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -246px 0px; "></div><div style="left: 369px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -369px 0px; "></div><div style="left: 492px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -492px 0px; "></div><div style="left: 615px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -615px 0px; "></div><div style="left: 738px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -738px 0px; "></div><div style="left: 861px; top: 0px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 129px; display: none; background-position: -861px 0px; "></div><div style="left: 0px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: 0px -103px; "></div><div style="left: 123px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -123px -103px; "></div><div style="left: 246px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -246px -103px; "></div><div style="left: 369px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -369px -103px; "></div><div style="left: 492px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -492px -103px; "></div><div style="left: 615px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -615px -103px; "></div><div style="left: 738px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -738px -103px; "></div><div style="left: 861px; top: 103px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 129px; display: none; background-position: -861px -103px; "></div><div style="left: 0px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: 0px -206px; "></div><div style="left: 123px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -123px -206px; "></div><div style="left: 246px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -246px -206px; "></div><div style="left: 369px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -369px -206px; "></div><div style="left: 492px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -492px -206px; "></div><div style="left: 615px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -615px -206px; "></div><div style="left: 738px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 123px; display: none; background-position: -738px -206px; "></div><div style="left: 861px; top: 206px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 103px; width: 129px; display: none; background-position: -861px -206px; "></div><div style="left: 0px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 123px; display: none; background-position: 0px -309px; "></div><div style="left: 123px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 123px; display: none; background-position: -123px -309px; "></div><div style="left: 246px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 123px; display: none; background-position: -246px -309px; "></div><div style="left: 369px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 123px; display: none; background-position: -369px -309px; "></div><div style="left: 492px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 123px; display: none; background-position: -492px -309px; "></div><div style="left: 615px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 123px; display: none; background-position: -615px -309px; "></div><div style="left: 738px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 123px; display: none; background-position: -738px -309px; "></div><div style="left: 861px; top: 309px; background-image: url(http://static.livedemo00.template-help.com/wt_38114/images/slide-2.jpg); position: absolute; height: 106px; width: 129px; display: none; background-position: -861px -309px; "></div></div></div></div>
-		-->
 		<a class="play"></a>
 	</div>
 	<!-- end slider -->
@@ -29,45 +26,25 @@
 		<section id="content-1">
 			<div class="container_12">
 				<article>
-					<div class="grid_3">
-						<img class="ident-bot-2" src="img/1page_img1.jpg" width="210" height="132" alt="">
-						<div class="ident-bot-3">
-							<h2>Schedule <br></h2>
-							<h2 class="h2 ident-top-1">Services</h2>
-						</div>
-						<p class="ident-bot-4">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eius <br> mod tempor incididunt ut labore et dolore magna aliqua</p>
-						<a class="button" href="#">more</a>
-					</div>
-					
-					<div class="grid_3">
-						<img class="ident-bot-2" src="img/1page_img2.jpg" width="210" height="132" alt="">
-						<div class="ident-bot-3">
-							<h2>Preventive</h2>
-							<h2 class="h2 ident-top-1">maintenance</h2>
-						</div>
-						<p class="ident-bot-4">Ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et <br> dolore magna aliqua</p>
-						<a class="button" href="#">more</a>
-					</div>
-					
-					<div class="grid_3">
-						<img class="ident-bot-2" src="img/1page_img3.jpg" width="210" height="132" alt="">
-						<div class="ident-bot-3">
-							<h2>Repair</h2>
-							<h2 class="h2 ident-top-1">Services</h2>
-						</div>
-						<p class="ident-bot-4">Dolor sit amet conse ctetur adipi <br> sicing elit, sed do eiusmod tempor incididunt ut labore et dolore <br> magna aliqua</p>
-						<a class="button" href="#">more</a>
-					</div>
-					
-					<div class="grid_3">
-						<img class="ident-bot-2" src="img/1page_img4.jpg" width="210" height="132" alt="">
-						<div class="ident-bot-3">
-							<h2>Tire &amp; Wheel</h2>
-							<h2 class="h2 ident-top-1">Services</h2>
-						</div>
-						<p class="ident-bot-4">Set ipsum dolor sit amet conse <br> ctetur adipisicing elit, sed do eius <br> mod tempor incididunt ut labore et dolore magna aliqua</p>
-						<a class="button" href="#">more</a>
-					</div>
+					<h2 class="ident-bot-5 ident-top-2">Nos dernières <span class="h2 inner-ident-1">occasions</span></h2>
+					<g:if test="${voitures?.size > 0}">
+						<g:each in="${voitures}" var="v">
+							<div class="grid_3">
+								<g:if test="${v.photos?.titre?.size > 0}">
+									<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
+										<img class="photosVoituresListe round" 
+												src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}", params:[type:'small_homepage'])}"/>
+									</a>
+								</g:if>
+								<div class="ident-bot-3">
+									<h2>
+										<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">${v.titre}</a></h2>
+									<h2 class="h2 ident-top-1"><g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;</h2>
+								</div>
+								<div class="ident-bot-4">${v.description}</div>
+							</div>
+						</g:each>
+					</g:if>
 					<div class="clear"></div>
 				</article>
 			</div>
@@ -76,60 +53,37 @@
 			<div class="container_12">
 				<div>
 					<div class="grid_6">
-						<h2 class="ident-bot-5 ident-top-2">Our <span class="h2 inner-ident-1">Services</span></h2>
-						<p class="ident-bot-6"><strong class="strong-1">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</strong></p>
-						<div class="wrapper ident-bot-7">
-							<div class="grid_3 alpha">
-								<ul class="list-2">
-									<li><a href="#">Complete Computer Diagnostics</a></li>
-									<li><a href="#">Complete Safety Analysis</a></li>
-									<li><a href="#">Drivability Problems</a></li>
-									<li><a href="#">Tune-ups</a></li>
-									<li><a href="#">Oil Changes</a></li>
-									<li><a href="#">Tires</a></li>
-									<li><a href="#">Brake repair specialists</a></li>
-									<li><a href="#">Mufflers and Exhaust Systems</a></li>
-									<li><a href="#">Steering and Suspensions</a></li>
-									<li><a href="#">Alignments</a></li>
-								</ul>
+						<h2 class="ident-bot-5 ident-top-2">Nos <span class="h2 inner-ident-1">Services</span></h2>
+						<div id="service"></div>
+						<sec:ifAllGranted roles="ROLE_ADMIN">
+							<br/>
+							<hr>
+							<h2 class="ident-bot-5 ident-top-2">Modifier <span class="h2 inner-ident-1">nos services</span></h2>
+							<div class="wrapper ident-bot-7">
+								<div>Titre: <input type="text" id="serviceTitle" value="${service?.titre}"/></div>
+								Contenu: <textarea id="editor" name="description">
+									${service?.contenu}
+								</textarea>
 							</div>
-							
-							<div class="grid_3 omega">
-								<ul class="list-2">
-									<li><a href="#">Fuel System Services</a></li>
-									<li><a href="#">Coolant Systems</a></li>
-									<li><a href="#">Emission Repair Facility</a></li>
-									<li><a href="#">Air Conditioning Service</a></li>
-									<li><a href="#">Electrical Systems</a></li>
-									<li><a href="#">Fleet Maintenance</a></li>
-									<li><a href="#">Engine Work</a></li>
-									<li><a href="#">Maryland State Inspections</a></li>
-								</ul>
-							</div>
-						</div>
-						<a class="button" href="#">All services</a>
+							<a class="link-1" href="#" id="saveService">Enregistrer</a> <img class="extra-2" src="img/extra-2.png" alt="">
+						</sec:ifAllGranted>
 					</div>
 					
 					<div class="grid_6">
 						<div class="block-2">
-							<h2 class="ident-bot-6">Reviews</h2>
-							<div class="block-3 ident-bot-1">
-								<p>Ipsum dolor sit amet conse ctetur adipisicing elit, sed do eius <br> mod tempor incididunt ut labore et dolore magna aliqua.</p>
-								<div class="extra-1"></div>
-							</div>
-							<div class="block-4 ident-bot-1">
-								Ipsum dolor sit amet conse ctet
-							</div>
-							
-							<div class="block-3 ident-bot-1">
-								<p>Dolor sit amet conse ctetur adipisicing elit, sed do eiusmod <br> tempor incididunt ut labore et dolore magna aliqua.</p>
-								<div class="extra-1"></div>
-							</div>
-							<div class="block-4 ident-bot-7">
-								Sit amet conse ctet
-							</div>
-							
-							<p><a class="link-1" href="#">See all</a> <img class="extra-2" src="img/extra-2.png" alt=""></p>
+							<h2 class="ident-bot-5 ident-top-2">Nos <span class="h2 inner-ident-1">News</span></h2>
+							<div id="news"></div>
+							<p>
+								<a class="link-1" href="${createLink(controller:'news', action:'')}">Voir toutes les news</a> <img class="extra-2" src="img/extra-2.png" alt="">
+							</p>
+							<sec:ifAllGranted roles="ROLE_ADMIN">
+								<br/>
+								<hr>
+								<h2 class="ident-bot-5 ident-top-2">Nouvelle <span class="h2 inner-ident-1">News</span></h2>
+								<div>Titre: <input type="text" id="newsTitle"></div>
+								<div>Contenu: <input type="text" id="newsContent"></div>
+								<a class="link-1" href="#" id="addNews">Ajouter</a> <img class="extra-2" src="img/extra-2.png" alt="">
+							</sec:ifAllGranted>
 						</div>
 					</div>
 					<div class="clear"></div>

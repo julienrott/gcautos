@@ -33,5 +33,61 @@ function updatePhotos(canDelete) {
 	});
 }
 
+function updateNews() {
+	if ($("#news").length > 0){
+		$.ajax({
+			url:urlContext+'/news/getLastNews',
+			dataType:'html'
+		}).done(function(res){
+			if ($("#newsTitle").length > 0){
+				$("#newsTitle")[0].value = "";
+				$("#newsContent")[0].value = "";
+			}
+			$('#news').html(res);
+		});
+	}
+}
+
+function updateService() {
+	if ($("#service").length > 0){
+		$.ajax({
+			url:urlContext+'/service/getLastService',
+			dataType:'html'
+		}).done(function(res){
+			$('#service').html(res);
+		});
+	}
+}
 
 $.ready(updatePhotos());
+$.ready(updateNews());
+$.ready(updateService());
+
+if ($("#addNews").length > 0) {
+	$("#addNews").click(function(e){
+		var title = $("#newsTitle")[0].value;
+		var content = $("#newsContent")[0].value;
+		if (title.length > 0 && content.length > 0) {
+			$.ajax({
+				url:urlContext+'/news/save?titre='+title+'&description='+content,
+				dataType:'json'
+			}).done(updateNews);
+		}
+		return false;
+	});
+}
+
+if ($("#saveService").length > 0) {
+	$("#saveService").click(function(e){
+		var title = $("#serviceTitle")[0].value;
+		//var content = $("#editor")[0].value;
+		var content = tinyMCE.get("editor").getContent();
+		if (title.length > 0 && content.length > 0) {
+			$.ajax({
+				url:urlContext+'/service/save?titre='+title+'&contenu='+content,
+				dataType:'json'
+			}).done(updateService);
+		}
+		return false;
+	});
+}

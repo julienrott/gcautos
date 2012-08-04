@@ -5,6 +5,6 @@
 		</sec:ifAllGranted>
 		<img id="img_${it.id }"
 			class="photo round" 
-			src="${createLink(controller:'voitures', action:'showPhoto', id:"$it.id")}"/>
+			src="${createLink(controller:'voitures', action:'showPhoto', id:"$it.id", params:[type:'small'])}"/>
 	</div>
 </g:each>
