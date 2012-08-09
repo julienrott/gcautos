@@ -79,12 +79,12 @@ if ($("#addNews").length > 0) {
 
 if ($("#saveService").length > 0) {
 	$("#saveService").click(function(e){
-		var title = $("#serviceTitle")[0].value;
+		var title = encodeURI($("#serviceTitle")[0].value);
 		//var content = $("#editor")[0].value;
-		var content = tinyMCE.get("editor").getContent();
+		var content = tinyMCE.get("editor").getContent({format : 'raw'});
 		if (title.length > 0 && content.length > 0) {
 			$.ajax({
-				url:urlContext+'/service/save?titre='+title+'&contenu='+content,
+				url:urlContext+'/service/save?titre='+title+'&contenu='+encodeURI(content),
 				dataType:'json'
 			}).done(updateService);
 		}
