@@ -53,7 +53,7 @@
 	<div class="main">
 	  <header>
 			<div class="block-1 fl-r divtel">
-				<p class="font-1 fl-r">Tel: <a class="font-1" href="tel:+33663564343">+33 6 63 56 43 43</a></p>
+				<p class="font-1 fl-r">Tel: <a class="font-1" href="tel:+33663564343">+33 (0)6 63 56 43 43</a></p>
 				<p class="font-2 fl-r">45 rue de la Dordogne, 67150 Erstein</p>
 			</div>
 			<div class="clear"></div>

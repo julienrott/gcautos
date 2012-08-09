@@ -52,7 +52,7 @@
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<div class="main">
 	  <header>
-			<div class="block-1 fl-r">
+			<div class="block-1 fl-r divtel">
 				<p class="font-1 fl-r">Tel: <a class="font-1" href="tel:+33663564343">+33 6 63 56 43 43</a></p>
 				<p class="font-2 fl-r">45 rue de la Dordogne, 67150 Erstein</p>
 			</div>
