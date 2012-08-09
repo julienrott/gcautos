@@ -13,22 +13,13 @@ class ServiceController {
 	}
 
 	def getLastService = {
-		service = Service.get(1)
+		service = Service.list(max:1,sort:"id",order:"desc")[0]
 		render(template:"lastService", model:["service":service])
 	}
 
 	@Secured(['ROLE_ADMIN'])
 	def save = {
-		def service = Service.get(1)
-		if (service != null)
-		{
-			service.titre = params.titre
-			service.contenu = params.contenu
-		}
-		else
-		{
-			service = new Service(params)
-		}
+		service = new Service(params)
 		if(!service.hasErrors() && service.save()) {
 			render true
 		} else {

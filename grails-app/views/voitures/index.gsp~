@@ -18,7 +18,7 @@
 
 						<div class="clear"></div>
 				
-						<div class="links span-24">
+						<div class="links">
 							<sec:ifAllGranted roles="ROLE_ADMIN">
 				    		<a href="${createLink(controller:'voitures', action:'update', id:"$v.id")}">modifier</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 				    		<a href="${createLink(controller:'voitures', action:'delete', id:"$v.id")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -27,20 +27,20 @@
 
 						<div class="clear"></div>
 
-						<div class="span-24">
+						<div>
 							${v.description}
 						</div>
 						<div class="photoListe">
 							<g:if test="${v.photos?.titre?.size > 0}">
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
 									<img class="photosVoituresListe round" 
-											src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}", params:{type:'small'})}"/>
+											src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}", params:[type:'small'])}"/>
 								</a>
 							</g:if>
 							<g:if test="${v.photos?.titre?.size > 1}">
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
 									<img class="photosVoituresListe round" 
-											src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[1]}", params:{type:'small'})}"/>
+											src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[1]}", params:[type:'small'])}"/>
 								</a>
 							</g:if>
 						</div>

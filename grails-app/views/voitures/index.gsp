@@ -8,17 +8,17 @@
         <g:each in="${voitures}" var="v">
         	<div class="voitureListe rounded">
 						<div class="titrePrixVoiture">
-							<h2 class="titreVoiture" >
+							<h2 class="titreVoiture span-15" >
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">${v.titre}</a>
 							</h2>
-							<h2 class="h2" >
+							<h2 class="h2 prixVoiture span-3 last" >
 								<g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;
 							</h2>
 						</div>
 
 						<div class="clear"></div>
 				
-						<div class="links span-24">
+						<div class="links">
 							<sec:ifAllGranted roles="ROLE_ADMIN">
 				    		<a href="${createLink(controller:'voitures', action:'update', id:"$v.id")}">modifier</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 				    		<a href="${createLink(controller:'voitures', action:'delete', id:"$v.id")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -27,7 +27,7 @@
 
 						<div class="clear"></div>
 
-						<div class="span-24">
+						<div>
 							${v.description}
 						</div>
 						<div class="photoListe">

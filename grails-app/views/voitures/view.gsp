@@ -10,11 +10,11 @@
 				  <g:hiddenField id="id" name="id" value="${voiture?.id}"/>
 
 				  <p class="titrePrixVoiture">
-						<h2 class="h2 prixVoiture span-3" >
-							<g:formatNumber number="${voiture.prixVente }" format="###,##0" />&euro;
-						</h2>
-						<h2 class="titreVoiture span-20 last" >
+						<h2 class="titreVoiture span-15" >
 							${voiture.titre}
+						</h2>
+						<h2 class="h2 prixVoiture span-3 last" >
+							<g:formatNumber number="${voiture.prixVente }" format="###,##0" />&euro;
 						</h2>
 					</p>
 
