@@ -91,7 +91,7 @@
 		
 	  <footer>
 			<ul class="list-1">
-				<li class="active-2"><a href="#">HOME</a></li>
+				<li class="active-2"><a href="${createLinkTo(dir:'/')}">HOME</a></li>
 				<li><a href="#">ABOUT</a></li>
 				<!--<li><a href="#">MAINTENANCE</a></li>
 				<li><a href="#">REPAIR</a></li>
