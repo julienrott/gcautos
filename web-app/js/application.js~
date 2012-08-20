@@ -31,6 +31,20 @@ function updatePhotos(canDelete) {
 			}).done(updatePhotos);
 		});
 	});
+	if ($("#photoSlider")[0])
+	$.ajax({
+		url:urlContext+'/photoSlider/list',
+		dataType:'html'
+	}).done(function(res){
+		$('#photos').html(res);
+		$('.deletePhoto').click(function(e){
+			var id = e.currentTarget.id;
+			$.ajax({
+				url:urlContext+'/photoSlider/deletePhotoSlider?id=' + id,
+				dataType:'html'
+			}).done(updatePhotos);
+		});
+	});
 }
 
 function updateNews() {
@@ -81,7 +95,7 @@ if ($("#saveService").length > 0) {
 	$("#saveService").click(function(e){
 		var title = encodeURI($("#serviceTitle")[0].value);
 		//var content = $("#editor")[0].value;
-		var content = tinyMCE.get("editor").getContent();
+		var content = tinyMCE.get("editor").getContent({format : 'raw'});
 		if (title.length > 0 && content.length > 0) {
 			$.ajax({
 				url:urlContext+'/service/save?titre='+title+'&contenu='+encodeURI(content),

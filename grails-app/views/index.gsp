@@ -12,10 +12,9 @@
 	<div class="slider-holder">
 		<div class="slider" style="overflow: hidden; ">
 			<ul class="items">
-				<li style="display: none; "><img src="img/slide-1.jpg" alt=""></li>
-				<li style="display: none; "><img src="img/slide-2.jpg" alt=""></li>
-				<li style="display: none; "><img src="img/slide-3.jpg" alt=""></li>
-				<li style="display: none; "><img src="img/slide-4.jpg" alt=""></li>
+				<g:each in="${photosSlider}">
+					<li style="display: none; "><img src="${createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${it.id}", params:[type:'slider'])}" alt=""></li>
+				</g:each>
 			</ul>
 		</div>
 		<a class="play"></a>

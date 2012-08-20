@@ -15,6 +15,12 @@
 						<g:hiddenField id="id" name="id" value="${voiture?.id}" />
 	
 						<div>
+							<span class="align-right span-3"><label for="vehicleType">Type</label></span>
+							<g:select id="vehicleType" name="vehicleType" from="${0..3}"
+								value="${voiture?.vehicleType}" valueMessagePrefix="vehicleType"
+								class="customText-30em" />
+						</div>
+						<div>
 							<span class="align-right span-3"><label for="titre">Titre</label></span>
 							<g:textField id="titre" name="titre"
 								value="${voiture?.titre}"

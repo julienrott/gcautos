@@ -1,6 +1,5 @@
 package com.gcautos.domain
 
-
 import java.util.Date;
 
 class Voiture {
@@ -16,6 +15,8 @@ class Voiture {
 	
 	Date dateAchat
 	Date dateVente
+
+	int vehicleType
 	
 	static hasMany = [photos:Photo]
 	

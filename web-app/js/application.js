@@ -31,6 +31,20 @@ function updatePhotos(canDelete) {
 			}).done(updatePhotos);
 		});
 	});
+	if ($("#photoSlider")[0])
+	$.ajax({
+		url:urlContext+'/photoSlider/list',
+		dataType:'html'
+	}).done(function(res){
+		$('#photoSlider').html(res);
+		$('.deletePhoto').click(function(e){
+			var id = e.currentTarget.id;
+			$.ajax({
+				url:urlContext+'/photoSlider/deletePhotoSlider?id=' + id,
+				dataType:'html'
+			}).done(updatePhotos);
+		});
+	});
 }
 
 function updateNews() {

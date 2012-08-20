@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import com.gcautos.domain.Photo;
+import com.gcautos.domain.PhotoSlider;
 import com.gcautos.domain.Service;
 import com.gcautos.domain.Voiture;
 
@@ -21,6 +22,7 @@ class VoituresController {
 	def voiture
 	def menu
 	def service
+	def photosSlider
 	
 	
   def index = { }
@@ -28,7 +30,8 @@ class VoituresController {
 	def home={
 		voitures = Voiture.findAllByDateVenteIsNull(sort:"id", order:"desc", max:4)
 		service = Service.get(1)
-		render(view:"/index", model:[voitures:voitures, service:service])
+		photosSlider = PhotoSlider.list()
+		render(view:"/index", model:[voitures:voitures, service:service, photosSlider:photosSlider])
 	}
 	
 	@Secured(['ROLE_ADMIN'])
@@ -99,9 +102,47 @@ class VoituresController {
 	def occasions = {
 		try {
 			menu = "occasions"
-			voitures = Voiture.findAllByDateVenteIsNull()
-			log.debug "Occasions : $voitures.size"
-			log.debug "liste : $voitures"
+			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(0, [sort:"prixVente", order:"asc"])
+			render(view:'index')
+		} catch (Exception e) {
+			log.error e
+		}
+	}
+	
+	def neuves = {
+		try {
+			menu = "neuves"
+			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(1, [sort:"prixVente", order:"asc"])
+			render(view:'index')
+		} catch (Exception e) {
+			log.error e
+		}
+	}
+	
+	def quads = {
+		try {
+			menu = "quads"
+			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(2, [sort:"prixVente", order:"asc"])
+			render(view:'index')
+		} catch (Exception e) {
+			log.error e
+		}
+	}
+	
+	def dirts = {
+		try {
+			menu = "dirts"
+			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(3, [sort:"prixVente", order:"asc"])
+			render(view:'index')
+		} catch (Exception e) {
+			log.error e
+		}
+	}
+	
+	def electriques = {
+		try {
+			menu = "electriques"
+			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(4, [sort:"prixVente", order:"asc"])
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -111,10 +152,8 @@ class VoituresController {
 	@Secured(['ROLE_ADMIN'])
 	def vendues = {
 		try {
-			menu = "neuves"
-			voitures = Voiture.findAllByDateVenteIsNotNull()
-			log.debug "Neuves : $voitures.size"
-			log.debug "liste : $voitures"
+			menu = "vendues"
+			voitures = Voiture.findAllByDateVenteIsNotNull([sort:"dateVente", order:"desc"])
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e

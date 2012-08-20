@@ -53,7 +53,7 @@
 	<div class="main">
 	  <header>
 			<div class="block-1 fl-r divtel">
-				<p class="font-1 fl-r">Tel: <a class="font-1" href="tel:+33663564343">+33 6 63 56 43 43</a></p>
+				<p class="font-1 fl-r">Tel: <a class="font-1" href="tel:+33663564343">+33 (0)6 63 56 43 43</a></p>
 				<p class="font-2 fl-r">45 rue de la Dordogne, 67150 Erstein</p>
 			</div>
 			<div class="clear"></div>
@@ -63,14 +63,32 @@
 			<!-- menu -->
 			<nav>
 				<ul class="sf-menu sf-js-enabled sf-shadow">
-					<li class="active"><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
+					<li><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
 					<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
+					<li><g:link controller="voitures" action="neuves"><g:message code="menu.neufs"/></g:link></li>
+					<li><g:link controller="voitures" action="quads"><g:message code="menu.quads"/></g:link></li>
+					<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
+					<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
+					<li class=""><a href="#">Divers</a>
+						<ul style="display: none; visibility: hidden;">
+							<li><a href="#">Buggy</a></li>
+							<li><a href="#">Accessoires Quads et Dirt Bikes</a></li>
+							<li><a href="#">Jantes Alu</a></li>
+							<li><a href="#">Pot Sport</a></li>
+							<li><a href="#">Ressorts Courts</a></li>
+							<li><a href="#">Boîtier Additionnel</a></li>
+							<li><a href="#">Nos Réalisations</a></li>
+							<li><a href="#">Garantie</a></li>
+							<li><a href="#">Partenaires</a></li>
+						</ul>
+					</li>
 					<sec:ifLoggedIn>
 						<sec:ifAllGranted roles="ROLE_ADMIN">
 							<li class=""><a href="#">Admin menu</a>
 								<ul style="display: none; visibility: hidden;">
 									<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
 									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
+									<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
 									<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
 								</ul>
 							</li>

@@ -11,11 +11,10 @@
 	<!-- slider -->
 	<div class="slider-holder">
 		<div class="slider" style="overflow: hidden; ">
-			<ul class="items">
-				<li style="display: none; "><img src="img/slide-1.jpg" alt=""></li>
-				<li style="display: none; "><img src="img/slide-2.jpg" alt=""></li>
-				<li style="display: none; "><img src="img/slide-3.jpg" alt=""></li>
-				<li style="display: none; "><img src="img/slide-4.jpg" alt=""></li>
+			<ul class="items">${photosSlider.size}
+				<g:each in="${photosSlider}">
+					<li style="display: none; "><img src="${createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${it.id}", params:[type:'slider'])}" alt=""></li>
+				</g:each>
 			</ul>
 		</div>
 		<a class="play"></a>
@@ -60,8 +59,10 @@
 							<hr>
 							<h2 class="ident-bot-5 ident-top-2">Modifier <span class="h2 inner-ident-1">nos services</span></h2>
 							<div class="wrapper ident-bot-7">
-								<div>Titre: <input type="text" id="serviceTitle"></div>
-								Contenu: <textarea id="editor" name="description"></textarea>
+								<div>Titre: <input type="text" id="serviceTitle" value="${service?.titre}"/></div>
+								Contenu: <textarea id="editor" name="description">
+									${service?.contenu}
+								</textarea>
 							</div>
 							<a class="link-1" href="#" id="saveService">Enregistrer</a> <img class="extra-2" src="img/extra-2.png" alt="">
 						</sec:ifAllGranted>
