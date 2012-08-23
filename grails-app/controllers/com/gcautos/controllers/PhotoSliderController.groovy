@@ -21,7 +21,7 @@ class PhotoSliderController{
 
 	@Secured(['ROLE_ADMIN'])
 	def index = {
-		render(view:"index")
+		
 	}
 
 	def list = {
