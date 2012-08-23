@@ -102,7 +102,6 @@ class VoituresController {
 	def occasions = {
 		try {
 			menu = "occasions"
-			//voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(0, [sort:"prixVente", order:"asc"])
 			def results = Voiture.where{
 				dateVente == null && vehicleType == 0
 			}
@@ -116,7 +115,10 @@ class VoituresController {
 	def neuves = {
 		try {
 			menu = "neuves"
-			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(1, [sort:"prixVente", order:"asc"])
+			def results = Voiture.where{
+				dateVente == null && vehicleType == 1
+			}
+			voitures = results.list(sort:"prixVente", order:"asc")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -126,7 +128,10 @@ class VoituresController {
 	def quads = {
 		try {
 			menu = "quads"
-			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(2, [sort:"prixVente", order:"asc"])
+			def results = Voiture.where{
+				dateVente == null && vehicleType == 2
+			}
+			voitures = results.list(sort:"prixVente", order:"asc")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -136,7 +141,10 @@ class VoituresController {
 	def dirts = {
 		try {
 			menu = "dirts"
-			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(3, [sort:"prixVente", order:"asc"])
+			def results = Voiture.where{
+				dateVente == null && vehicleType == 3
+			}
+			voitures = results.list(sort:"prixVente", order:"asc")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -146,7 +154,10 @@ class VoituresController {
 	def electriques = {
 		try {
 			menu = "electriques"
-			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(4, [sort:"prixVente", order:"asc"])
+			def results = Voiture.where{
+				dateVente == null && vehicleType == 4
+			}
+			voitures = results.list(sort:"prixVente", order:"asc")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
