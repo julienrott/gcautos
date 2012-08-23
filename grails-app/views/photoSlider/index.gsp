@@ -17,7 +17,7 @@
 		  <div id="photoSlider" class="photos"></div>
 
 		</div>
-	</div>
+	</div> 
 
 	<div class="clear"></div>
 
