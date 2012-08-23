@@ -102,10 +102,7 @@ class VoituresController {
 	def occasions = {
 		try {
 			menu = "occasions"
-			def results = Voiture.where{
-				dateVente == null && vehicleType == 0
-			}
-			voitures = results.list(sort:"prixVente", order:"asc")
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [0])
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -115,10 +112,7 @@ class VoituresController {
 	def neuves = {
 		try {
 			menu = "neuves"
-			def results = Voiture.where{
-				dateVente == null && vehicleType == 1
-			}
-			voitures = results.list(sort:"prixVente", order:"asc")
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [1])
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -128,10 +122,7 @@ class VoituresController {
 	def quads = {
 		try {
 			menu = "quads"
-			def results = Voiture.where{
-				dateVente == null && vehicleType == 2
-			}
-			voitures = results.list(sort:"prixVente", order:"asc")
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [2])
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -141,10 +132,7 @@ class VoituresController {
 	def dirts = {
 		try {
 			menu = "dirts"
-			def results = Voiture.where{
-				dateVente == null && vehicleType == 3
-			}
-			voitures = results.list(sort:"prixVente", order:"asc")
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [3])
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -154,10 +142,7 @@ class VoituresController {
 	def electriques = {
 		try {
 			menu = "electriques"
-			def results = Voiture.where{
-				dateVente == null && vehicleType == 4
-			}
-			voitures = results.list(sort:"prixVente", order:"asc")
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [4])
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
