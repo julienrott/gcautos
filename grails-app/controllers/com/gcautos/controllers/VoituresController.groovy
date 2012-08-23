@@ -102,7 +102,11 @@ class VoituresController {
 	def occasions = {
 		try {
 			menu = "occasions"
-			voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(0, [sort:"prixVente", order:"asc"])
+			//voitures = Voiture.findAllByDateVenteIsNullAndVehicleTypeLike(0, [sort:"prixVente", order:"asc"])
+			def results = Voiture.where{
+				dateVente == null && vehicleType == 0
+			}
+			voitures = results.list(sort:"prixVente", order:"asc")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
