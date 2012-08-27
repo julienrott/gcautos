@@ -15,6 +15,10 @@ class StatistiquesController {
 		
 	}
 	
+	def index2 = {
+		render(view:"index")
+	}
+	
 	def chart2 = {
 		def tab = []
 		
