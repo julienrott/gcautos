@@ -679,3 +679,7 @@ div.photo span {
 	height: 600px;
 	width: 160px;
 }
+
+.divtel{
+	margin-top:3px;
+}
