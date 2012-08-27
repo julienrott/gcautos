@@ -14,7 +14,7 @@ import grails.converters.*;
 
 import grails.plugins.springsecurity.Secured
 
-class PhotoSliderController{
+class SliderController{
 
 	def photosService
 	def springSecurityService

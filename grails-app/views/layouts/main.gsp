@@ -88,7 +88,7 @@
 								<ul style="display: none; visibility: hidden;">
 									<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
 									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-									<li><g:link controller="photoSlider" action="index2"><g:message code="menu.manage.photoSlider"/></g:link></li>
+									<li><g:link controller="slider"><g:message code="menu.manage.photoSlider"/></g:link></li>
 									<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
 								</ul>
 							</li>

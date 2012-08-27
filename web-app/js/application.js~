@@ -36,7 +36,7 @@ function updatePhotos(canDelete) {
 		url:urlContext+'/photoSlider/list',
 		dataType:'html'
 	}).done(function(res){
-		$('#photos').html(res);
+		$('#photoSlider').html(res);
 		$('.deletePhoto').click(function(e){
 			var id = e.currentTarget.id;
 			$.ajax({

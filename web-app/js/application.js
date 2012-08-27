@@ -33,14 +33,14 @@ function updatePhotos(canDelete) {
 	});
 	if ($("#photoSlider")[0])
 	$.ajax({
-		url:urlContext+'/photoSlider/list',
+		url:urlContext+'/slider/list',
 		dataType:'html'
 	}).done(function(res){
 		$('#photoSlider').html(res);
 		$('.deletePhoto').click(function(e){
 			var id = e.currentTarget.id;
 			$.ajax({
-				url:urlContext+'/photoSlider/deletePhotoSlider?id=' + id,
+				url:urlContext+'/slider/deletePhotoSlider?id=' + id,
 				dataType:'html'
 			}).done(updatePhotos);
 		});
