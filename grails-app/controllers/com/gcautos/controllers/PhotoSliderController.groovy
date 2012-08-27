@@ -19,7 +19,6 @@ class PhotoSliderController{
 	def photosService
 	def springSecurityService
 
-	@Secured(['ROLE_ADMIN'])
 	def index = {
 		
 	}
