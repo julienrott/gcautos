@@ -1,4 +1,4 @@
-package com.gcautos.controller
+package com.gcautos.controllers
 
 import javax.imageio.ImageIO;
 
