@@ -23,6 +23,10 @@ class PhotoSliderController{
 		
 	}
 
+	def index2 = {
+		render(view:"index")
+	}
+	
 	def list = {
 		try {
 			def photos = PhotoSlider.findAll()
