@@ -1,1 +1,1 @@
-java -Xmx384m -Xss512k -XX:+UseCompressedOops -jar server/tomcat-embed-core.jar --port 50856 target/*.war
+we: java $JAVA_OPTS -jar server/tomcat-embed-core.jar --port $PORT target/*.war
