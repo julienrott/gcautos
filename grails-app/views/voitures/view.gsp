@@ -29,8 +29,8 @@
 
 					<div class="clear"></div>
 
-					<div><strong class="strong-1">Date d'achat : </strong><span class="block">${formatDate(format:'dd/MM/yyyy',date:voiture?.dateAchat)}<span></div>
-					<div><strong class="strong-1">Date de vente : </strong><span class="block">${formatDate(format:'dd/MM/yyyy',date:voiture?.dateVente)}<span></div>
+					<!--<div><strong class="strong-1">Date d'achat : </strong><span class="block">${formatDate(format:'dd/MM/yyyy',date:voiture?.dateAchat)}<span></div>
+					<div><strong class="strong-1">Date de vente : </strong><span class="block">${formatDate(format:'dd/MM/yyyy',date:voiture?.dateVente)}<span></div>-->
 
 					<div class="clear"></div>
 	

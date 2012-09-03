@@ -11,21 +11,6 @@
 
   <meta name="viewport" content="width=device-width">
 
-<!--	<link rel="stylesheet" type="text/css" 
-    		href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/claro.css">
-	<link rel="stylesheet" type="text/css" 
-    		href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/Calendar.css">
-	<link rel="stylesheet" type="text/css" 
-    		href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/form/Common.css">
-	<link rel="stylesheet" type="text/css" 
-    		href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/resources/dojo.css">
-	<link rel="stylesheet" type="text/css" 
-    		href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/dijit.css">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js" data-dojo-config="parseOnLoad:true, isDebug: true"></script>
-
-  <script src="${resource(dir:'js',file:'gcautos.js')}"></script>
--->
 	<link rel="stylesheet" href="${resource(dir:'css',file:'ui-lightness/jquery-ui-1.8.21.custom.css')}" type="text/css" media="screen, projection">
   
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
@@ -46,15 +31,19 @@
 
   <script src="${resource(dir:'js',file:'libs/modernizr-2.5.3.min.js')}"></script>
 	<g:layoutHead/>
-  	<r:layoutResources />
+	<r:layoutResources />
 </head>
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 	<div class="main">
 	  <header>
+			<div class="fl-r">
+			</div>
 			<div class="block-1 fl-r divtel">
-				<p class="font-1 fl-r">Tel: <a class="font-1" href="tel:+33663564343">+33 (0)6 63 56 43 43</a></p>
-				<p class="font-2 fl-r">45 rue de la Dordogne, 67150 Erstein</p>
+				<a target="_blank" href="https://www.facebook.com/christophe.gcautoserstein"><img src="${createLinkTo(dir:'img', file:'logo-facebook.png')}"/></a>
+				<div class="font-1 fl-r">Tel: +33 (0)6 63 56 43 43</div>
+				<div class="clear"></div>
+				<div class="font-1 fl-r"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
 			</div>
 			<div class="clear"></div>
 			<div class="logo-bg">
@@ -88,7 +77,7 @@
 								<ul style="display: none; visibility: hidden;">
 									<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
 									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-									<li><g:link controller="slider"><g:message code="menu.manage.photoSlider"/></g:link></li>
+									<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
 									<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
 								</ul>
 							</li>
@@ -136,14 +125,12 @@
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 	<script src="${resource(dir:'js',file:'jquery-ui-1.8.21.custom.min.js')}"></script>
 	<script src="${resource(dir:'js',file:'jquery.ui.datepicker-fr.js')}"></script>
-  
-  <script src="${resource(dir:'js',file:'superfish.js')}"></script>
-  <script src="${resource(dir:'js',file:'plugins.js')}"></script>
-  <script src="${resource(dir:'js',file:'script.js')}"></script>
-  <script src="${resource(dir:'js',file:'tms-0.3.js')}"></script>
-  <script src="${resource(dir:'js',file:'tms_presets.js')}"></script>
-  <script src="${resource(dir:'js',file:'slider.js')}"></script>
 	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
+  
+
+	<g:javascript library="application"/>
+	<r:require module="plugins"/>
+	<r:layoutResources />
 
   <script type="text/javascript">
 		$(function() {
@@ -159,14 +146,13 @@
         mode: "exact",
         theme: "advanced",
         editor_selector: "mceEditor",
+        plugins: 'media',
+        theme_advanced_buttons2_add : "media",
         elements: 'editor',
         editor_deselector: "mceNoEditor"
     	});
 		});
 	</script>
-
-	<g:javascript library="application"/>
-  	<r:layoutResources />
 
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

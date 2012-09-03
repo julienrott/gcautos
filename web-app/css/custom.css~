@@ -13,6 +13,9 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
+a:visited{
+	color: #6D0B0B;
+}
 .main {
 	width: 990px;
 	margin: 0px auto;
@@ -178,7 +181,10 @@ h1 a {
 	margin-top: -2px;
 	word-spacing:2px;
 }
-
+.font-3 {
+    color: #494949;
+    font: 400 14px/20px 'Open Sans',sans-serif;
+}
 .list-1 {
 	margin-left: 9px;
 }
@@ -529,7 +535,7 @@ footer {
 .sf-menu {
 	line-height: 1.0;
 	float:right;
-	width: 535px;
+	width: 600px;
 	margin: 7px 0;
 }
 .sf-menu ul li {

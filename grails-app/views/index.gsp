@@ -22,6 +22,14 @@
 	<!-- end slider -->
 
   <div role="main">
+		<section>
+			<article>&nbsp;</article>
+			<article>
+				<center><h2 class="ident-bot-5 ident-top-2">Les véhicules sont visibles uniquement sur rendez-vous</h2></center>
+				<center><a href="${createLink(controller:'contact')}">
+					<h2 class="ident-bot-5 ident-top-2"><span class="h2 inner-ident-1">Nous contacter</span></h2></a></center>
+			</article>
+		</section>
 		<section id="content-1">
 			<div class="container_12">
 				<article>

@@ -95,7 +95,8 @@ if ($("#saveService").length > 0) {
 	$("#saveService").click(function(e){
 		var title = encodeURI($("#serviceTitle")[0].value);
 		//var content = $("#editor")[0].value;
-		var content = tinyMCE.get("editor").getContent({format : 'raw'});
+		//var content = tinyMCE.get("editor").getContent({format : 'raw'});
+		var content = tinyMCE.get("editor").getContent();
 		if (title.length > 0 && content.length > 0) {
 			$.ajax({
 				url:urlContext+'/service/save?titre='+title+'&contenu='+encodeURI(content),
