@@ -30,7 +30,7 @@ a:visited{
 	overflow: hidden;
 }
 h2 {
-	font: 700 27px/33px 'Open Sans', sans-serif;
+	font: 700 27px/33px 'Open Sans', sans-serif !important;
 	color: #991111;
 	text-transform: uppercase;
 }

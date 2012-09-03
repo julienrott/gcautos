@@ -54,8 +54,8 @@ strong {
 ========================================================================= */
 .ident-bot-1 {margin-bottom: 18px;}
 .ident-bot-2 {margin-bottom: 13px;}
-.ident-bot-3 {margin-bottom: 8px;}
-.ident-bot-4 {margin-bottom: 16px;}
+.ident-bot-3 {margin-bottom: 8px;max-height: 5em;overflow: hidden;}
+.ident-bot-4 {margin-bottom: 16px;max-height: 110px;overflow: hidden;}
 .ident-bot-5 {margin-bottom: 9px;}
 .ident-bot-6 {margin-bottom: 14px;}
 .ident-bot-7 {margin-bottom: 20px;}
