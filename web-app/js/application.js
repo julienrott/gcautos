@@ -73,9 +73,21 @@ function updateService() {
 	}
 }
 
+function updateAccessoires() {
+	if ($("#diversMenu").length > 0){
+		$.ajax({
+			url:urlContext+'/accessoires/list',
+			dataType:'html'
+		}).done(function(res){
+			$('#diversMenu').html(res);
+		});
+	}
+}
+
 $.ready(updatePhotos());
 $.ready(updateNews());
 $.ready(updateService());
+$.ready(updateAccessoires());
 
 if ($("#addNews").length > 0) {
 	$("#addNews").click(function(e){

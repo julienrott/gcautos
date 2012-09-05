@@ -12,7 +12,7 @@ class BootStrap {
 		
 			def adminUser = Person.findByUsername('admin') ?: new Person(
 							username: 'admin', 
-							password: 'admin',
+							password: 'Christophe1973',
 							enabled: true).save(failOnError: true)
 		
 			if (!adminUser.authorities.contains(adminRole)) {

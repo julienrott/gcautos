@@ -28,6 +28,7 @@ menu.electriques = Electriques
 menu.vendues = V&eacute;hicules vendus
 menu.create.voiture = Ajouter une voiture
 menu.statistiques = Statistiques
+menu.manage.photoSlider = Gestion photos accueil
 
 label.partager=Partager
 

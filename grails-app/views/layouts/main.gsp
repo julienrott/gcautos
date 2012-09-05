@@ -59,16 +59,7 @@
 					<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
 					<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
 					<li class=""><a href="#">Divers</a>
-						<ul style="display: none; visibility: hidden;">
-							<li><a href="#">Buggy</a></li>
-							<li><a href="#">Accessoires Quads et Dirt Bikes</a></li>
-							<li><a href="#">Jantes Alu</a></li>
-							<li><a href="#">Pot Sport</a></li>
-							<li><a href="#">Ressorts Courts</a></li>
-							<li><a href="#">Boîtier Additionnel</a></li>
-							<li><a href="#">Nos Réalisations</a></li>
-							<li><a href="#">Garantie</a></li>
-							<li><a href="#">Partenaires</a></li>
+						<ul id="diversMenu" style="display: none; visibility: hidden;">
 						</ul>
 					</li>
 					<sec:ifLoggedIn>
@@ -78,6 +69,7 @@
 									<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
 									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
 									<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
+									<li><g:link controller="accessoires" ><g:message code="menu.manage.accessoires"/></g:link></li>
 									<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
 								</ul>
 							</li>
@@ -153,11 +145,15 @@
 		});
 	</script>
 
-  <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'http://ssl':'http://www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3781580-4']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+	</script>
 </body>
 </html>

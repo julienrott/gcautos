@@ -68,7 +68,7 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        grails.serverURL = "http://gentle-robot-6859.herokuapp.com"
+        grails.serverURL = "http://www.gcautos.fr"
     }
 }
 

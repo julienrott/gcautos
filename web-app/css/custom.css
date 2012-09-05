@@ -689,3 +689,7 @@ div.photo span {
 .divtel{
 	margin-top:3px;
 }
+
+.customDivReset, .customDivReset *{
+	margin: auto;
+}
