@@ -35,8 +35,8 @@ class PhotoSliderController{
 	}
 
 	def showPhotoSlider = {
-		log.error "showPhoto params : ${params}"
-		//cache shared:true, neverExpires:true
+		//log.error "showPhoto params : ${params}"
+		cache shared:true, neverExpires:true
 		try {
 			
 			def photo = PhotoSlider.get( params.id ) // get the record

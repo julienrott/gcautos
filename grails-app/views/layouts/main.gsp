@@ -41,7 +41,7 @@
 			</div>
 			<div class="block-1 fl-r divtel">
 				<a target="_blank" href="https://www.facebook.com/christophe.gcautoserstein"><img src="${createLinkTo(dir:'img', file:'logo-facebook.png')}"/></a>
-				<div class="font-1 fl-r">Tel: +33 (0)6 63 56 43 43</div>
+				<div class="font-1 fl-r">Tel: 06 63 56 43 43</div>
 				<div class="clear"></div>
 				<div class="font-1 fl-r"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
 			</div>
