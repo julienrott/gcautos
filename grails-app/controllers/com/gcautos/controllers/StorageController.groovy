@@ -19,7 +19,7 @@ class StorageController {
 	def index = { }
 
 	def upload = {
-		log.error "upload params : ${params}"
+		//log.error "upload params : ${params}"
 		
 		try {
 			def photo = new Photo()
@@ -47,7 +47,7 @@ class StorageController {
 			photo.titre = request.getHeader('X-File-Name') as String
 			
 			if (photo.save()) {
-				log.error "upload ok"
+				//log.error "upload ok"
 				
 				//photosService.writePhoto( photo.id )
 				

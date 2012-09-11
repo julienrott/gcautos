@@ -205,8 +205,9 @@ class VoituresController {
 	}
 	
 	def showPhoto = {
-		log.error "showPhoto params : ${params}"
-		//cache shared:true, neverExpires:true
+		//log.error "showPhoto params : ${params}"
+		
+		cache shared:true, neverExpires:true
 		try {
 			
 			def photo = Photo.get( params.id ) // get the record
