@@ -5,6 +5,9 @@
     </head>
     <body>
 			<div class="subContent span-20">
+				<div class="paginate">
+					<g:paginate total="${vTotal}" max="4"/>
+				</div>
         <g:each in="${voitures}" var="v">
         	<div class="voitureListe rounded">
 						<div class="titrePrixVoiture">
@@ -48,6 +51,9 @@
 					</div>
 					<div class="clear"></div>
         </g:each>
+				<div class="paginate">
+					<g:paginate total="${vTotal}" max="4"/>
+				</div>
 			</div>
 
 			<div class="subContent span-4 last">

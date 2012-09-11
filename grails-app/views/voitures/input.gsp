@@ -16,7 +16,7 @@
 	
 						<div>
 							<span class="align-right span-3"><label for="vehicleType">Type</label></span>
-							<g:select id="vehicleType" name="vehicleType" from="${0..3}"
+							<g:select id="vehicleType" name="vehicleType" from="${0..4}"
 								value="${voiture?.vehicleType}" valueMessagePrefix="vehicleType"
 								class="customText-30em" />
 						</div>

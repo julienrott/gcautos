@@ -23,6 +23,7 @@ class VoituresController {
 	def menu
 	def service
 	def photosSlider
+	def vTotal
 	
 	
   def index = { }
@@ -105,7 +106,8 @@ class VoituresController {
 	def occasions = {
 		try {
 			menu = "occasions"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [0])
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [0], [max:4, offset:params.offset?params.offset:0])
+			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [0])[0]
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -115,7 +117,8 @@ class VoituresController {
 	def neuves = {
 		try {
 			menu = "neuves"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [1])
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [1], [max:4, offset:params.offset?params.offset:0])
+			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [1])[0]
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -125,7 +128,8 @@ class VoituresController {
 	def quads = {
 		try {
 			menu = "quads"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [2])
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [2], [max:4, offset:params.offset?params.offset:0])
+			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [2])[0]
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -135,7 +139,8 @@ class VoituresController {
 	def dirts = {
 		try {
 			menu = "dirts"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [3])
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [3], [max:4, offset:params.offset?params.offset:0])
+			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [3])[0]
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -145,7 +150,8 @@ class VoituresController {
 	def electriques = {
 		try {
 			menu = "electriques"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [4])
+			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [4], [max:4, offset:params.offset?params.offset:0])
+			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [4])[0]
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e

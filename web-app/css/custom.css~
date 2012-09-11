@@ -690,6 +690,15 @@ div.photo span {
 	margin-top:3px;
 }
 
-.customDiv, .customDiv *{
-	margin: none !important;
+.customDivReset, .customDivReset *{
+	margin: auto;
+}
+
+.paginate{
+	text-align: center;
+	font: 700 14px/29px 'Open Sans',sans-serif;
+}
+
+.paginate *{
+	padding: 0 5px;
 }

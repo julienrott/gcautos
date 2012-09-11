@@ -5,13 +5,16 @@
     </head>
     <body>
 			<div class="subContent span-20">
+				<div class="paginate">
+					<g:paginate total="${vTotal}" max="2"/>
+				</div>
         <g:each in="${voitures}" var="v">
         	<div class="voitureListe rounded">
 						<div class="titrePrixVoiture">
-							<h2 class="titreVoiture" >
+							<h2 class="titreVoiture span-15" >
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">${v.titre}</a>
 							</h2>
-							<h2 class="h2" >
+							<h2 class="h2 prixVoiture span-3 last" >
 								<g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;
 							</h2>
 						</div>
@@ -48,6 +51,9 @@
 					</div>
 					<div class="clear"></div>
         </g:each>
+				<div class="paginate">
+					<g:paginate total="${vTotal}" max="2"/>
+				</div>
 			</div>
 
 			<div class="subContent span-4 last">

@@ -693,3 +693,12 @@ div.photo span {
 .customDivReset, .customDivReset *{
 	margin: auto;
 }
+
+.paginate{
+	text-align: center;
+	font: 700 14px/29px 'Open Sans',sans-serif;
+}
+
+.paginate *{
+	padding: 0 2px;
+}
