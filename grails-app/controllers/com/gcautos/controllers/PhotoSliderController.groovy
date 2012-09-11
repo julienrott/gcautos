@@ -35,11 +35,21 @@ class PhotoSliderController{
 	}
 
 	def showPhotoSlider = {
-		//log.error "showPhoto params : ${params}"
 		cache shared:true, neverExpires:true
+
 		try {
 			
-			def photo = PhotoSlider.get( params.id ) // get the record
+			def photo = PhotoSlider.get( params.id )
+
+			if(request.getHeader("If-Modified-Since"))
+			{
+				def reqDate = new Date(request.getHeader("If-Modified-Since"))
+				if (photo.lastUpdated < reqDate)
+				{
+					render(status: 304)
+				}
+			}
+
 			switch (params.type)
 			{
 				case "small" : response.outputStream << photo.data_small; break;// write the image to the outputstream
@@ -62,7 +72,6 @@ class PhotoSliderController{
 
 	@Secured(['ROLE_ADMIN'])
 	def upload = {
-		log.error "upload params : ${params}"
 		
 		try {
 			def photo = new PhotoSlider()
@@ -76,7 +85,6 @@ class PhotoSliderController{
 			photo.data_slider = baos2.toByteArray();
 
 			if (photo.save()) {
-				log.error "upload ok"
 				log.debug "resize ok"
 			} else {
 				log.error photo.errors

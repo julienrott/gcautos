@@ -7,10 +7,11 @@ modules = {
         resource url:'js/superfish.js'
         resource url:'js/plugins.js'
         resource url:'js/script.js'
-        resource url:'js/tms-0.3.js'
+        resource url:'js/tms-0.3NEW.js'
         resource url:'js/tms_presets.js'
         resource url:'js/slider.js'
     }
+
 		myStyle{
         resource url:'css/ui-lightness/jquery-ui-1.8.21.custom.css'
         resource url:'css/style.css'

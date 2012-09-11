@@ -32,7 +32,7 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/img/*']
+//grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/img/*']
 grails.resources.adhoc.excludes = ['/js/libs/tiny_mce/**/*.*']
 grails.resources.debug=false
 
@@ -94,7 +94,9 @@ log4j = {
            'net.sf.ehcache.hibernate'
 		environments {
 			development {
-				debug 'org.grails.plugin.resource'
+				warn 'org.grails.plugin.resource'
+				warn 'com.blockconsult.yuiminifyresources'
+				debug 'com.gcautos.controllers'
 			}
 		}
 }

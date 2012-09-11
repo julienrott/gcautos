@@ -205,12 +205,21 @@ class VoituresController {
 	}
 	
 	def showPhoto = {
-		//log.error "showPhoto params : ${params}"
-		
 		cache shared:true, neverExpires:true
+		
 		try {
 			
-			def photo = Photo.get( params.id ) // get the record
+			def photo = Photo.get( params.id )
+
+			if(request.getHeader("If-Modified-Since"))
+			{
+				def reqDate = new Date(request.getHeader("If-Modified-Since"))
+				if (photo.lastUpdated < reqDate)
+				{
+					render(status: 304)
+				}
+			}
+
 			switch (params.type)
 			{
 				case "small" : response.outputStream << photo.data_small; break;// write the image to the outputstream

@@ -103,7 +103,7 @@
 
 	</div>
 
-	<r:require modules="application"/>
+	<r:require module="application"/>
 	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
 	<r:layoutResources />
 
