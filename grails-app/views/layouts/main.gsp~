@@ -11,20 +11,10 @@
 
   <meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet" href="${resource(dir:'css',file:'ui-lightness/jquery-ui-1.8.21.custom.css')}" type="text/css" media="screen, projection">
-  
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="${resource(dir:'css',file:'style.css')}">
-	
-	<link rel="stylesheet" href="${resource(dir:'css',file:'blueprint/screen.css')}" type="text/css" media="screen, projection">
-  <link rel="stylesheet" href="${resource(dir:'css',file:'blueprint/print.css')}" type="text/css" media="print">
-	<!--[if lt IE 8]><link rel="stylesheet" href="${resource(dir:'css',file:'blueprint/ie.css')}" type="text/css" media="screen, projection"><![endif]-->
-	<link rel="stylesheet" href="${resource(dir:'css',file:'blueprint/plugins/fancy-type/screen.css')}" type="text/css" media="screen, projection">
 
-  <link rel="stylesheet" href="${resource(dir:'css',file:'reset.css')}">
-  <link rel="stylesheet" href="${resource(dir:'css',file:'custom.css')}">
-  <link rel="stylesheet" href="${resource(dir:'css',file:'grid.css')}">
-	
+	<r:require module="myStyle"/>
+
   <script type="text/javascript">
 		var urlContext = '${grailsApplication.config.grails.serverURL}';
 	</script>
@@ -40,8 +30,8 @@
 			<div class="fl-r">
 			</div>
 			<div class="block-1 fl-r divtel">
-				<a target="_blank" href="https://www.facebook.com/christophe.gcautoserstein"><img src="${createLinkTo(dir:'img', file:'logo-facebook.png')}"/></a>
-				<div class="font-1 fl-r">Tel: +33 (0)6 63 56 43 43</div>
+				<a target="_blank" href="https://www.facebook.com/christophe.gcautoserstein"><r:img uri="/img/logo-facebook.png" width="86" height="26"/></a>
+				<div class="font-1 fl-r">Tel: 06 63 56 43 43</div>
 				<div class="clear"></div>
 				<div class="font-1 fl-r"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
 			</div>
@@ -113,15 +103,8 @@
 
 	</div>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-	<script src="${resource(dir:'js',file:'jquery-ui-1.8.21.custom.min.js')}"></script>
-	<script src="${resource(dir:'js',file:'jquery.ui.datepicker-fr.js')}"></script>
+	<r:require modules="jquery-ui,jquery,application"/>
 	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
-  
-
-	<g:javascript library="application"/>
-	<r:require module="plugins"/>
 	<r:layoutResources />
 
   <script type="text/javascript">

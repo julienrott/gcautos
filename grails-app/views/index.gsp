@@ -13,7 +13,9 @@
 		<div class="slider" style="overflow: hidden; ">
 			<ul class="items">
 				<g:each in="${photosSlider}">
-					<li style="display: none; "><img src="${createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${it.id}", params:[type:'slider'])}" alt=""></li>
+					<li style="display: none; ">
+						<img src="${createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${it.id}", params:[type:'slider'])}" width="990" height="415">
+					</li>
 				</g:each>
 			</ul>
 		</div>

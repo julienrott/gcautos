@@ -13,7 +13,9 @@
 		<div class="slider" style="overflow: hidden; ">
 			<ul class="items">
 				<g:each in="${photosSlider}">
-					<li style="display: none; "><img src="${createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${it.id}", params:[type:'slider'])}" alt=""></li>
+					<li style="display: none; ">
+						<r:img uri="/photoSlider/showPhotoSlider/${it.id}" params="type=slider" width="990" height="415"/>
+					</li>
 				</g:each>
 			</ul>
 		</div>
@@ -66,7 +68,6 @@
 							<br/>
 							<hr>
 							<h2 class="ident-bot-5 ident-top-2">Modifier <span class="h2 inner-ident-1">nos services</span></h2>
-<img width="425" height="350" data-mce-src="js/libs/tiny_mce/themes/advanced/img/trans.gif" src="http://localhost:8080/gcautos/js/libs/tiny_mce/themes/advanced/img/trans.gif" class="mceItemMedia mceItemIframe" data-mce-json="{'type':'iframe','video':{'sources':{}},'params':{'src':'http://www.youtube.com/embed/fWNaR-rxAic','frameborder':'0'},'width':'425','height':'350'}">
 							<div class="wrapper ident-bot-7">
 								<div>Titre: <input type="text" id="serviceTitle" value="${service?.titre}"/></div>
 								Contenu: <textarea id="editor" name="description">

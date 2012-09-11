@@ -34,7 +34,7 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
 // What URL patterns should be processed by the resources plugin
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/img/*']
 grails.resources.adhoc.excludes = ['/js/libs/tiny_mce/**/*.*']
-
+grails.resources.debug=false
 
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
@@ -92,6 +92,11 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+		environments {
+			development {
+				debug 'org.grails.plugin.resource'
+			}
+		}
 }
 
 grails {
