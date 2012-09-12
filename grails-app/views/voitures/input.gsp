@@ -20,6 +20,14 @@
 								value="${voiture?.vehicleType}" valueMessagePrefix="vehicleType"
 								class="customText-30em" />
 						</div>
+
+						<div>
+							<span class="align-right span-3"><label for="vehicleType">Mention</label></span>
+							<g:select id="mention" name="mention" from="${0..2}"
+								value="${voiture?.mention}" valueMessagePrefix="mention"
+								class="customText-30em" />
+						</div>
+
 						<div>
 							<span class="align-right span-3"><label for="titre">Titre</label></span>
 							<g:textField id="titre" name="titre"

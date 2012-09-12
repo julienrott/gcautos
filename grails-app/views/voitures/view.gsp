@@ -6,15 +6,19 @@
     </head>
     <body>
 			<div class="subContent span-20">
+
+				<div class="divPub"><script type="text/javascript">var TDIframe = TDIframe || {counter : 0, newTDId : function(){return 'TDId' + (this.counter += 1);}};TDIframe.url = 'http://anetfr.tradedoubler.com/anet-' + Math.random().toString().substring(2, 11) + '?type(iframe)loc(128735)';TDIframe.id = TDIframe.newTDId();document.write('<iframe id="' + TDIframe.id + '" src="" width="468" height="60" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>');document.getElementById(TDIframe.id).src=TDIframe.url;</script></div>
+
 				<div class="voitureListe">
 				  <g:hiddenField id="id" name="id" value="${voiture?.id}"/>
 
 				  <p class="titrePrixVoiture">
 						<h2 class="titreVoiture span-15" >
-							${voiture.titre}
+							<g:if test="${voiture.mention==1}"><blink>Nouveauté : </blink></g:if>${voiture.titre}
 						</h2>
-						<h2 class="h2 prixVoiture span-3 last" >
-							<g:formatNumber number="${voiture.prixVente }" format="###,##0" />&euro;
+						<h2 class="h2 prixVoiture span-3 last">
+							<g:if test="${voiture.mention==2}">Vendu(e)</g:if>
+							<g:else><g:formatNumber number="${voiture.prixVente }" format="###,##0" />&euro;</g:else>
 						</h2>
 					</p>
 

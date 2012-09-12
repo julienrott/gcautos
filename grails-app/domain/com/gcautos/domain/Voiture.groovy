@@ -17,6 +17,7 @@ class Voiture {
 	Date dateVente
 
 	int vehicleType
+	int mention
 	
 	static hasMany = [photos:Photo]
 	

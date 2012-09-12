@@ -696,9 +696,31 @@ div.photo span {
 
 .paginate{
 	text-align: center;
-	font: 700 14px/29px 'Open Sans',sans-serif;
+	font: 700 16px/31px 'Open Sans',sans-serif;
 }
 
 .paginate *{
 	padding: 0 2px;
+}
+
+.paginate a, .paginate a:visited{
+	color: #991111;
+}
+
+.paginate a:hover{
+	color: #494949;
+}
+
+.divPub{
+	margin-bottom: 20px;
+  text-align: center;
+}
+
+.divPub iframe{
+	height: 60px;
+	width: 469px;
+}
+
+.error-details {
+    width: auto;
 }

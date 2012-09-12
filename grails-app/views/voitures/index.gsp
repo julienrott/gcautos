@@ -12,10 +12,11 @@
         	<div class="voitureListe rounded">
 						<div class="titrePrixVoiture">
 							<h2 class="titreVoiture span-15" >
-								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">${v.titre}</a>
+								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}"><g:if test="${v.mention==1}"><blink>Nouveauté : </blink></g:if>${v.titre}</a>
 							</h2>
 							<h2 class="h2 prixVoiture span-3 last" >
-								<g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;
+								<g:if test="${v.mention==2}">Vendu(e)</g:if>
+								<g:else><g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;</g:else>
 							</h2>
 						</div>
 

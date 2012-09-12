@@ -700,5 +700,27 @@ div.photo span {
 }
 
 .paginate *{
-	padding: 0 5px;
+	padding: 0 2px;
+}
+
+.paginate a, .paginate a:visited{
+	color: #991111;
+}
+
+.paginate a:hover{
+	color: #494949;
+}
+
+.divPub{
+	margin-bottom: 20px;
+  text-align: center;
+}
+
+.divPub iframe{
+	height: 60px;
+	width: 469px;
+}
+
+.error-details {
+    width: auto;
 }

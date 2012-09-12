@@ -29,6 +29,7 @@ menu.vendues = V&eacute;hicules vendus
 menu.create.voiture = Ajouter une voiture
 menu.statistiques = Statistiques
 menu.manage.photoSlider = Gestion photos accueil
+menu.manage.accessoires = Gestion des accessoires
 
 label.partager=Partager
 
@@ -40,3 +41,7 @@ vehicleType.1 = Neuf
 vehicleType.2 = Quad
 vehicleType.3 = Dirt Bike
 vehicleType.4 = Electriques
+
+mention.0 = Aucune
+mention.1 = Nouveaut&eacute;
+mention.2 = Vendu(e)
