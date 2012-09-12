@@ -123,7 +123,8 @@
         plugins: 'media',
         theme_advanced_buttons2_add : "media",
         elements: 'editor',
-        editor_deselector: "mceNoEditor"
+        editor_deselector: "mceNoEditor",
+				entity_encoding: 'raw'
     	});
 		});
 	</script>

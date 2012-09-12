@@ -103,7 +103,6 @@
 
 	</div>
 
-	<script src="${resource(dir:'js',file:'tms-0.3.js')}"></script>
 	<r:require module="application"/>
 	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
 	<r:layoutResources />
