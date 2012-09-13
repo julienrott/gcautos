@@ -88,6 +88,23 @@ $.ready(updatePhotos());
 $.ready(updateNews());
 $.ready(updateService());
 $.ready(updateAccessoires());
+$.ready(blink());
+
+function blink() {
+	$(".blink").each(function(){
+		$(this).effect("pulsate", { times:500 }, 1500);
+	});
+	/*$('.blink').each(function() {
+    var elem = $(this);
+    setInterval(function() {
+        if (elem.css('visibility') == 'hidden') {
+            elem.css('visibility', 'visible');
+        } else {
+            elem.css('visibility', 'hidden');
+        }    
+  	}, 1000);
+	});*/
+}
 
 if ($("#addNews").length > 0) {
 	$("#addNews").click(function(e){

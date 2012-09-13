@@ -12,7 +12,7 @@
         	<div class="voitureListe rounded">
 						<div class="titrePrixVoiture">
 							<h2 class="titreVoiture span-15" >
-								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}"><g:if test="${v.mention==1}"><blink>Nouveauté : </blink></g:if>${v.titre}</a>
+								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}"><g:if test="${v.mention==1}"><span class="blink">Nouveauté : </span></g:if>${v.titre}</a>
 							</h2>
 							<h2 class="h2 prixVoiture span-3 last" >
 								<g:if test="${v.mention==2}">Vendu(e)</g:if>

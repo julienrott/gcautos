@@ -14,7 +14,7 @@
 
 				  <p class="titrePrixVoiture">
 						<h2 class="titreVoiture span-15" >
-							<g:if test="${voiture.mention==1}"><blink>Nouveauté : </blink></g:if>${voiture.titre}
+							<g:if test="${voiture.mention==1}"><span class="blink">Nouveauté : </span></g:if>${voiture.titre}
 						</h2>
 						<h2 class="h2 prixVoiture span-3 last">
 							<g:if test="${voiture.mention==2}">Vendu(e)</g:if>
