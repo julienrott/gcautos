@@ -10,7 +10,33 @@ class NewsController {
 
 	def news
 
-  def index = { 
+    def index = { 
+	}
+	
+	@Secured(['ROLE_ADMIN'])
+	def delete = {
+	    def news = News.get(params.id)
+	    news.delete()
+	    redirect(action: "index")
+	}
+
+	@Secured(['ROLE_ADMIN'])
+	def modify = {
+	    def news = News.get(params.id)
+	    render(view: "input", model: [news: news])
+	}
+
+	@Secured(['ROLE_ADMIN'])
+	def update = {
+	    def news = News.get(params.id)
+	    news.properties = params
+		if(!news.hasErrors() && news.save()) {
+			redirect(action: "index")
+		} else {
+			news.errors.each { 
+				log.error "${it}"
+			}
+		}
 	}
 
 	@Secured(['ROLE_ADMIN'])
@@ -28,8 +54,8 @@ class NewsController {
 	def getLastNews = {
 		def max = -1
 		if (params.action.equals("getLastNews")) max = 2
-		news = News.list(sort:"id", order:"desc", max:max)
-		render(template:"lastNews", model:["news":news])
+		news = News.list(sort: "id", order: "desc", max: max)
+		render(template: "lastNews", model:["news": news, "action": params.action])
 	}
 
 }

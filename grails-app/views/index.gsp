@@ -90,7 +90,7 @@
 								<hr>
 								<h2 class="ident-bot-5 ident-top-2">Nouvelle <span class="h2 inner-ident-1">News</span></h2>
 								<div>Titre: <input type="text" id="newsTitle"></div>
-								<div>Contenu: <input type="text" id="newsContent"></div>
+								<div>Contenu: <textarea id="newsContent" style="height: 65px;"></textarea></div>
 								<a class="link-1" href="#" id="addNews">Ajouter</a> <img class="extra-2" src="img/extra-2.png" alt="">
 							</sec:ifAllGranted>
 						</div>

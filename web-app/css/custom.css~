@@ -696,7 +696,7 @@ div.photo span {
 
 .paginate{
 	text-align: center;
-	font: 700 14px/29px 'Open Sans',sans-serif;
+	font: 700 16px/31px 'Open Sans',sans-serif;
 }
 
 .paginate *{
