@@ -5,7 +5,7 @@
 	</div>
 	<div class="block-4 ident-bot-1">
 	    <p>
-		    <g:formatDate format="EEEE dd MMMM yyyy">${n.dateCreated}</g:formatDate> : 
+		    <g:formatDate format="EEEE dd MMMM yyyy" date="${n.dateCreated}"/> : 
 	    </p>
 		${n.titre}
 	    <div>
