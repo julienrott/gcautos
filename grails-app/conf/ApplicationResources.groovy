@@ -3,6 +3,7 @@ modules = {
         resource url:'js/libs/jquery-1.7.1.min.js'
         resource url:'js/jquery-ui-1.8.21.custom.min.js'
         resource url:'js/jquery.ui.datepicker-fr.js'
+        resource url:'js/jquery.jscroll.min.js'
         resource url:'js/application.js'
         resource url:'js/superfish.js'
         resource url:'js/plugins.js'

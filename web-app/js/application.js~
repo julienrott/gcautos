@@ -89,9 +89,14 @@ $.ready(updateNews());
 $.ready(updateService());
 $.ready(updateAccessoires());
 $.ready(blink());
+$.ready(scrollpub());
+
+function scrollpub(){
+    $('.scrollpub').jScroll({speed : "fast", top: 5});
+}
 
 function blink() {
-	)$(".blink").each(function(){
+	$(".blink").each(function(){
 		$(this).effect("pulsate", { times:500 }, 1500);
 	});
 	/*$('.blink').each(function() {

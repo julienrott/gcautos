@@ -73,10 +73,5 @@
 
 			<div class="clear"></div>
 
-			<script type="text/javascript"><!--
-				$(".blink").each(function(){$(this).effect("pulsate", {}, 2000);});
-			//-->
-			</script>
-
     </body>
 </html>
