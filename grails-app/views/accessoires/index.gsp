@@ -18,7 +18,7 @@
 			</div>
 
 			<div class="subContent span-4 last scrollpub">
-				<g:include view="ads/_clic-diffusion.gsp"/>
+				<g:include view="ads/_ad-vertical.gsp"/>
 			</div>
 
 			<div class="clear"></div>

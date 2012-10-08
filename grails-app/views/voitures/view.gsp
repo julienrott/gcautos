@@ -7,7 +7,9 @@
     <body>
 			<div class="subContent span-20">
 
-				<div class="divPub"><script type="text/javascript">var TDIframe = TDIframe || {counter : 0, newTDId : function(){return 'TDId' + (this.counter += 1);}};TDIframe.url = 'http://anetfr.tradedoubler.com/anet-' + Math.random().toString().substring(2, 11) + '?type(iframe)loc(128735)';TDIframe.id = TDIframe.newTDId();document.write('<iframe id="' + TDIframe.id + '" src="" width="468" height="60" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>');document.getElementById(TDIframe.id).src=TDIframe.url;</script></div>
+				<div class="divPub">
+				    <g:include view="ads/_ad-horizontal.gsp"/>
+			    </div>
 
 				<div class="voitureListe">
 				  <g:hiddenField id="id" name="id" value="${voiture?.id}"/>
@@ -45,10 +47,15 @@
 				  <div id="photos" class="photos"></div>
 
 				</div>
+				
+				<div class="divPub">
+				    <g:include view="ads/_ad-horizontal.gsp"/>
+			    </div>
+
 			</div>
 
 			<div class="subContent span-4 last scrollpub">
-				<g:include view="ads/_clic-diffusion.gsp"/>
+				<g:include view="ads/_ad-vertical.gsp"/>
 			</div>
 
 			<div class="clear"></div>

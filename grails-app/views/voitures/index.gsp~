@@ -4,7 +4,13 @@
 			<meta name="layout" content="main" />
     </head>
     <body>
+        
 			<div class="subContent span-20">
+			    
+				<div class="divPub">
+				    <g:include view="ads/_ad-horizontal.gsp"/>
+			    </div>
+
 				<div class="paginate">
 					<g:paginate total="${vTotal}" max="4"/>
 				</div>
@@ -58,7 +64,7 @@
 			</div>
 
 			<div class="subContent span-4 last scrollpub">
-				<g:include view="ads/_adsense.gsp"/>
+				<g:include view="ads/_ad-vertical.gsp"/>
 			</div>
 
 			<div class="clear"></div>
