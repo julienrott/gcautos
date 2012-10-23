@@ -1,1 +1,1 @@
-<g:include view="ads/_tradedoubler-horizontal.gsp"/>
+<g:include view="ads/_amazon-horizontal.gsp"/>
