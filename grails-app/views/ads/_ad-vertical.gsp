@@ -1,1 +1,1 @@
-<g:include view="ads/_pubdirecte-vertical.gsp"/>
+<g:include view="ads/_boostclic-vertical.gsp"/>
