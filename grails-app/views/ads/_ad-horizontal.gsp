@@ -1,1 +1,1 @@
-<g:include view="ads/_boostclic-horizontal.gsp"/>
+<g:include view="ads/_amazon-horizontal.gsp"/>

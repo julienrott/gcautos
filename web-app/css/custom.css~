@@ -717,8 +717,10 @@ div.photo span {
 }
 
 .divPub iframe{
-	height: 60px;
-	width: 469px;
+	/*height: 60px;
+	width: 469px;*/
+	height: 90px;
+    width: 728px;
 }
 
 .error-details {

@@ -81,14 +81,19 @@
 	  <footer>
 			<ul class="list-1">
 				<li class="active-2"><a href="${createLinkTo(dir:'/')}">HOME</a></li>
-				<li><a href="#">ABOUT</a></li>
-				<!--<li><a href="#">MAINTENANCE</a></li>
+				<!--<li><a href="#">ABOUT</a></li>
+				<li><a href="#">MAINTENANCE</a></li>
 				<li><a href="#">REPAIR</a></li>
 				<li><a href="#">PRICE LIST</a></li>
 				<li><a href="#">LOCATIONS</a></li>-->
 			</ul>
+			<div id="divCB">
+			    <span class="policy">Paiement par carte bancaire</span>
+			    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"
+			        height="40px"/>
+			</div>
 			<div class="fl-r">
-				<div class="policy">GC Autos © 2012 <a href="#">Privacy Policy</a>
+				<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
 					<sec:ifNotLoggedIn>
 						<g:link controller="login">Login</g:link>
 					</sec:ifNotLoggedIn>
