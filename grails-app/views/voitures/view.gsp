@@ -8,7 +8,7 @@
 			<div class="subContent span-20">
 
 				<div class="divPub">
-				    <g:include view="ads/_ad-horizontal.gsp"/>
+				    <g:include view="ads/_ad-horizontal-haut.gsp"/>
 			    </div>
 
 				<div class="voitureListe">
@@ -49,7 +49,7 @@
 				</div>
 				
 				<div class="divPub">
-				    <g:include view="ads/_ad-horizontal.gsp"/>
+				    <g:include view="ads/_ad-horizontal-bas.gsp"/>
 			    </div>
 
 			</div>
