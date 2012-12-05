@@ -1,1 +1,1 @@
-<g:include view="ads/_amazon-vertical.gsp"/>
+<g:include view=""/>
