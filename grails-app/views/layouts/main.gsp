@@ -91,6 +91,8 @@
 			    <span class="policy">Paiement par carte bancaire</span>
 			    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"
 			        height="40px"/>
+			    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"
+			        height="40px"/>
 			</div>
 			<div class="fl-r">
 				<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>

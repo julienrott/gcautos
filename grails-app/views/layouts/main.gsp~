@@ -93,7 +93,7 @@
 			        height="40px"/>
 			</div>
 			<div class="fl-r">
-				<div class="policy">GC Autos © ${} <a href="#">Privacy Policy</a>
+				<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
 					<sec:ifNotLoggedIn>
 						<g:link controller="login">Login</g:link>
 					</sec:ifNotLoggedIn>
