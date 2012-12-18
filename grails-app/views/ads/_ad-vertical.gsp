@@ -1,1 +1,1 @@
-<g:include view="_clickintext-vertical.gsp"/>
+<g:include view="ads/_clickintext-vertical.gsp"/>
