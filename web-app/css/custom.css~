@@ -726,3 +726,9 @@ div.photo span {
 .error-details {
     width: auto;
 }
+
+#divCB {
+    width: 60%;
+    text-align: center;
+    display: inline-block;
+}

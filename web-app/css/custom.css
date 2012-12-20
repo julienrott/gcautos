@@ -732,3 +732,7 @@ div.photo span {
     text-align: center;
     display: inline-block;
 }
+
+#bubblestat-ad iframe {
+  display: none;
+}
