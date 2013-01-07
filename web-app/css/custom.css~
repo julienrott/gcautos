@@ -736,3 +736,7 @@ div.photo span {
 #bubblestat-ad iframe {
   display: none;
 }
+
+#clickInTexSlideDiv {
+  display: none;
+}

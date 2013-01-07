@@ -737,6 +737,10 @@ div.photo span {
   display: none;
 }
 
+.bub_dhtml {
+  display: none;
+}
+
 #clickInTexSlideDiv {
   display: none;
 }
