@@ -8,11 +8,13 @@
 			<div class="subContent span-20">
 			    
 				<div class="divPub">
-				    <g:include view="ads/_ad-horizontal.gsp"/>
+				    <g:include view="ads/_ad-horizontal-haut.gsp"/>
 			    </div>
 
+				<g:link mapping="paginate">paginate</g:link>
+				
 				<div class="paginate">
-					<g:paginate total="${vTotal}" max="4"/>
+					<g:paginate total="${vTotal}" mapping="paginate"/>
 				</div>
         <g:each in="${voitures}" var="v">
         	<div class="voitureListe rounded">
@@ -63,7 +65,7 @@
 				</div>
 				
 				<div class="divPub">
-				    <g:include view="ads/_ad-horizontal.gsp"/>
+				    <g:include view="ads/_ad-horizontal-bas.gsp"/>
 			    </div>
 
 			</div>
