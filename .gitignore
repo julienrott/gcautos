@@ -19,3 +19,4 @@ target-eclipse
 *.war
 lib
 .gitignore
+.classpath

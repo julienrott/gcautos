@@ -37,26 +37,36 @@ grails.project.dependency.resolution = {
 				runtime 'postgresql:postgresql:8.4-702.jdbc3'
     }
 
-    plugins {
-        runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.7.1"
-        runtime ":resources:1.1.5"
+	plugins {
+		runtime ":hibernate:$grailsVersion"
+		runtime ":jquery:1.7.1"
 
-        build ":tomcat:$grailsVersion"
-				
-				compile ':database-session:1.1.2'
-				compile ':spring-security-core:1.2.7.2'
-				compile ':webxml:1.4.1'
-				compile ':heroku:1.0.1'
-				compile ':cloud-support:1.0.8'
+		runtime ":twitter-bootstrap:2.1.0"
+		runtime ":resources:1.2.RC2"
 
-				compile ":jquery-ui:1.8.15"
-				//compile ":modernizr:2.5.3"
-				//compile ':uploadr:0.5.11'
-				compile ":javascript-validator:0.9"
-				compile ":cache-headers:1.1.5"
-    }
-		imageUpload {
-			temporaryFile = '/tmp/uploaded.file' // Path to where files will be uploaded
+		if (grails.util.Environment.current == grails.util.Environment.PRODUCTION) {
+			runtime ":zipped-resources:1.0"
+			runtime ":cache-headers:1.0.4"
+			runtime ":cached-resources:1.0"
+			runtime ":yui-minify-resources:0.1.4"
 		}
+
+		build ":tomcat:$grailsVersion"
+
+		compile ':database-session:1.1.2'
+		compile ':spring-security-core:1.2.7.2'
+		compile ':webxml:1.4.1'
+		compile ':heroku:1.0.1'
+		compile ':cloud-support:1.0.8'
+
+		compile ":jquery-ui:1.8.15"
+		//compile ":modernizr:2.5.3"
+		//compile ':uploadr:0.5.11'
+		compile ":javascript-validator:0.9"
+		compile ":cache-headers:1.1.5"
+	}
+	
+	imageUpload {
+		temporaryFile = '/tmp/uploaded.file' // Path to where files will be uploaded
+	}
 }

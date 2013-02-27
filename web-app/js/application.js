@@ -127,13 +127,16 @@ if ($("#addNews").length > 0) {
 
 if ($("#saveService").length > 0) {
 	$("#saveService").click(function(e){
-		var title = encodeURI($("#serviceTitle")[0].value);
+		//var title = encodeURI($("#serviceTitle")[0].value);
+		var title = $("#serviceTitle")[0].value;
 		//var content = $("#editor")[0].value;
 		//var content = tinyMCE.get("editor").getContent({format : 'raw'});
 		var content = tinyMCE.get("editor").getContent();
 		if (title.length > 0 && content.length > 0) {
 			$.ajax({
-				url:urlContext+'/service/save?titre='+title+'&contenu='+encodeURI(content),
+				method: 'POST',
+				url:urlContext+'/service/save',
+				data: {titre:title, contenu:content},
 				dataType:'json'
 			}).done(updateService);
 		}

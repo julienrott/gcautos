@@ -1,45 +1,40 @@
 ﻿<!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>GC Autos</title>
-  <meta name="description" content="">
-
-  <meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>GC Autos</title>
+	<meta name="description" content="">
+	
+	<meta name="viewport" content="width=device-width">
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
 
-	<r:require module="myStyle"/>
+	<r:require modules="bootstrap,bootstrap-responsive-css,myStyle"/>
 
-  <script type="text/javascript">
+	<script type="text/javascript">
 		var urlContext = '${grailsApplication.config.grails.serverURL}';
 	</script>
 
-  <script src="${resource(dir:'js',file:'libs/modernizr-2.5.3.min.js')}"></script>
 	<g:layoutHead/>
 	<r:layoutResources />
 </head>
 <body>
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	<div class="main">
-	  <header>
-			<div class="fl-r">
+	<div class="container-narrow">
+		<div class="masthead">
+			<div class="divtel pull-right offset1">
+				<div class="font-1">Tel: 06 63 56 43 43</div>
+				<div class="font-1"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
 			</div>
-			<div class="block-1 fl-r divtel">
-				<a target="_blank" href="https://www.facebook.com/christophe.gcautoserstein"><r:img uri="/img/logo-facebook.png" width="86" height="26"/></a>
-				<div class="font-1 fl-r">Tel: 06 63 56 43 43</div>
-				<div class="clear"></div>
-				<div class="font-1 fl-r"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
-			</div>
-			<div class="clear"></div>
+			
+			<a target="_blank" class="pull-right clearfix"
+					href="https://www.facebook.com/christophe.gcautoserstein">
+				<r:img uri="/img/logo-facebook.png" width="86" height="26"/>
+			</a>
+			
 			<div class="logo-bg">
-				<h1><a href="${createLinkTo(dir:'/')}">GC AUTOS</a></h1>
+				<a href="${createLink(uri: '')}" class="logo" title="GC AUTOS"></a>
 			</div>
-			<!-- menu -->
 			<nav>
 				<ul class="sf-menu sf-js-enabled sf-shadow">
 					<li><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
@@ -67,19 +62,15 @@
 						<li><g:link controller="logout">Logout (<sec:username/>)</g:link></li>
 					</sec:ifLoggedIn>
 				</ul>
-				
-				<div class="clear"></div>	
 			</nav>
-			<!-- end menu -->
-			
-		</header>
+		</div>
 		
-	  <div role="main" class="content">
-			<g:layoutBody/>	
-	  </div>
+		<div class="content">
+			<g:layoutBody/>
+		</div>
 		
-	  <footer>
-			<ul class="list-1">
+		<div class="footer row-fluid">
+			<ul class="list-1 span2">
 				<li class="active-2"><a href="${createLinkTo(dir:'/')}">HOME</a></li>
 				<!--<li><a href="#">ABOUT</a></li>
 				<li><a href="#">MAINTENANCE</a></li>
@@ -87,14 +78,12 @@
 				<li><a href="#">PRICE LIST</a></li>
 				<li><a href="#">LOCATIONS</a></li>-->
 			</ul>
-			<div id="divCB">
+			<div id="divCB" class="span6">
 			    <span class="policy">Paiement par carte bancaire</span>
-			    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"
-			        height="40px"/>
-			    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"
-			        height="40px"/>
+			    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"/>
+			    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"/>
 			</div>
-			<div class="fl-r">
+			<div class="span4">
 				<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
 					<sec:ifNotLoggedIn>
 						<g:link controller="login">Login</g:link>
@@ -103,11 +92,8 @@
 						<g:link controller="logout">Logout (<sec:username/>)</g:link>
 					</sec:ifLoggedIn>
 				</div>
-				<div class="fl-r ident-right-3"><!--{%FOOTER_LINK} --></div>
 			</div>
-			<div class="clear"></div>
-		</footer>
-
+		</div>
 	</div>
 
 	<r:require module="application"/>
@@ -115,24 +101,24 @@
 	<r:layoutResources />
 
   <script type="text/javascript">
-		$(function() {
-			$( "#dateAchat" ).datepicker();
-		});
-		$(function() {
-			$( "#dateVente" ).datepicker();
+		$(document).ready(function() {
+			if ($( "#dateAchat" )[0])
+				$( "#dateAchat" )[0].datepicker();
+			if ($( "#dateVente" )[0])
+				$( "#dateVente" )[0].datepicker();
 		});
 
 		$(function() {
 			editor = tinyMCE.init({
-        mode: "exact",
-        theme: "advanced",
-        editor_selector: "mceEditor",
-        plugins: 'media',
-        theme_advanced_buttons2_add : "media",
-        elements: 'editor',
-        editor_deselector: "mceNoEditor",
-				entity_encoding: 'raw'
-    	});
+		        mode: "exact",
+		        theme: "advanced",
+		        editor_selector: "mceEditor",
+		        plugins: 'media',
+		        theme_advanced_buttons2_add : "media",
+		        elements: 'editor',
+		        editor_deselector: "mceNoEditor"
+		        //,entity_encoding: 'raw'
+	    	});
 		});
 	</script>
 
