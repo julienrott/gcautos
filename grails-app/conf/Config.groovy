@@ -66,6 +66,10 @@ environments {
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8080/${appName}"
     }
+    test {
+        grails.logging.jul.usebridge = false
+        grails.serverURL = "http://gcautos-test.herokuapp.com"
+    }
     production {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://www.gcautos.fr"
