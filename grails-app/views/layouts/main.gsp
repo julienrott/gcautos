@@ -35,8 +35,7 @@
 			<div class="logo-bg">
 				<a href="${createLink(uri: '')}" class="logo" title="GC AUTOS"></a>
 			</div>
-			<nav>
-				<ul class="sf-menu sf-js-enabled sf-shadow">
+				<ul class="nav nav-pills pull-right" >
 					<li><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
 					<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
 					<li><g:link controller="voitures" action="neuves"><g:message code="menu.neufs"/></g:link></li>
@@ -49,8 +48,8 @@
 					</li>
 					<sec:ifLoggedIn>
 						<sec:ifAllGranted roles="ROLE_ADMIN">
-							<li class=""><a href="#">Admin menu</a>
-								<ul style="display: none; visibility: hidden;">
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin menu<b class="caret"></b></a>
+								<ul class="dropdown-menu">
 									<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
 									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
 									<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
@@ -62,7 +61,6 @@
 						<li><g:link controller="logout">Logout (<sec:username/>)</g:link></li>
 					</sec:ifLoggedIn>
 				</ul>
-			</nav>
 		</div>
 		
 		<div class="content">
@@ -101,9 +99,9 @@
 	<g:javascript>
 		$(document).ready(function() {
 			if ($( "#dateAchat" )[0])
-				$( "#dateAchat" )[0].datepicker();
+				$( "#dateAchat" ).datepicker();
 			if ($( "#dateVente" )[0])
-				$( "#dateVente" )[0].datepicker();
+				$( "#dateVente" ).datepicker();
 		});
 	
 		$(function() {
@@ -117,6 +115,8 @@
 	                   theme_advanced_toolbar_align : "left",
 	                   theme_advanced_statusbar_location : "bottom",
 	                   theme_advanced_resizing : false,
+	                   width: "80%",
+	                   height: "300"
 	           });
 	   	});
 	

@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	<div class="subContent span-20">
+	<div class="">
 
 		<div class="divPub">
 			<g:include view="ads/_ad-horizontal-haut.gsp" />

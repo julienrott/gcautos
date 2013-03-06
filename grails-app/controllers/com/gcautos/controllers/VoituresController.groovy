@@ -30,7 +30,7 @@ class VoituresController {
 	
 	def home={
 		voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.id desc", [0], [max:4])
-		service = Service.get(1)
+		service = Service.list(max:1,sort:"id",order:"desc")[0]
 		photosSlider = PhotoSlider.list()
 		render(view:"/index", model:[voitures:voitures, service:service, photosSlider:photosSlider])
 	}
