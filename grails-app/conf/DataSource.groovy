@@ -14,12 +14,12 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            //url = "jdbc:h2:mem:devDb;MVCC=TRUE"
-			      //url = "jdbc:h2:file:/home/julien/Documents/workspace-sts-2.7.0.M2/gcautos/db/gcautosH2devDb;MVCC=TRUE"
-			      driverClassName = "org.postgresql.Driver"
-            username = "postgres"
-            password = "1781rj"
-            url = "jdbc:postgresql://localhost:5432/gcautosDEV"
+			url = "jdbc:h2:mem:devDb;MVCC=TRUE"
+		      //url = "jdbc:h2:file:/home/julien/Documents/workspace-sts-2.7.0.M2/gcautos/db/gcautosH2devDb;MVCC=TRUE"
+//		      driverClassName = "org.postgresql.Driver"
+//            username = "postgres"
+//            password = "1781rj"
+//            url = "jdbc:postgresql://localhost:5432/gcautosDEV"
         }
     }
     test {

@@ -67,7 +67,7 @@
 					<div>
 						Titre: <input type="text" id="serviceTitle" value="${service?.titre}" class="span9"/>
 					</div>
-					Contenu: <textarea id="editor" name="description">
+					Contenu: <textarea id="editor" name="description" class="tinymce">
 						${service?.contenu}
 					</textarea>
 				</div>

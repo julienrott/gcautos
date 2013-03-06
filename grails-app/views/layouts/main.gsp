@@ -97,7 +97,7 @@
 	</div>
 
 	<r:require module="application"/>
-	<script src="${resource(dir:'js',file:'libs/tiny_mce/tiny_mce_src.js')}"></script>
+	<script src="${resource(dir:'js',file:'libs/tiny_mce-3.5.8/jquery.tinymce.js')}"></script>
 	<r:layoutResources />
 
   <script type="text/javascript">
@@ -108,7 +108,7 @@
 				$( "#dateVente" )[0].datepicker();
 		});
 
-		$(function() {
+		/*$(function() {
 			editor = tinyMCE.init({
 		        mode: "exact",
 		        theme: "advanced",
@@ -119,7 +119,27 @@
 		        editor_deselector: "mceNoEditor"
 		        //,entity_encoding: 'raw'
 	    	});
-		});
+		});*/
+
+		$(function() {
+            $('textarea.tinymce').tinymce({
+                    // Location of TinyMCE script
+                    script_url : "${resource(dir:'js',file:'libs/tiny_mce-3.5.8/tiny_mce.js')}",
+
+                    // General options
+                    theme : "advanced",
+                    plugins : "media",
+
+                    // Theme options
+                    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
+                    theme_advanced_buttons2 : "media, styleselect,formatselect,fontselect,fontsizeselect",
+                    theme_advanced_toolbar_location : "top",
+                    theme_advanced_toolbar_align : "left",
+                    theme_advanced_statusbar_location : "bottom",
+                    theme_advanced_resizing : true,
+            });
+    	});
+	
 	</script>
 
   <script type="text/javascript">
