@@ -97,57 +97,33 @@
 	</div>
 
 	<r:require module="tinymce"/>
-	<r:layoutResources />
-
-  <script type="text/javascript">
+	
+	<g:javascript>
 		$(document).ready(function() {
 			if ($( "#dateAchat" )[0])
 				$( "#dateAchat" )[0].datepicker();
 			if ($( "#dateVente" )[0])
 				$( "#dateVente" )[0].datepicker();
 		});
-
-		/*$(function() {
-			editor = tinyMCE.init({
-		        mode: "exact",
-		        theme: "advanced",
-		        editor_selector: "mceEditor",
-		        plugins: 'media',
-		        theme_advanced_buttons2_add : "media",
-		        elements: 'editor',
-		        editor_deselector: "mceNoEditor"
-		        //,entity_encoding: 'raw'
-	    	});
-		});*/
-
-		$(function() {
-            $('textarea.tinymce').tinymce({
-                    // Location of TinyMCE script
-                    //script_url : "${resource(dir:'js',file:'libs/tiny_mce-3.5.8/tiny_mce.js')}",
-                    script_url : urlContext + "/js/libs/tiny_mce-3.5.8/tiny_mce.js",
-
-                    // General options
-                    theme : "advanced",
-                    plugins : "media",
-
-                    //language: "../js/libs/tiny_mce-3.5.8/langs/fr",
-                    //relative_urls : true,
-                    //remove_script_host : true,
-                    //convert_urls : true,
-                    //document_base_url : "${createLink(uri:'/js/libs/tiny_mce-3.5.8/')}",
-                    //document_base_url : urlContext + "/",
-
-                    // Theme options
-                    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
-                    theme_advanced_buttons2 : "media, styleselect,formatselect,fontselect,fontsizeselect",
-                    theme_advanced_toolbar_location : "top",
-                    theme_advanced_toolbar_align : "left",
-                    theme_advanced_statusbar_location : "bottom",
-                    theme_advanced_resizing : false,
-            });
-    	});
 	
-	</script>
+		$(function() {
+	           $('textarea.tinymce').tinymce({
+	                   script_url : urlContext + "/js/libs/tiny_mce-3.5.8/tiny_mce.js",
+	                   theme : "advanced",
+	                   plugins : "media",
+	                   theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
+	                   theme_advanced_buttons2 : "media, styleselect,formatselect,fontselect,fontsizeselect",
+	                   theme_advanced_toolbar_location : "top",
+	                   theme_advanced_toolbar_align : "left",
+	                   theme_advanced_statusbar_location : "bottom",
+	                   theme_advanced_resizing : false,
+	           });
+	   	});
+	
+	</g:javascript>
+	
+	<r:layoutResources />
+
 
   <script type="text/javascript">
   var _gaq = _gaq || [];

@@ -20,3 +20,4 @@ target-eclipse/classes
 lib
 .gitignore
 .classpath
+*.class

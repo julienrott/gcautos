@@ -9,11 +9,6 @@ modules = {
 	tinymce {
 		dependsOn 'application'
 		resource url:'js/libs/tiny_mce-3.5.8/jquery.tinymce.js'
-		//resource url:'js/libs/tiny_mce-3.5.8/tiny_mce.js'
-		//resource url:'js/libs/tiny_mce-3.5.8/langs/fr.js'
-		//resource url:'js/libs/tiny_mce-3.5.8/plugins/media/editor_plugin.js'
-		//resource url:'js/libs/tiny_mce-3.5.8/themes/advanced/editor_template.js'
-		
 	}
 	
 	applicationOLD {
