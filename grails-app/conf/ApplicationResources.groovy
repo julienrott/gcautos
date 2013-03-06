@@ -6,6 +6,16 @@ modules = {
 		resource url:'js/application.js'
 	}
 	
+	tinymce {
+		dependsOn 'application'
+		resource url:'js/libs/tiny_mce-3.5.8/jquery.tinymce.js'
+		//resource url:'js/libs/tiny_mce-3.5.8/tiny_mce.js'
+		//resource url:'js/libs/tiny_mce-3.5.8/langs/fr.js'
+		//resource url:'js/libs/tiny_mce-3.5.8/plugins/media/editor_plugin.js'
+		//resource url:'js/libs/tiny_mce-3.5.8/themes/advanced/editor_template.js'
+		
+	}
+	
 	applicationOLD {
 		resource url:'js/libs/jquery-1.7.1.min.js'
 		resource url:'js/jquery-ui-1.8.21.custom.min.js'

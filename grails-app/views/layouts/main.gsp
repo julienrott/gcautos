@@ -96,8 +96,7 @@
 		</div>
 	</div>
 
-	<r:require module="application"/>
-	<script src="${resource(dir:'js',file:'libs/tiny_mce-3.5.8/jquery.tinymce.js')}"></script>
+	<r:require module="tinymce"/>
 	<r:layoutResources />
 
   <script type="text/javascript">
@@ -124,11 +123,19 @@
 		$(function() {
             $('textarea.tinymce').tinymce({
                     // Location of TinyMCE script
-                    script_url : "${resource(dir:'js',file:'libs/tiny_mce-3.5.8/tiny_mce.js')}",
+                    //script_url : "${resource(dir:'js',file:'libs/tiny_mce-3.5.8/tiny_mce.js')}",
+                    script_url : urlContext + "/js/libs/tiny_mce-3.5.8/tiny_mce.js",
 
                     // General options
                     theme : "advanced",
                     plugins : "media",
+
+                    //language: "../js/libs/tiny_mce-3.5.8/langs/fr",
+                    //relative_urls : true,
+                    //remove_script_host : true,
+                    //convert_urls : true,
+                    //document_base_url : "${createLink(uri:'/js/libs/tiny_mce-3.5.8/')}",
+                    //document_base_url : urlContext + "/",
 
                     // Theme options
                     theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
@@ -136,7 +143,7 @@
                     theme_advanced_toolbar_location : "top",
                     theme_advanced_toolbar_align : "left",
                     theme_advanced_statusbar_location : "bottom",
-                    theme_advanced_resizing : true,
+                    theme_advanced_resizing : false,
             });
     	});
 	
