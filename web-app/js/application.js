@@ -55,7 +55,10 @@ function updateNews() {
 		}).done(function(res){
 			if ($("#newsTitle").length > 0){
 				$("#newsTitle")[0].value = "";
-				$("#newsContent")[0].value = "";
+				//$("#newsContent")[0].value = "";
+				if (tinyMCE.get("newsContent") != undefined) {
+					tinyMCE.get("newsContent").setContent("");
+				}
 			}
 			$('#news').html(res);
 		});
@@ -85,11 +88,15 @@ function updateAccessoires() {
 }
 
 $.ready(updatePhotos());
-$.ready(updateNews());
+//$.ready(updateNews());
 $.ready(updateService());
 $.ready(updateAccessoires());
 $.ready(blink());
 $.ready(scrollpub());
+
+$(document).ready(function() {
+	updateNews();
+});
 
 function scrollpub(){
     $('.scrollpub').jScroll({speed : "fast"});
@@ -114,10 +121,13 @@ function blink() {
 if ($("#addNews").length > 0) {
 	$("#addNews").click(function(e){
 		var title = $("#newsTitle")[0].value;
-		var content = $("#newsContent")[0].value;
+		//var content = $("#newsContent")[0].value;
+		var content = tinyMCE.get("newsContent").getContent();
 		if (title.length > 0 && content.length > 0) {
 			$.ajax({
-				url:urlContext+'/news/save?titre='+title+'&description='+content,
+				method: 'POST',
+				url:urlContext+'/news/save',
+				data: {titre:title, description:content},
 				dataType:'json'
 			}).done(updateNews);
 		}
@@ -131,7 +141,7 @@ if ($("#saveService").length > 0) {
 		var title = $("#serviceTitle")[0].value;
 		//var content = $("#editor")[0].value;
 		//var content = tinyMCE.get("editor").getContent({format : 'raw'});
-		var content = tinyMCE.get("editor").getContent();
+		var content = tinyMCE.get("tiny-service").getContent();
 		if (title.length > 0 && content.length > 0) {
 			$.ajax({
 				method: 'POST',

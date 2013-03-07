@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿<%@ page import="com.gcautos.domain.Accessoire" %>
+<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -21,7 +22,7 @@
 </head>
 <body>
 	<div class="container-narrow">
-		<div class="masthead">
+		<div class="masthead row-fluid">
 			<div class="divtel pull-right offset1">
 				<div class="font-1">Tel: 06 63 56 43 43</div>
 				<div class="font-1"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
@@ -42,8 +43,11 @@
 					<li><g:link controller="voitures" action="quads"><g:message code="menu.quads"/></g:link></li>
 					<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
 					<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
-					<li class=""><a href="#">Divers</a>
-						<ul id="diversMenu" style="display: none; visibility: hidden;">
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<g:each in="${Accessoire.list().sort{it.titre}}">
+								<li><g:link controller="accessoires" action="view" id="${it.id}">${it.titre}</g:link></li>
+							</g:each>
 						</ul>
 					</li>
 					<sec:ifLoggedIn>
@@ -63,7 +67,7 @@
 				</ul>
 		</div>
 		
-		<div class="content">
+		<div class="content row-fluid">
 			<g:layoutBody/>
 		</div>
 		

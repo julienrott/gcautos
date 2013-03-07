@@ -11,7 +11,7 @@
 				<sec:ifAllGranted roles="ROLE_ADMIN">
 					<g:form controller="accessoires" action="save" name="form" id="${accessoire?.id}">
 						<div><g:textField name="titre" value="${accessoire?.titre}" /></div>
-						<div><textarea id="editor" name="contenu" style="width:100%;height:500px;">
+						<div><textarea id="editor" name="contenu" class="tinymce">
 							${accessoire?.contenu}
 						</textarea></div>
 						<g:submitButton name="enregistrer" value="enregistrer"/>
@@ -23,8 +23,6 @@
 			<div class="subContent span-4 last scrollpub">
 				<g:include view="ads/_ad-vertical.gsp"/>
 			</div>
-
-			<div class="clear"></div>
 
     </body>
 </html>

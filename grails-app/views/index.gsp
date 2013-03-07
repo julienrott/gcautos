@@ -6,17 +6,14 @@
 </head>
 <body>
 	<!-- slider -->
-	<div class="slider-holder">
-		<div class="slider" style="overflow: hidden; ">
-			<ul class="items">
-				<g:each in="${photosSlider}">
-					<li style="display: none; ">
-						<img src="${createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${it.id}", params:[type:'slider'])}" width="990" height="415">
-					</li>
-				</g:each>
-			</ul>
+	<div id="myCarousel" class="carousel slide">
+		<div class="carousel-inner">
+			<g:each in="${photosSlider}" var="photo" status="i">
+				<div class="<g:if test="${i == 0}">active</g:if> item">
+					<img src="${createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${photo.id}", params:[type:'slider'])}" width="990" height="415">
+				</div>
+			</g:each>
 		</div>
-		<a class="play"></a>
 	</div>
 	<!-- end slider -->
 
@@ -67,7 +64,7 @@
 					<div>
 						Titre: <input type="text" id="serviceTitle" value="${service?.titre}" class="span9"/>
 					</div>
-					Contenu: <textarea id="editor" name="description" class="tinymce">
+					Contenu: <textarea id="tiny-service" name="description" class="tinymce">
 						${service?.contenu}
 					</textarea>
 				</div>
@@ -87,12 +84,18 @@
 					<hr>
 					<h2 class="ident-bot-5 ident-top-2">Nouvelle <span class="h2 inner-ident-1">News</span></h2>
 					<div>Titre: <input type="text" id="newsTitle" class="span9"></div>
-					<div>Contenu: <textarea id="newsContent" style="height: 65px;" class="span9"></textarea></div>
+					<div>Contenu: <textarea id="newsContent" class="tinymce"></textarea></div>
 					<a class="link-1" href="#" id="addNews">Ajouter</a> <img src="img/extra-2.png" alt="">
 				</sec:ifAllGranted>
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.carousel').carousel();
+		});
+	</script>
 
 </body>
 </html>

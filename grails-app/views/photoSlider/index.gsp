@@ -5,7 +5,7 @@
 	<r:require module="fileuploader" />
 </head>
 <body>
-	<div class="subContent span-25">
+	<div class="row-fluid">
 		<div class="voitureListe">
 			<div>Longueur : 990px ; Hauteur : 415px</div>
 			<uploader:uploader id="uploader" url="${[controller:'photoSlider', action:'upload']}" >
