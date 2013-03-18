@@ -7,7 +7,7 @@
 	<title>GC Autos</title>
 	<meta name="description" content="">
 	
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
 
@@ -21,53 +21,65 @@
 	<r:layoutResources />
 </head>
 <body>
-	<div class="container-narrow">
-		<div class="masthead row-fluid">
-			<div class="divtel pull-right offset1">
-				<div class="font-1">Tel: 06 63 56 43 43</div>
-				<div class="font-1"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
+	<div class="container narrow">
+	
+		<div class="navbar">
+			<div class="">
+				<div class="divtel pull-right offset1">
+					<div class="font-1">Tel: 06 63 56 43 43</div>
+					<div class="font-1"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
+				</div>
+				
+				<a target="_blank" class="pull-right clearfix"
+						href="https://www.facebook.com/christophe.gcautoserstein">
+					<r:img uri="/img/logo-facebook.png" width="86" height="26"/>
+				</a>
+				
+				<div class="logo-bg">
+					<a href="${createLinkTo(dir:'/')}" class="logo" title="GC AUTOS"></a>
+				</div>
+					<div class="container">
+						<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+			            	<span class="icon-bar"></span>
+				            <span class="icon-bar"></span>
+				            <span class="icon-bar"></span>
+				        </button>
+				        
+				        <div class="nav-collapse collapse">
+							<ul class="nav nav-pills pull-right" >
+								<li><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
+								<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
+								<li><g:link controller="voitures" action="neuves"><g:message code="menu.neufs"/></g:link></li>
+								<li><g:link controller="voitures" action="quads"><g:message code="menu.quads"/></g:link></li>
+								<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
+								<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<g:each in="${Accessoire.list().sort{it.titre}}">
+											<li><g:link controller="accessoires" action="view" id="${it.id}">${it.titre}</g:link></li>
+										</g:each>
+									</ul>
+								</li>
+								<sec:ifLoggedIn>
+									<sec:ifAllGranted roles="ROLE_ADMIN">
+										<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin menu<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
+												<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
+												<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
+												<li><g:link controller="accessoires" ><g:message code="menu.manage.accessoires"/></g:link></li>
+												<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
+											</ul>
+										</li>
+									</sec:ifAllGranted>
+									<li><g:link controller="logout">Logout (<sec:username/>)</g:link></li>
+								</sec:ifLoggedIn>
+							</ul>
+			          	</div>
+		          	</div>
 			</div>
-			
-			<a target="_blank" class="pull-right clearfix"
-					href="https://www.facebook.com/christophe.gcautoserstein">
-				<r:img uri="/img/logo-facebook.png" width="86" height="26"/>
-			</a>
-			
-			<div class="logo-bg">
-				<a href="${createLink(uri: '')}" class="logo" title="GC AUTOS"></a>
-			</div>
-				<ul class="nav nav-pills pull-right" >
-					<li><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
-					<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
-					<li><g:link controller="voitures" action="neuves"><g:message code="menu.neufs"/></g:link></li>
-					<li><g:link controller="voitures" action="quads"><g:message code="menu.quads"/></g:link></li>
-					<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
-					<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<g:each in="${Accessoire.list().sort{it.titre}}">
-								<li><g:link controller="accessoires" action="view" id="${it.id}">${it.titre}</g:link></li>
-							</g:each>
-						</ul>
-					</li>
-					<sec:ifLoggedIn>
-						<sec:ifAllGranted roles="ROLE_ADMIN">
-							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin menu<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
-									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-									<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
-									<li><g:link controller="accessoires" ><g:message code="menu.manage.accessoires"/></g:link></li>
-									<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
-								</ul>
-							</li>
-						</sec:ifAllGranted>
-						<li><g:link controller="logout">Logout (<sec:username/>)</g:link></li>
-					</sec:ifLoggedIn>
-				</ul>
 		</div>
-		
-		<div class="content row-fluid">
+		<div class="container content row-fluid">
 			<g:layoutBody/>
 		</div>
 		
@@ -88,7 +100,7 @@
 			<div class="span4">
 				<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
 					<sec:ifNotLoggedIn>
-						<g:link controller="login">Login</g:link>
+						<g:link controller="login" action="auth">Login</g:link>
 					</sec:ifNotLoggedIn>
 					<sec:ifLoggedIn>
 						<g:link controller="logout">Logout (<sec:username/>)</g:link>
