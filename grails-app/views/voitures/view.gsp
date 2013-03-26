@@ -6,10 +6,8 @@
     </head>
     <body>
 			<div class="row-fluid">
-
-				<div class="divPub">
-				    <g:include view="ads/_ad-horizontal-haut.gsp"/>
-			    </div>
+				
+				<div>&nbsp;</div>
 
 				<div class="voitureListe">
 				  <g:hiddenField id="id" name="id" value="${voiture?.id}"/>
@@ -23,8 +21,6 @@
 							<g:else><g:formatNumber number="${voiture.prixVente }" format="###,##0" />&euro;</g:else>
 						</h2>
 					</p>
-
-					<div class="clear"></div>
 				
 				  <p class="links">
 						<sec:ifAllGranted roles="ROLE_ADMIN">
@@ -33,32 +29,15 @@
 						</sec:ifAllGranted>
 					</p>
 
-					<div class="clear"></div>
-
-					<!--<div><strong class="strong-1">Date d'achat : </strong><span class="block">${formatDate(format:'dd/MM/yyyy',date:voiture?.dateAchat)}<span></div>
-					<div><strong class="strong-1">Date de vente : </strong><span class="block">${formatDate(format:'dd/MM/yyyy',date:voiture?.dateVente)}<span></div>-->
-
-					<div class="clear"></div>
-	
 				  <div>${voiture.description}</div>
 				  
 				  <div id="response"></div>
 		
-				  <div id="photos" class="photos"></div>
+				  <div id="photos"></div>
 
 				</div>
-				
-				<div class="divPub">
-				    <g:include view="ads/_ad-horizontal-bas.gsp"/>
-			    </div>
 
 			</div>
-
-			<div class="subContent span-4 last scrollpub">
-				<g:include view="ads/_ad-vertical.gsp"/>
-			</div>
-
-			<div class="clear"></div>
 
     </body>
 </html>
