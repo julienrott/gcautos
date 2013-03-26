@@ -52,10 +52,10 @@
 		</div>
 	</div>
 	
-	<div class="row-fluid margin10">
+	<div class="row-fluid">
 		<div class="span6">
 			<h2>Nos <span class="h2">Services</span></h2>
-			<div id="service"></div>
+			<div id="service" class="margin10"></div>
 			<sec:ifAllGranted roles="ROLE_ADMIN">
 				<br/>
 				<hr>
@@ -73,9 +73,9 @@
 		</div>
 		
 		<div class="span6">
+			<h2 class="ident-bot-5 ident-top-2">Nos <span class="h2 inner-ident-1">News</span></h2>
 			<div class="block-2">
-				<h2 class="ident-bot-5 ident-top-2">Nos <span class="h2 inner-ident-1">News</span></h2>
-				<div id="news"></div>
+				<div id="news" class="margin10"></div>
 				<p>
 					<a class="link-1" href="${createLink(controller:'news', action:'')}">Voir toutes les news</a> <img src="img/extra-2.png" alt="">
 				</p>

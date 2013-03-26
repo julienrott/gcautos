@@ -7,27 +7,33 @@
 
 	<div class="">
 
-		<div class="divPub">
-			<g:include view="ads/_ad-horizontal-haut.gsp" />
-		</div>
-
 		<div class="paginate">
 			<g:paginate total="${vTotal}" max="4" />
 		</div>
 		
 		<g:if test="${voitures.size() == 0 }">
-			<center>
+		
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+			
+			<div class="voitureListe">
 				<strong class="strong-1">
 					Désolé, aucun véhicule n'est à vendre dans cette catégorie pour le moment. 
 					Revenez vérifier régulièrement.
 				</strong>
-			</center>
+			</div>
+		
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+			
 		</g:if>
 		
 		<g:each in="${voitures}" var="v">
-			<div class="voitureListe rounded">
-				<div class="titrePrixVoiture">
-					<h2 class="titreVoiture span-15">
+			<div class="voitureListe">
+				<div class="">
+					<h2 class="span10">
 						<a
 							href="${createLink(controller:'voitures', action:'view', id:"$v.id")}"><g:if
 								test="${v.mention==1}">
@@ -35,14 +41,12 @@
 							</g:if>
 							${v.titre}</a>
 					</h2>
-					<h2 class="h2 prixVoiture span-3 last">
+					<h2 class="h2 span2">
 						<g:if test="${v.mention==2}">Vendu(e)</g:if>
 						<g:else>
 							<g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;</g:else>
 					</h2>
 				</div>
-
-				<div class="clear"></div>
 
 				<div class="links">
 					<sec:ifAllGranted roles="ROLE_ADMIN">
@@ -53,8 +57,6 @@
 			    		</sec:ifAllGranted>
 				</div>
 
-				<div class="clear"></div>
-
 				<div>
 					${v.description}
 				</div>
@@ -62,38 +64,27 @@
 					<g:if test="${v.photos?.titre?.size > 0}">
 						<a
 							href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
-							<img class="photosVoituresListe round"
+							<img class="photosVoituresListe img-polaroid"
 							src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}", params:[type:'small'])}" />
 						</a>
 					</g:if>
 					<g:if test="${v.photos?.titre?.size > 1}">
 						<a
 							href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
-							<img class="photosVoituresListe round"
+							<img class="img-polaroid"
 							src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[1]}", params:[type:'small'])}" />
 						</a>
 					</g:if>
 				</div>
 
 			</div>
-			<div class="clear"></div>
 		</g:each>
 		
 		<div class="paginate">
 			<g:paginate total="${vTotal}" max="4" />
 		</div>
 
-		<div class="divPub">
-			<g:include view="ads/_ad-horizontal-bas.gsp" />
-		</div>
-
 	</div>
-
-	<div class="subContent span-4 last scrollpub">
-		<g:include view="ads/_ad-vertical.gsp" />
-	</div>
-
-	<div class="clear"></div>
 
 </body>
 </html>
