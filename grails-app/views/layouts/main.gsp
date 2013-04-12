@@ -110,7 +110,7 @@
 		</div>
 	</div>
 
-	<r:require module="tinymce"/>
+	<r:require module="application"/>
 	
 	<g:javascript>
 		$(document).ready(function() {
@@ -125,12 +125,13 @@
 	                   script_url : urlContext + "/js/libs/tiny_mce-3.5.8/tiny_mce.js",
 	                   theme : "advanced",
 	                   plugins : "media",
-	                   theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
-	                   theme_advanced_buttons2 : "media, styleselect,formatselect,fontselect,fontsizeselect",
-	                   theme_advanced_toolbar_location : "top",
-	                   theme_advanced_toolbar_align : "left",
-	                   theme_advanced_statusbar_location : "bottom",
-	                   theme_advanced_resizing : false,
+	                   //theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
+	                   //theme_advanced_buttons2 : "media, styleselect,formatselect,fontselect,fontsizeselect",
+	                   theme_advanced_buttons2_add : "media",
+	                   //theme_advanced_toolbar_location : "top",
+	                   //theme_advanced_toolbar_align : "left",
+	                   //theme_advanced_statusbar_location : "bottom",
+	                   theme_advanced_resizing : true,
 	                   width: "80%",
 	                   height: "300"
 	           });

@@ -12,22 +12,23 @@
 				<div class="voitureListe">
 				  <g:hiddenField id="id" name="id" value="${voiture?.id}"/>
 
-				  <p class="titrePrixVoiture">
-						<h2 class="titreVoiture span-15" >
+				  <div class="">
+						<h2 class="span10" >
 							<g:if test="${voiture.mention==1}"><span class="blink">Nouveauté : </span></g:if>${voiture.titre}
 						</h2>
-						<h2 class="h2 prixVoiture span-3 last">
+						<h2 class="h2 span2">
 							<g:if test="${voiture.mention==2}">Vendu(e)</g:if>
 							<g:else><g:formatNumber number="${voiture.prixVente }" format="###,##0" />&euro;</g:else>
 						</h2>
-					</p>
+				  </div>
 				
-				  <p class="links">
-						<sec:ifAllGranted roles="ROLE_ADMIN">
-				  		<a href="${createLink(controller:'voitures', action:'update', id:"$voiture.id")}">modifier</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-				  		<a href="${createLink(controller:'voitures', action:'delete', id:"$voiture.id")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-						</sec:ifAllGranted>
-					</p>
+				  <div class="">
+					<sec:ifAllGranted roles="ROLE_ADMIN">
+			  		<a href="${createLink(controller:'voitures', action:'update', id:"$voiture.id")}">modifier</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+			  		<a href="${createLink(controller:'voitures', action:'delete', id:"$voiture.id")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<div>&nbsp;</div>
+					</sec:ifAllGranted>
+				  </div>
 
 				  <div>${voiture.description}</div>
 				  

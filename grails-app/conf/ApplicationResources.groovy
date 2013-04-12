@@ -1,5 +1,6 @@
 modules = {
 	application {
+		dependsOn 'tinymce'
 		resource url:'js/jquery-ui-1.8.21.custom.min.js'
 		resource url:'js/jquery.ui.datepicker-fr.js'
 		resource url:'js/jquery.jscroll.min.js'
@@ -7,7 +8,6 @@ modules = {
 	}
 	
 	tinymce {
-		dependsOn 'application'
 		resource url:'js/libs/tiny_mce-3.5.8/jquery.tinymce.js'
 	}
 	

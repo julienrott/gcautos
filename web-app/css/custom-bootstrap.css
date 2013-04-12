@@ -96,6 +96,10 @@ a.logo {
 	color:#991111;
 }
 
+.center {
+	text-align: center;
+}
+
 h2 {
 	font: 700 27px/33px 'Open Sans',sans-serif!important;
 	color: #911;
@@ -251,4 +255,14 @@ div.photo span {
 .strong-1 {
     color: #991111;
     font: bold 17px/23px Arial,sans-serif;
+}
+
+.lignes-2 {
+	max-height: 7em;
+    overflow: hidden;
+}
+
+.lignes-6 {
+	max-height: 110px;
+    overflow: hidden;
 }

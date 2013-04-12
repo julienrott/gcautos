@@ -18,14 +18,25 @@
 	<!-- end slider -->
 
 	<div class="bg-grey">
-		<h2 class="span12">
-			Les véhicules sont visibles uniquement sur rendez-vous
-		</h2>
-		<h2 class="span12">
-			<a href="${createLink(controller:'contact')}" class="font-1">
-				<span>Nous contacter</span>
+	
+		<div class="row-fluid">
+			<div>&nbsp;</div>
+		</div>
+		
+		<div class="row-fluid">
+			<h2 class="span12 center">
+				<span>Les véhicules sont visibles uniquement sur rendez-vous</span>
+			</h2>
+		</div>
+		<div class="row-fluid center">
+			<a href="${createLink(controller:'contact')}" class="font-1 h2 blink">
+				Nous contacter
 			</a>
-		</h2>
+		</div>
+	
+		<div class="row-fluid">
+			<div>&nbsp;</div>
+		</div>
 		
 		<div class="margin10">
 			<h2 class="span12">Nos dernières <span class="h2">occasions</span></h2>
@@ -35,16 +46,16 @@
 					<div class="span3">
 						<g:if test="${v.photos?.titre?.size > 0}">
 							<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
-								<img class="photosVoituresListe round" 
+								<img class="img-polaroid" 
 										src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}", params:[type:'small_homepage'])}"/>
 							</a>
 						</g:if>
-						<div class="">
+						<div class="lignes-2">
 							<h2>
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">${v.titre}</a></h2>
 							<h2 class="h2"><g:formatNumber number="${v.prixVente }" format="###,##0" />&euro;</h2>
 						</div>
-						<div>${v.description}</div>
+						<div class="lignes-6">${v.description}</div>
 					</div>
 				</g:each>
 			</div>
@@ -53,8 +64,12 @@
 	</div>
 	
 	<div class="row-fluid">
+		<div>&nbsp;</div>
+	</div>
+	
+	<div class="row-fluid">
 		<div class="span6">
-			<h2>Nos <span class="h2">Services</span></h2>
+			<h2>&nbsp;Nos <span class="h2">Services</span></h2>
 			<div id="service" class="margin10"></div>
 			<sec:ifAllGranted roles="ROLE_ADMIN">
 				<br/>
