@@ -19,6 +19,7 @@ class VoituresController {
 	
 	def springSecurityService
 	def photosService
+	def voituresService
 	
 	def voitures
 	def voiture
@@ -30,9 +31,9 @@ class VoituresController {
 	
   def index = { }
 	
-  	@Cacheable('voitures')
 	def home() {
-		voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.id desc", [0], [max:4])
+		log.debug "-------------------------"
+		voitures = voituresService.home()
 		service = Service.list(max:1,sort:"id",order:"desc")[0]
 		photosSlider = PhotoSlider.list()
 		render(view:"/index", model:[voitures:voitures, service:service, photosSlider:photosSlider])
@@ -70,13 +71,8 @@ class VoituresController {
 		}
 	}
 	
-	@Cacheable('voitures')
 	def view() {
-		voiture = Voiture.get(params.id)
-		/*if ( voiture.neuve )
-			menu = "neuves"
-		else
-			menu = "occasions"*/
+		voiture = voituresService.get(params.id)
 	}
 	
 	@Secured(['ROLE_ADMIN'])
@@ -87,10 +83,6 @@ class VoituresController {
 	@Secured(['ROLE_ADMIN'])
 	def update = {
 		voiture = Voiture.get(params.id)
-		/*if ( voiture.neuve )
-			menu = "neuves"
-		else
-			menu = "occasions"*/
 		render(view:'input')
 	}
 	
@@ -106,60 +98,55 @@ class VoituresController {
 		redirect(action:'occasions')
 	}
 	
-	@Cacheable('voitures')
 	def occasions() {
 		try {
 			menu = "occasions"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [0], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [0])[0]
+			voitures = voituresService.list 0, params.offset?:0
+			vTotal = voituresService.count 0
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	@Cacheable('voitures')
 	def neuves() {
 		try {
 			menu = "neuves"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [1], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [1])[0]
+			voitures = voituresService.list 1, params.offset?:0
+			vTotal = voituresService.count 1
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	@Cacheable('voitures')
 	def quads() {
 		try {
 			menu = "quads"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [2], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [2])[0]
+			voitures = voituresService.list 2, params.offset?:0
+			vTotal = voituresService.count 2
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	@Cacheable('voitures')
 	def dirts() {
 		try {
 			menu = "dirts"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [3], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [3])[0]
+			voitures = voituresService.list 3, params.offset?:0
+			vTotal = voituresService.count 3
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	@Cacheable('voitures')
 	def electriques() {
 		try {
 			menu = "electriques"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [4], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [4])[0]
+			voitures = voituresService.list 4, params.offset?:0
+			vTotal = voituresService.count 4
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e

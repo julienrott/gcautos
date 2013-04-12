@@ -101,7 +101,8 @@ log4j = {
 			development {
 				warn 'org.grails.plugin.resource'
 				warn 'com.blockconsult.yuiminifyresources'
-				debug 'com.gcautos.controllers'
+				debug 'grails.app.controllers.com.gcautos.controllers'
+				debug 'grails.app.services.com.gcautos.services'
 			}
 		}
 }
