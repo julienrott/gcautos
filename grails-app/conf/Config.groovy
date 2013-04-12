@@ -124,6 +124,12 @@ grails.cache.config = {
 	cache {
 	   name 'voitures'
 	}
+	cache {
+	   name 'accessoires'
+	}
+	cache {
+	   name 'photos'
+	}
 }
 
 // Added by the Spring Security Core plugin:

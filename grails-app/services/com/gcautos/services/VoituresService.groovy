@@ -11,6 +11,12 @@ class VoituresService {
 		Voiture.get id
 	}
 	
+	@Cacheable('photos')
+	def getPhotos(def id) {
+		def v = get(id)
+		v.photos
+	}
+	
 	@Cacheable('voitures')
 	def home() {
 		Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.id desc", [0], [max:4])

@@ -10,9 +10,9 @@ import com.gcautos.domain.Photo;
 import com.gcautos.domain.PhotoSlider;
 import com.gcautos.domain.Service;
 import com.gcautos.domain.Voiture;
+import com.gcautos.services.VoituresService;
 
 import grails.plugins.springsecurity.Secured
-import grails.plugin.cache.Cacheable
 import grails.plugin.cache.CacheEvict
 
 class VoituresController {
@@ -174,8 +174,8 @@ class VoituresController {
 
 		try {
 			
-			def v = Voiture.get(params.id)
-			def photos = v.photos
+			def v = voituresService.get(params.id)
+			def photos = voituresService.getPhotos(params.id)
 			render(template:"photos", model:["photos":photos])
 			
 		} catch(Exception e) {
@@ -210,7 +210,7 @@ class VoituresController {
 		
 		try {
 			
-			def photo = Photo.get( params.id )
+			def photo = photosService.get( params.id )
 
 			if(request.getHeader("If-Modified-Since"))
 			{

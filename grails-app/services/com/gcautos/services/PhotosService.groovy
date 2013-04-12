@@ -16,6 +16,8 @@ import javax.imageio.ImageIO;
 
 import com.gcautos.domain.Photo;
 
+import grails.plugin.cache.Cacheable
+
 import org.springframework.web.context.ServletContextAware;
 import javax.servlet.ServletContext;
 
@@ -25,6 +27,11 @@ class PhotosService {
 	
 	void setServletContext(ServletContext context) {
 		servletContext = context
+	}
+	
+	@Cacheable('photos')
+	def get(def id) {
+		Photo.get(id)
 	}
 	
 	public void writePhoto(long idPhoto)
