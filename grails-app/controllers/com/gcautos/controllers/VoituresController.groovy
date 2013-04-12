@@ -12,6 +12,8 @@ import com.gcautos.domain.Service;
 import com.gcautos.domain.Voiture;
 
 import grails.plugins.springsecurity.Secured
+import grails.plugin.cache.Cacheable
+import grails.plugin.cache.CacheEvict
 
 class VoituresController {
 	
@@ -28,7 +30,8 @@ class VoituresController {
 	
   def index = { }
 	
-	def home={
+  	@Cacheable('voitures')
+	def home() {
 		voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.id desc", [0], [max:4])
 		service = Service.list(max:1,sort:"id",order:"desc")[0]
 		photosSlider = PhotoSlider.list()
@@ -36,7 +39,8 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def save = {
+	@CacheEvict(value='voitures', allEntries=true)
+	def save() {
 		try{
 			log.debug "Save : params = $params"
 			def v = Voiture.get(params.id)
@@ -66,7 +70,8 @@ class VoituresController {
 		}
 	}
 	
-	def view = {
+	@Cacheable('voitures')
+	def view() {
 		voiture = Voiture.get(params.id)
 		/*if ( voiture.neuve )
 			menu = "neuves"
@@ -90,17 +95,19 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def delete = {
+	@CacheEvict(value='voitures', allEntries=true)
+	def delete() {
 		def v = Voiture.get(params.id)
 		if (v) {
 			v.delete()
 		} else {
 			log.error "Object not found..."
 		}
-		redirect(action:occasions)
+		redirect(action:'occasions')
 	}
 	
-	def occasions = {
+	@Cacheable('voitures')
+	def occasions() {
 		try {
 			menu = "occasions"
 			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [0], [max:4, offset:params.offset?params.offset:0])
@@ -111,7 +118,8 @@ class VoituresController {
 		}
 	}
 	
-	def neuves = {
+	@Cacheable('voitures')
+	def neuves() {
 		try {
 			menu = "neuves"
 			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [1], [max:4, offset:params.offset?params.offset:0])
@@ -122,7 +130,8 @@ class VoituresController {
 		}
 	}
 	
-	def quads = {
+	@Cacheable('voitures')
+	def quads() {
 		try {
 			menu = "quads"
 			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [2], [max:4, offset:params.offset?params.offset:0])
@@ -133,7 +142,8 @@ class VoituresController {
 		}
 	}
 	
-	def dirts = {
+	@Cacheable('voitures')
+	def dirts() {
 		try {
 			menu = "dirts"
 			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [3], [max:4, offset:params.offset?params.offset:0])
@@ -144,7 +154,8 @@ class VoituresController {
 		}
 	}
 	
-	def electriques = {
+	@Cacheable('voitures')
+	def electriques() {
 		try {
 			menu = "electriques"
 			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [4], [max:4, offset:params.offset?params.offset:0])

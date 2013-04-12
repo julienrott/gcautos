@@ -119,10 +119,11 @@ grails {
 	}
 }
 
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.gcautos.Person'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.gcautos.PersonRole'
-grails.plugins.springsecurity.authority.className = 'com.gcautos.Role'
+grails.cache.config = {
+	cache {
+	   name 'voitures'
+	}
+}
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.gcautos.Person'

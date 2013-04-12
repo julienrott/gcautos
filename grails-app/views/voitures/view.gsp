@@ -12,7 +12,7 @@
 				<div class="voitureListe">
 				  <g:hiddenField id="id" name="id" value="${voiture?.id}"/>
 
-				  <div class="">
+				  <div class="row-fluid">
 						<h2 class="span10" >
 							<g:if test="${voiture.mention==1}"><span class="blink">Nouveauté : </span></g:if>${voiture.titre}
 						</h2>

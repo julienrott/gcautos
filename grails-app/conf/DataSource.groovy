@@ -22,6 +22,7 @@ environments {
 			url =  "jdbc:mysql://localhost:3306/gcautos?useUnicode=yes&characterEncoding=UTF-8"
 			username = "gcautos"
 			password = "gcautos"
+			logSql=true
         }
     }
     test {

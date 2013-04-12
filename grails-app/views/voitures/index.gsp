@@ -36,7 +36,7 @@
 		
 		<g:each in="${voitures}" var="v">
 			<div class="voitureListe">
-				<div class="">
+				<div class="row-fluid">
 					<h2 class="span10">
 						<a
 							href="${createLink(controller:'voitures', action:'view', id:"$v.id")}"><g:if
@@ -58,7 +58,8 @@
 							href="${createLink(controller:'voitures', action:'update', id:"$v.id")}">modifier</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 				    		<a
 							href="${createLink(controller:'voitures', action:'delete', id:"$v.id")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-			    		</sec:ifAllGranted>
+			    		<div>&nbsp;</div>
+					</sec:ifAllGranted>
 				</div>
 
 				<div>
