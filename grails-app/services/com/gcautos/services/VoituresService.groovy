@@ -11,7 +11,7 @@ class VoituresService {
 		Voiture.get id
 	}
 	
-	@Cacheable('photos')
+	//@Cacheable('photos')
 	def getPhotos(def id) {
 		def v = get(id)
 		v.photos

@@ -235,12 +235,13 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def deletePhoto = {
+	//@CacheEvict(value='photos', allEntries=true)
+	@CacheEvict(value='voitures', allEntries=true)
+	def deletePhoto() {
 		log.debug "deletePhoto params : ${params}"
 		
 		try {
 			def photo = Photo.get( params.id )
-			log.debug "deletePhoto photo.titre: ${photo.titre}"
 			photo.delete()
 			log.debug "deletePhoto OK"
 			render true

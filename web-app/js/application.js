@@ -95,7 +95,7 @@ $.ready(blink());
 $.ready(scrollpub());
 
 $(document).ready(function() {
-	updateNews();
+	setTimeout(updateNews, 1000);
 });
 
 function scrollpub(){

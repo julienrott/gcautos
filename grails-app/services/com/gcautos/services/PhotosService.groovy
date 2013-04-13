@@ -29,7 +29,7 @@ class PhotosService {
 		servletContext = context
 	}
 	
-	@Cacheable('photos')
+	//@Cacheable('photos')
 	def get(def id) {
 		Photo.get(id)
 	}
