@@ -22,6 +22,7 @@ class VoituresController {
 	def voituresService
 	
 	def voitures
+	def photosVoitures = [:]
 	def voiture
 	def menu
 	def service
@@ -34,9 +35,13 @@ class VoituresController {
 	def home() {
 		log.debug "-------------------------"
 		voitures = voituresService.home()
+		voitures.each {
+			photosVoitures[it.id] = voituresService.getPhotos(it.id)
+		}
+		log.debug photosVoitures
 		service = Service.list(max:1,sort:"id",order:"desc")[0]
-		photosSlider = PhotoSlider.list()
-		render(view:"/index", model:[voitures:voitures, service:service, photosSlider:photosSlider])
+		photosSlider = photosService.photosSliderAccueil()
+		render(view:"/index", model:[voitures:voitures, photosVoitures: photosVoitures, service:service, photosSlider:photosSlider])
 	}
 	
 	@Secured(['ROLE_ADMIN'])
@@ -103,6 +108,9 @@ class VoituresController {
 			menu = "occasions"
 			voitures = voituresService.list 0, params.offset?:0
 			vTotal = voituresService.count 0
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -114,6 +122,9 @@ class VoituresController {
 			menu = "neuves"
 			voitures = voituresService.list 1, params.offset?:0
 			vTotal = voituresService.count 1
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -125,6 +136,9 @@ class VoituresController {
 			menu = "quads"
 			voitures = voituresService.list 2, params.offset?:0
 			vTotal = voituresService.count 2
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -136,6 +150,9 @@ class VoituresController {
 			menu = "dirts"
 			voitures = voituresService.list 3, params.offset?:0
 			vTotal = voituresService.count 3
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -147,6 +164,9 @@ class VoituresController {
 			menu = "electriques"
 			voitures = voituresService.list 4, params.offset?:0
 			vTotal = voituresService.count 4
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -235,8 +255,8 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	//@CacheEvict(value='photos', allEntries=true)
-	@CacheEvict(value='voitures', allEntries=true)
+	@CacheEvict(value='photos', allEntries=true)
+	//@CacheEvict(value='voitures', allEntries=true)
 	def deletePhoto() {
 		log.debug "deletePhoto params : ${params}"
 		

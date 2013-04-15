@@ -66,20 +66,16 @@
 					${v.description}
 				</div>
 				<div class="row-fluid">
-					<g:if test="${v.photos?.titre?.size > 0}">
-						<a
-							href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
-							<img class="img-polaroid span6"
-							src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}", params:[type:'small'])}" />
-						</a>
-					</g:if>
-					<g:if test="${v.photos?.titre?.size > 1}">
-						<a
-							href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
-							<img class="img-polaroid span6"
-							src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[1]}", params:[type:'small'])}" />
-						</a>
-					</g:if>
+					<a
+						href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
+						<img class="img-polaroid span6"
+								src="${createLink(controller:'voitures', action:'showPhoto', id:"${photosVoitures[v.id].id[0]}", params:[type:'small'])}" />
+					</a>
+					<a
+						href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
+						<img class="img-polaroid span6"
+								src="${createLink(controller:'voitures', action:'showPhoto', id:"${photosVoitures[v.id].id[1]}", params:[type:'small'])}" />
+					</a>
 				</div>
 
 			</div>

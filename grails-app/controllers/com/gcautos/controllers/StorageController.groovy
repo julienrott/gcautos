@@ -20,8 +20,8 @@ class StorageController {
 	
 	def index = { }
 	
-	//@CacheEvict(value='photos', allEntries=true)
-	@CacheEvict(value='voitures', allEntries=true)
+	@CacheEvict(value='photos', allEntries=true)
+	//@CacheEvict(value='voitures', allEntries=true)
 	def upload() {
 		//log.error "upload params : ${params}"
 		

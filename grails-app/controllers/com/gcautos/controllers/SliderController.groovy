@@ -13,6 +13,7 @@ import com.gcautos.domain.PhotoSlider;
 import grails.converters.*;
 
 import grails.plugins.springsecurity.Secured
+import grails.plugin.cache.CacheEvict
 
 class SliderController{
 
@@ -26,7 +27,7 @@ class SliderController{
 
 	def list = {
 		try {
-			def photos = PhotoSlider.findAll()
+			def photos = photosService.photosSliderAccueil()
 			render(template:"photos", model:["photos":photos])
 
 		} catch(Exception e) {
@@ -39,7 +40,7 @@ class SliderController{
 		//cache shared:true, neverExpires:true
 		try {
 			
-			def photo = PhotoSlider.get( params.id ) // get the record
+			def photo = photosService.getPhotoSliderAccueil(params.id) // get the record
 			switch (params.type)
 			{
 				case "small" : response.outputStream << photo.data_small; break;// write the image to the outputstream
@@ -54,14 +55,16 @@ class SliderController{
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def deletePhotoSlider = {
+	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	def deletePhotoSlider() {
 		def photo = PhotoSlider.get(params.id)
 		photo.delete()
 		render true
 	}
 
 	@Secured(['ROLE_ADMIN'])
-	def upload = {
+	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	def upload() {
 		log.error "upload params : ${params}"
 		
 		try {

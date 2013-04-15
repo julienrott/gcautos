@@ -127,9 +127,12 @@ grails.cache.config = {
 	cache {
 	   name 'accessoires'
 	}
-//	cache {
-//	   name 'photos'
-//	}
+	cache {
+	   name 'photos'
+	}
+	cache {
+	   name 'photosSliderAccueil'
+	}
 }
 
 // Added by the Spring Security Core plugin:

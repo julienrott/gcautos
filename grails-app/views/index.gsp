@@ -44,12 +44,10 @@
 			<div class="row-fluid">
 				<g:each in="${voitures}" var="v">
 					<div class="span3">
-						<g:if test="${v.photos?.titre?.size > 0}">
-							<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
-								<img class="img-polaroid" 
-										src="${createLink(controller:'voitures', action:'showPhoto', id:"${v.photos?.id[0]}", params:[type:'small_homepage'])}"/>
-							</a>
-						</g:if>
+						<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">
+							<img class="img-polaroid" 
+									src="${createLink(controller:'voitures', action:'showPhoto', id:"${photosVoitures[v.id].id[0]}", params:[type:'small_homepage'])}"/>
+						</a>
 						<div class="lignes-2">
 							<h2>
 								<a href="${createLink(controller:'voitures', action:'view', id:"$v.id")}">${v.titre}</a></h2>
