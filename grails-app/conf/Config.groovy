@@ -71,6 +71,10 @@ environments {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://gcautos-test.herokuapp.com"
     }
+    cftest {
+        grails.logging.jul.usebridge = false
+        grails.serverURL = "http://gcautos-test.cloudfoundry.com"
+    }
     production {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://www.gcautos.fr"

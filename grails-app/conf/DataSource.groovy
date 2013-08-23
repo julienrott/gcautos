@@ -34,7 +34,10 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE"
+			driverClassName = "org.postgresql.Driver"
+			username = "gcautos"
+			password = "gcautos"
+            url = "jdbc:postgresql://localhost:5432/gcautos"
             pooled = true
             properties {
                maxActive = -1
