@@ -51,6 +51,10 @@ grails.project.dependency.resolution = {
 			runtime ":cached-resources:1.0"
 			runtime ":yui-minify-resources:0.1.4"
 		}
+		
+		if (grails.util.Environment.current == grails.util.Environment.PRODUCTION) {
+		  compile ":grails-melody:1.47.2"
+		}
 
 		build ":tomcat:$grailsVersion"
 
