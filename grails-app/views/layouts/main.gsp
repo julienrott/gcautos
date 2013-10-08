@@ -28,7 +28,7 @@
 			</div>
 			
 			<a target="_blank" class="pull-right clearfix"
-					href="https://www.facebook.com/christophe.gcautoserstein">
+					href="https://www.facebook.com/pages/GC-AUTOS-Matzenheim/234904276569945?fref=ts">
 				<r:img uri="/img/logo-facebook.png" width="86" height="26"/>
 			</a>
 			
