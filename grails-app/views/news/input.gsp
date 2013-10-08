@@ -8,7 +8,7 @@
 	    <g:form action="update" name="newsForm">
 	        <g:hiddenField name="id" value="${news?.id}" />
 			<div>Titre: <input type="text" name="titre" value="${news.titre}"></div>
-			<div>Contenu:<br/><textarea name="description" style="height: 65px;">${news.description}</textarea></div>
+			<div>Contenu:<br/><textarea name="description" style="height: 65px;" class="tinymce">${news.description}</textarea></div>
 			<div class="clear"></div>
 			<g:submitButton name="Enregistrer" value="Enregistrer" />
 		</g:form>

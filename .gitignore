@@ -10,9 +10,8 @@ stacktrace.log
 /cobertura.ser
 .DS_Store
 /target/
-/target-eclipse/
-target-eclipse
 target-eclipse/
+target-eclipse/classes
 /out/
 /web-app/plugins
 /web-app/WEB-INF/classes
@@ -21,3 +20,4 @@ target-eclipse/
 lib
 .gitignore
 .classpath
+*.class

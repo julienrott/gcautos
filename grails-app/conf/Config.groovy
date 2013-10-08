@@ -63,12 +63,17 @@ grails.hibernate.cache.queries = true
 // set per-environment serverURL stem for creating absolute links
 environments {
     development {
+		grails.resources.debug=false
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8080/${appName}"
     }
     test {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://gcautos-test.herokuapp.com"
+    }
+    cftest {
+        grails.logging.jul.usebridge = false
+        grails.serverURL = "http://gcautos-test.cloudfoundry.com"
     }
     production {
         grails.logging.jul.usebridge = false
@@ -100,7 +105,8 @@ log4j = {
 			development {
 				warn 'org.grails.plugin.resource'
 				warn 'com.blockconsult.yuiminifyresources'
-				debug 'com.gcautos.controllers'
+				debug 'grails.app.controllers.com.gcautos.controllers'
+				debug 'grails.app.services.com.gcautos.services'
 			}
 		}
 }
@@ -118,10 +124,20 @@ grails {
 	}
 }
 
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.gcautos.Person'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.gcautos.PersonRole'
-grails.plugins.springsecurity.authority.className = 'com.gcautos.Role'
+grails.cache.config = {
+	cache {
+	   name 'voitures'
+	}
+	cache {
+	   name 'accessoires'
+	}
+	cache {
+	   name 'photos'
+	}
+	cache {
+	   name 'photosSliderAccueil'
+	}
+}
 
 // Added by the Spring Security Core plugin:
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.gcautos.Person'

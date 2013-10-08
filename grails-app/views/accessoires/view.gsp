@@ -4,27 +4,27 @@
 			<meta name="layout" content="main" />
     </head>
     <body>
-			<div class="span-20">
+    
+    	<div>&nbsp;</div>
+    	
+		<div class="voitureListe">
+			<div class="row-fluid">
 				<h2>${accessoire?.titre}</h2>
 				<div class="customDivReset">${accessoire?.contenu}</div>
-
-				<sec:ifAllGranted roles="ROLE_ADMIN">
-					<g:form controller="accessoires" action="save" name="form" id="${accessoire?.id}">
-						<div><g:textField name="titre" value="${accessoire?.titre}" /></div>
-						<div><textarea id="editor" name="contenu" style="width:100%;height:500px;">
-							${accessoire?.contenu}
-						</textarea></div>
-						<g:submitButton name="enregistrer" value="enregistrer"/>
-					</g:form>
-				</sec:ifAllGranted>
-				<div class="clear"></div>
 			</div>
 
-			<div class="subContent span-4 last scrollpub">
-				<g:include view="ads/_ad-vertical.gsp"/>
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+			<div class="row-fluid">
+				<g:form controller="accessoires" action="save" name="form" id="${accessoire?.id}">
+					<div><g:textField name="titre" value="${accessoire?.titre}" /></div>
+					<div><textarea id="editor" name="contenu" class="tinymce">
+						${accessoire?.contenu}
+					</textarea></div>
+					<g:submitButton name="enregistrer" value="enregistrer"/>
+				</g:form>
 			</div>
-
-			<div class="clear"></div>
+			</sec:ifAllGranted>
+		</div>
 
     </body>
 </html>

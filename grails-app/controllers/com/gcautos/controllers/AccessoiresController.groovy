@@ -3,30 +3,33 @@ package com.gcautos.controllers
 import com.gcautos.domain.Accessoire
 
 import grails.plugins.springsecurity.Secured
+import grails.plugin.cache.CacheEvict
 
 class AccessoiresController {
-	
+
 	def springSecurityService
+	def accessoiresService
 
 	def accessoires
 	def accessoire
 
 	@Secured(['ROLE_ADMIN'])
-  def index() {
-		accessoires = Accessoire.findAll("from Accessoire a order by a.titre asc") 
+	def index() {
+		accessoires = accessoiresService.findAll()
 	}
 
-  def list() {
-		accessoires = Accessoire.findAll("from Accessoire a order by a.titre asc") 
+	def list() {
+		accessoires = accessoiresService.findAll()
 		render(template:'menu')
 	}
 
-  def view() {
+	def view() {
 		accessoire = Accessoire.get(params.id)
 		render(view:"view")
 	}
 
 	@Secured(['ROLE_ADMIN'])
+	@CacheEvict(value='accessoires', allEntries=true)
 	def save() {
 		def a = Accessoire.get(params.id)
 		if ( a ) {
@@ -37,18 +40,16 @@ class AccessoiresController {
 
 		if(!a.hasErrors() && a.save()) {
 		} else {
-			a.errors.each { 
-				log.error "${it}"
-			}
+			a.errors.each {  log.error "${it}" }
 		}
 		redirect(action:"view", id:a.id)
 	}
 
 	@Secured(['ROLE_ADMIN'])
-  def delete() {
+	@CacheEvict(value='accessoires', allEntries=true)
+	def delete() {
 		def accessoire = Accessoire.get(params.id)
 		accessoire.delete()
-		redirect(action:"index") 
+		redirect(action:"index")
 	}
-
 }

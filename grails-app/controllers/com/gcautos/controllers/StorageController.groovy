@@ -11,14 +11,18 @@ import java.awt.image.BufferedImage;
 import com.gcautos.domain.Photo;
 import com.gcautos.domain.Voiture;
 
+import grails.plugin.cache.CacheEvict
+
 import grails.converters.*;
 
 class StorageController {
 	def photosService
 	
 	def index = { }
-
-	def upload = {
+	
+	@CacheEvict(value='photos', allEntries=true)
+	//@CacheEvict(value='voitures', allEntries=true)
+	def upload() {
 		//log.error "upload params : ${params}"
 		
 		try {

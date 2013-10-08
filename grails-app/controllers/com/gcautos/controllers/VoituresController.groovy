@@ -10,15 +10,19 @@ import com.gcautos.domain.Photo;
 import com.gcautos.domain.PhotoSlider;
 import com.gcautos.domain.Service;
 import com.gcautos.domain.Voiture;
+import com.gcautos.services.VoituresService;
 
 import grails.plugins.springsecurity.Secured
+import grails.plugin.cache.CacheEvict
 
 class VoituresController {
 	
 	def springSecurityService
 	def photosService
+	def voituresService
 	
 	def voitures
+	def photosVoitures = [:]
 	def voiture
 	def menu
 	def service
@@ -28,15 +32,21 @@ class VoituresController {
 	
   def index = { }
 	
-	def home={
-		voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.id desc", [0], [max:4])
-		service = Service.get(1)
-		photosSlider = PhotoSlider.list()
-		render(view:"/index", model:[voitures:voitures, service:service, photosSlider:photosSlider])
+	def home() {
+		log.debug "-------------------------"
+		voitures = voituresService.home()
+		voitures.each {
+			photosVoitures[it.id] = voituresService.getPhotos(it.id)
+		}
+		log.debug photosVoitures
+		service = Service.list(max:1,sort:"id",order:"desc")[0]
+		photosSlider = photosService.photosSliderAccueil()
+		render(view:"/index", model:[voitures:voitures, photosVoitures: photosVoitures, service:service, photosSlider:photosSlider])
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def save = {
+	@CacheEvict(value='voitures', allEntries=true)
+	def save() {
 		try{
 			log.debug "Save : params = $params"
 			def v = Voiture.get(params.id)
@@ -66,12 +76,8 @@ class VoituresController {
 		}
 	}
 	
-	def view = {
-		voiture = Voiture.get(params.id)
-		/*if ( voiture.neuve )
-			menu = "neuves"
-		else
-			menu = "occasions"*/
+	def view() {
+		voiture = voituresService.get(params.id)
 	}
 	
 	@Secured(['ROLE_ADMIN'])
@@ -82,73 +88,85 @@ class VoituresController {
 	@Secured(['ROLE_ADMIN'])
 	def update = {
 		voiture = Voiture.get(params.id)
-		/*if ( voiture.neuve )
-			menu = "neuves"
-		else
-			menu = "occasions"*/
 		render(view:'input')
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def delete = {
+	@CacheEvict(value='voitures', allEntries=true)
+	def delete() {
 		def v = Voiture.get(params.id)
 		if (v) {
 			v.delete()
 		} else {
 			log.error "Object not found..."
 		}
-		redirect(action:occasions)
+		redirect(action:'occasions')
 	}
 	
-	def occasions = {
+	def occasions() {
 		try {
 			menu = "occasions"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [0], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [0])[0]
+			voitures = voituresService.list 0, params.offset?:0
+			vTotal = voituresService.count 0
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	def neuves = {
+	def neuves() {
 		try {
 			menu = "neuves"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [1], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [1])[0]
+			voitures = voituresService.list 1, params.offset?:0
+			vTotal = voituresService.count 1
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	def quads = {
+	def quads() {
 		try {
 			menu = "quads"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [2], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [2])[0]
+			voitures = voituresService.list 2, params.offset?:0
+			vTotal = voituresService.count 2
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	def dirts = {
+	def dirts() {
 		try {
 			menu = "dirts"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [3], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [3])[0]
+			voitures = voituresService.list 3, params.offset?:0
+			vTotal = voituresService.count 3
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
 		}
 	}
 	
-	def electriques = {
+	def electriques() {
 		try {
 			menu = "electriques"
-			voitures = Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [4], [max:4, offset:params.offset?params.offset:0])
-			vTotal = Voiture.executeQuery("select count(v) from Voiture v where v.dateVente is null and vehicleType = ?", [4])[0]
+			voitures = voituresService.list 4, params.offset?:0
+			vTotal = voituresService.count 4
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -176,8 +194,8 @@ class VoituresController {
 
 		try {
 			
-			def v = Voiture.get(params.id)
-			def photos = v.photos
+			def v = voituresService.get(params.id)
+			def photos = voituresService.getPhotos(params.id)
 			render(template:"photos", model:["photos":photos])
 			
 		} catch(Exception e) {
@@ -212,7 +230,7 @@ class VoituresController {
 		
 		try {
 			
-			def photo = Photo.get( params.id )
+			def photo = photosService.get( params.id )
 
 			if(request.getHeader("If-Modified-Since"))
 			{
@@ -237,12 +255,13 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def deletePhoto = {
+	@CacheEvict(value='photos', allEntries=true)
+	//@CacheEvict(value='voitures', allEntries=true)
+	def deletePhoto() {
 		log.debug "deletePhoto params : ${params}"
 		
 		try {
 			def photo = Photo.get( params.id )
-			log.debug "deletePhoto photo.titre: ${photo.titre}"
 			photo.delete()
 			log.debug "deletePhoto OK"
 			render true

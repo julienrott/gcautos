@@ -13,6 +13,7 @@ import com.gcautos.domain.PhotoSlider;
 import grails.converters.*;
 
 import grails.plugins.springsecurity.Secured
+import grails.plugin.cache.CacheEvict
 
 class PhotoSliderController{
 
@@ -26,7 +27,7 @@ class PhotoSliderController{
 
 	def list = {
 		try {
-			def photos = PhotoSlider.findAll()
+			def photos = photosService.photosSliderAccueil()
 			render(template:"photos", model:["photos":photos])
 
 		} catch(Exception e) {
@@ -39,7 +40,7 @@ class PhotoSliderController{
 
 		try {
 			
-			def photo = PhotoSlider.get( params.id )
+			def photo = photosService.getPhotoSliderAccueil(params.id)
 
 			if(request.getHeader("If-Modified-Since"))
 			{
@@ -64,14 +65,16 @@ class PhotoSliderController{
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	def deletePhotoSlider = {
+	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	def deletePhotoSlider() {
 		def photo = PhotoSlider.get(params.id)
 		photo.delete()
 		render true
 	}
 
 	@Secured(['ROLE_ADMIN'])
-	def upload = {
+	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	def upload() {
 		
 		try {
 			def photo = new PhotoSlider()

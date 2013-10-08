@@ -1,19 +1,15 @@
 <html>
-    <head>
-    	<title><g:message code="menu.news"/></title>
-			<meta name="layout" content="main" />
-    </head>
-    <body>
-			<div class="subContent grid_6 span-20">
-				<g:render template="lastNews" />
-				<div class="clear"></div>
-			</div>
 
-			<div class="subContent span-4 last scrollpub">
-				<g:include view="ads/_ad-vertical.gsp"/>
-			</div>
+<head>
+	<title><g:message code="menu.news"/></title>
+	<meta name="layout" content="main" />
+</head>
 
-			<div class="clear"></div>
-
-    </body>
+<body>
+	
+	<div class="block-2" style="margin: 5px;">
+		<g:render template="lastNews" collection="${com.gcautos.domain.News.list(sort: 'id', order: 'desc')}"/>
+	</div>
+	
+</body>
 </html>

@@ -1,13 +1,10 @@
 body {
-	width: 100%;
-	height: 100%;
 	font: 12px/18px Arial, sans-serif;
 	background: #e6e6e6;
 	color: #494949;
-	min-width: 990px;
 }
 
-.container-narrow {
+.narrow {
 	margin: 0 auto;
 	max-width: 940px;
 }
@@ -23,6 +20,7 @@ body {
 
 .content {
 	background: none repeat scroll 0 0 white;
+	padding-bottom: 5px;
 }
 
 a.logo {
@@ -33,90 +31,52 @@ a.logo {
 	background: url('../img/logo_gcautos.png') no-repeat;
 }
 
-.sf-menu, .sf-menu * {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+.navbar {
+	margin-bottom: 0;
 }
-.sf-menu {
-	line-height: 1.0;
-	float:right;
-	width: 600px;
-	margin: 7px 0;
+.navbar .nav > li > a {
+	font: 700 14px/29px 'Open Sans', sans-serif;
+	color: #fff;
+	padding: 0 10px 0 9px;
+	border: 1px solid transparent;
+    text-shadow: none;
 }
-.sf-menu ul li {
-	width: 100%;
+.navbar .nav > li > a:hover, .navbar .nav > li > a:focus, .navbar .nav > li.active > a, .navbar .nav > li.sfHover > a {
+	text-decoration: none;
+	border: 1px solid #931010;
+	background: #440606 url('../img/menu-bg-hover.jpg') repeat-x;
+	color: #FFFFFF;
+    text-shadow: none;
 }
-.sf-menu li:hover {
-	visibility: inherit; /* fixes IE7 'sticky bug' */
-}
-.sf-menu li {
-	float: left;
-	position: relative;
-}
-.sf-menu a {
-	display: block;
-	position: relative;
-}
-.sf-menu li:hover ul,
-.sf-menu li.sfHover ul {
-	left: -1px;
-	top: 38px; /* match top ul list item height */
-	z-index: 99;
-}
-ul.sf-menu li:hover li ul,
-ul.sf-menu li.sfHover li ul {
-	top: -999em;
-}
-ul.sf-menu li li:hover ul,
-ul.sf-menu li li.sfHover ul {
-	left: 10em; /* match ul width */
-	top: 0;
-}
-ul.sf-menu li li:hover li ul,
-ul.sf-menu li li.sfHover li ul {
-	top: -999em;
-}
-ul.sf-menu li li li:hover ul,
-ul.sf-menu li li li.sfHover ul {
-	left: 10em; /* match ul width */
-	top: 0;
+.navbar .nav li li a {
+	font: 10px/26px Arial, sans-serif;
+	color: #2e2e2e;
+	border: 1px solid #ffffff;
+	padding-left: 13px;
 }
 
-nav {
+.nav {
 	background: #580707 url('../img/nav-bg.jpg') repeat-x;
-	position:relative;
+	margin: 0px !important;
+	padding-left: 340px;
 	min-height: 45px;
-	z-index: 3;
 }
-.sf-menu > li > a {
+.nav > li > a {
 	font: 700 14px/29px 'Open Sans', sans-serif;
 	color: #fff;
 	padding: 0 10px 0 9px;
 	border: 1px solid transparent;
 }
-.sf-menu > li > a:hover, .sf-menu > li.active > a, .sf-menu > li.sfHover > a {
+.nav > li > a:hover, .nav > li.active > a, .nav > li.sfHover > a {
 	text-decoration: none;
 	border: 1px solid #931010;
 	background: #440606 url('../img/menu-bg-hover.jpg') repeat-x;
 }
-.sf-menu ul {
-	position: absolute;
-	top: -999em;
-	width: 226px;
-	padding: 0;
-}
-.sf-menu li li a {
+.nav li li a {
 	font: 10px/26px Arial, sans-serif;
 	color: #2e2e2e;
 	border: 1px solid #ffffff;
 	padding-left: 13px;
-	background:#f1f1f2;
-}
-.sf-menu  li li a:hover, .sf-menu > li li.active a, .sf-menu > li li.sfHover > a {
-	color: #e5e5e5;
-	border: 1px solid #2e2e2e;
-	background:#2e2e2e;
 }
 
 .list-1 {
@@ -134,6 +94,10 @@ nav {
 }
 .list-1 li a:hover, .list-1 li.active-2 a {
 	color:#991111;
+}
+
+.center {
+	text-align: center;
 }
 
 h2 {
@@ -200,4 +164,105 @@ a.link-1 {
 
 .bg-grey {
 	background: #F9F9F9;
+}
+
+.caret {
+	margin: 14px 0 0 5px !important;
+	border-top-color: #FFF !important;
+}
+
+div.photo {
+	padding: 2px 0;
+	position: relative;
+	display: inline-block;
+}
+
+div.photo span {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 40px;
+	height: 40px;
+	background: url(../images/iconDelete.png) no-repeat;
+	cursor: pointer;
+}
+
+.block-2 {
+	background: #fff url('../img/block-2-bg.jpg') repeat-x;
+	border: 1px solid #e6e6e6;
+	padding: 10px;
+	margin: 10px 10px 10px 0;
+}
+
+.block-3 {
+	background: #fff;
+	border: 1px solid #e6e6e6;
+	padding: 5px 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	position:relative;
+}
+
+.block-4 {
+	color:#212121;
+	font: bold 12px/18px Arial, sans-serif;
+	padding-left: 34px;
+	padding-top: 7px;
+	background: url('../img/icon-1.png') no-repeat scroll 0 12px transparent;
+	margin-bottom: 18px;
+}
+
+.extra-1 {
+	width: 11px;
+	height:12px;
+	position:absolute;
+	left: 20px;
+	bottom: -12px;
+	background: url('../img/extra-1.png') no-repeat;
+}
+
+.carousel {
+	margin-bottom: 0;
+}
+
+.paginate{
+	text-align: center;
+	font: 700 16px/31px 'Open Sans',sans-serif;
+}
+
+.paginate *{
+	padding: 0 2px;
+}
+
+.paginate a, .paginate a:visited{
+	color: #991111;
+}
+
+.paginate a:hover{
+	color: #494949;
+}
+
+.voitureListe {
+	background: none repeat scroll 0 0 transparent/*#E6E6E6*/;
+  border: 3px solid #8B8B8B;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 5px 15px #8B8B8B;
+  margin: 0 20px 20px !important;
+  padding: 10px;
+}
+
+.strong-1 {
+    color: #991111;
+    font: bold 17px/23px Arial,sans-serif;
+}
+
+.lignes-2 {
+	max-height: 7em;
+    overflow: hidden;
+}
+
+.lignes-6 {
+	max-height: 110px;
+    overflow: hidden;
 }
