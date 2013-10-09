@@ -21,22 +21,6 @@
 	<r:layoutResources />
 </head>
 <body>
-<<<<<<< HEAD
-	<div class="container-narrow">
-		<div class="masthead">
-			<div class="divtel pull-right offset1">
-				<div class="font-1">Tel: 06 63 56 43 43</div>
-				<div class="font-1"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
-			</div>
-			
-			<a target="_blank" class="pull-right clearfix"
-					href="https://www.facebook.com/pages/GC-AUTOS-Matzenheim/234904276569945?fref=ts">
-				<r:img uri="/img/logo-facebook.png" width="86" height="26"/>
-			</a>
-			
-			<div class="logo-bg">
-				<a href="${createLink(uri: '')}" class="logo" title="GC AUTOS"></a>
-=======
 	<div class="container narrow">
 	
 		<div class="navbar">
@@ -47,7 +31,7 @@
 				</div>
 				
 				<a target="_blank" class="pull-right clearfix"
-						href="https://www.facebook.com/christophe.gcautoserstein">
+						href="https://www.facebook.com/pages/GC-AUTOS-Matzenheim/234904276569945?fref=ts">
 					<r:img uri="/img/logo-facebook.png" width="86" height="26"/>
 				</a>
 				
@@ -93,7 +77,6 @@
 							</ul>
 			          	</div>
 		          	</div>
->>>>>>> bfa9d10e08178cc021ed77d03652620169d20d61
 			</div>
 		</div>
 		<div class="container content row-fluid">

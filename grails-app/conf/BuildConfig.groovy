@@ -44,21 +44,17 @@ grails.project.dependency.resolution = {
 		runtime ":twitter-bootstrap:2.1.0"
 		runtime ":resources:1.2.RC2"
 
-		//if (grails.util.Environment.current in 
-		//		[grails.util.Environment.PRODUCTION, grails.util.Environment.TEST]) {
+		if (grails.util.Environment.current in 
+				[grails.util.Environment.PRODUCTION, grails.util.Environment.TEST]) {
 			runtime ":zipped-resources:1.0"
 			runtime ":cache-headers:1.0.4"
 			runtime ":cached-resources:1.0"
 			runtime ":yui-minify-resources:0.1.4"
-<<<<<<< HEAD
 		}
 		
 		if (grails.util.Environment.current == grails.util.Environment.PRODUCTION) {
 		  compile ":grails-melody:1.47.2"
 		}
-=======
-		//}
->>>>>>> bfa9d10e08178cc021ed77d03652620169d20d61
 
 		build ":tomcat:$grailsVersion"
 
