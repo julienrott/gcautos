@@ -36,20 +36,20 @@ class PhotoSliderController{
 	}
 
 	def showPhotoSlider = {
-		cache shared:true, neverExpires:true
+		//cache shared:true, neverExpires:true
 
 		try {
 			
 			def photo = photosService.getPhotoSliderAccueil(params.id)
 
-			if(request.getHeader("If-Modified-Since"))
+			/*if(request.getHeader("If-Modified-Since"))
 			{
 				def reqDate = new Date(request.getHeader("If-Modified-Since"))
 				if (photo.lastUpdated < reqDate)
 				{
 					render(status: 304)
 				}
-			}
+			}*/
 
 			switch (params.type)
 			{
