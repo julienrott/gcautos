@@ -32,6 +32,7 @@
 			<a href="${createLink(controller:'contact')}" class="font-1 h2 blink">
 				Nous contacter
 			</a>
+			<img src="${createLinkTo(dir: "images", file: "livraison.jpg")}"/>
 		</div>
 	
 		<div class="row-fluid">
