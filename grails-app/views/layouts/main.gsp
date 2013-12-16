@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>GC Autos</title>
-	<meta name="description" content="">
+	<meta name="description" content="GC AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules neuf et occasions, vente et réparation de quads pour enfants ados et adultes, dirt bike, Buggy.">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -21,6 +21,21 @@
 	<r:layoutResources />
 </head>
 <body>
+	<div style="display: none;" itemscope
+			itemtype="http://schema.org/LocalBusiness">
+		
+		<span itemprop="name">GC Autos</span>
+		<span itemprop="description">GC AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules neuf et occasions, vente et réparation de quads pour enfants ados et adultes, dirt bike, Buggy.</span>
+		<div itemprop="address" itemscope
+				itemtype="http://schema.org/PostalAddress">
+			<span itemprop="streetAddress">1 rue du Muhlwasser</span>
+			<span itemprop="addressLocality">Matzenheim</span>
+			<span itemprop="postalCode">67150</span>
+			<span itemprop="addressCountry">France</span>
+		</div>
+		<span itemprop="telephone">06 63 56 43 43</span>
+	</div>
+
 	<div class="container narrow">
 	
 		<div class="navbar">
