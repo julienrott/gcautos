@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+      <loc>http://www.gcautos.fr/</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+
+   <url>
+      <loc>http://www.gcautos.fr/voitures/occasions/</loc>
+   </url>
+
+   <url>
+      <loc>http://www.gcautos.fr/voitures/neuves/</loc>
+   </url>
+
+   <url>
+      <loc>http://www.gcautos.fr/voitures/quads/</loc>
+   </url>
+
+   <url>
+      <loc>http://www.gcautos.fr/voitures/dirts/</loc>
+   </url>
+
+   <url>
+      <loc>http://www.gcautos.fr/voitures/electriques/</loc>
+   </url>
+
+   <url>
+      <loc>http://www.gcautos.fr/contact/index</loc>
+   </url>
+
+</urlset>
