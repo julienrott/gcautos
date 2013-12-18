@@ -9,7 +9,7 @@ class UrlMappings {
 
 		"/"(controller:"voitures", action:"home")
 		"500"(view:'/error')
-		
+		"/sitemap.xml"(view:'/sitemap.xml')
 		name paginate: "/$controller/$action?/page-" {
 		}
 	}
