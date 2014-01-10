@@ -14,22 +14,22 @@ class SitemapController {
 					priority(1.0)
 				}
 				url {
-					loc("ttp://www.gcautos.fr/voitures/occasions/")
+					loc("http://www.gcautos.fr/voitures/occasions/")
 				}
 				url {
-					loc("ttp://www.gcautos.fr/voitures/neuves/")
+					loc("http://www.gcautos.fr/voitures/neuves/")
 				}
 				url {
-					loc("ttp://www.gcautos.fr/voitures/quads/")
+					loc("http://www.gcautos.fr/voitures/quads/")
 				}
 				url {
-					loc("ttp://www.gcautos.fr/voitures/dirts/")
+					loc("http://www.gcautos.fr/voitures/dirts/")
 				}
 				url {
-					loc("ttp://www.gcautos.fr/voitures/electriques/")
+					loc("http://www.gcautos.fr/voitures/electriques/")
 				}
 				url {
-					loc("ttp://www.gcautos.fr/contact/index")
+					loc("http://www.gcautos.fr/contact/index")
 				}
 			}
 	   }
