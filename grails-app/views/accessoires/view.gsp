@@ -1,7 +1,7 @@
 <html>
     <head>
-    	<title><g:message code="menu.manage.accessoires"/></title>
-			<meta name="layout" content="main" />
+    	<title>${accessoire?.titre}</title>
+		<meta name="layout" content="main" />
     </head>
     <body>
     

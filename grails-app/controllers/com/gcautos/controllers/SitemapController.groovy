@@ -9,27 +9,27 @@ class SitemapController {
 					'xmlns:xsi': "http://www.w3.org/2001/XMLSchema-instance",
 					'xsi:schemaLocation': "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd") {
 				url {
-					loc("http://www.gcautos.fr")
+					loc("${grailsApplication.config.grails.serverURL}")
 					changefreq('weekly')
 					priority(1.0)
 				}
 				url {
-					loc("http://www.gcautos.fr/voitures/occasions/")
+					loc("${grailsApplication.config.grails.serverURL}/voitures/occasions/")
 				}
 				url {
-					loc("http://www.gcautos.fr/voitures/neuves/")
+					loc("${grailsApplication.config.grails.serverURL}/voitures/neuves/")
 				}
 				url {
-					loc("http://www.gcautos.fr/voitures/quads/")
+					loc("${grailsApplication.config.grails.serverURL}/voitures/quads/")
 				}
 				url {
-					loc("http://www.gcautos.fr/voitures/dirts/")
+					loc("${grailsApplication.config.grails.serverURL}/voitures/dirts/")
 				}
 				url {
-					loc("http://www.gcautos.fr/voitures/electriques/")
+					loc("${grailsApplication.config.grails.serverURL}/voitures/electriques/")
 				}
 				url {
-					loc("http://www.gcautos.fr/contact/index")
+					loc("${grailsApplication.config.grails.serverURL}/contact/index")
 				}
 			}
 	   }

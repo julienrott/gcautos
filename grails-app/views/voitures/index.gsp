@@ -1,6 +1,6 @@
 <html>
 <head>
-<title><g:message code="menu.occasions" /></title>
+<title>${title}</title>
 <meta name="layout" content="main" />
 </head>
 <body>

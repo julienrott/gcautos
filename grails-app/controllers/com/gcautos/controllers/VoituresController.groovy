@@ -28,6 +28,7 @@ class VoituresController {
 	def service
 	def photosSlider
 	def vTotal
+	def title
 	
 	
   def index = { }
@@ -111,6 +112,7 @@ class VoituresController {
 			voitures.each {
 				photosVoitures[it.id] = voituresService.getPhotos(it.id)
 			}
+			title = message(code: "menu.occasions")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -125,6 +127,7 @@ class VoituresController {
 			voitures.each {
 				photosVoitures[it.id] = voituresService.getPhotos(it.id)
 			}
+			title = message(code: "menu.neufs")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -139,6 +142,7 @@ class VoituresController {
 			voitures.each {
 				photosVoitures[it.id] = voituresService.getPhotos(it.id)
 			}
+			title = message(code: "menu.quads")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -153,6 +157,7 @@ class VoituresController {
 			voitures.each {
 				photosVoitures[it.id] = voituresService.getPhotos(it.id)
 			}
+			title = message(code: "menu.dirts")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
@@ -167,6 +172,7 @@ class VoituresController {
 			voitures.each {
 				photosVoitures[it.id] = voituresService.getPhotos(it.id)
 			}
+			title = message(code: "menu.electriques")
 			render(view:'index')
 		} catch (Exception e) {
 			log.error e
