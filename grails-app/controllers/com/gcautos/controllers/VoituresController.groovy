@@ -149,6 +149,21 @@ class VoituresController {
 		}
 	}
 	
+	def buggys() {
+		try {
+			menu = "buggys"
+			voitures = voituresService.list 5, params.offset?:0
+			vTotal = voituresService.count 5
+			voitures.each {
+				photosVoitures[it.id] = voituresService.getPhotos(it.id)
+			}
+			title = message(code: "menu.buggys")
+			render(view:'index')
+		} catch (Exception e) {
+			log.error e
+		}
+	}
+	
 	def dirts() {
 		try {
 			menu = "dirts"

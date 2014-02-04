@@ -17,7 +17,7 @@
 			<div class="control-group">
 				<label class="control-label" for="vehicleType">Type</label>
 				<div class="controls">
-					<g:select id="vehicleType" name="vehicleType" from="${0..4}"
+					<g:select id="vehicleType" name="vehicleType" from="${0..5}"
 						value="${voiture?.vehicleType}" valueMessagePrefix="vehicleType"/>
 				</div>
 			</div>

@@ -62,10 +62,11 @@
 				        
 				        <div class="nav-collapse collapse">
 							<ul class="nav nav-pills pull-right" >
-								<li><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
+								<li><a href="${createLinkTo(dir:'/')}"><i class="icon-home icon-white"></i></a></li>
 								<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
 								<li><g:link controller="voitures" action="neuves"><g:message code="menu.neufs"/></g:link></li>
 								<li><g:link controller="voitures" action="quads"><g:message code="menu.quads"/></g:link></li>
+								<li><g:link controller="voitures" action="buggys"><g:message code="menu.buggys"/></g:link></li>
 								<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
 								<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
