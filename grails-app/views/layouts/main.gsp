@@ -9,8 +9,6 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-
 	<r:require modules="bootstrap,bootstrap-responsive-css,myStyle"/>
 
 	<script type="text/javascript">
