@@ -6,7 +6,7 @@ import grails.plugin.cache.Cacheable
 
 class AccessoiresService {
 	
-	@Cacheable('accessoires')
+	//@Cacheable('accessoires')
 	def findAll() {
 		Accessoire.findAll("from Accessoire a order by a.titre asc") 
 	}

@@ -6,23 +6,23 @@ import grails.plugin.cache.Cacheable
 
 class VoituresService {
 	
-	@Cacheable('voitures')
+	//@Cacheable('voitures')
 	def get(def id) {
 		Voiture.get id
 	}
 	
-	@Cacheable('photos')
+	//@Cacheable('photos')
 	def getPhotos(def id) {
 		def v = get(id)
 		v.photos
 	}
 	
-	@Cacheable('voitures')
+	//@Cacheable('voitures')
 	def home() {
 		Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.id desc", [0], [max:4])
 	}
 	
-	@Cacheable('voitures')
+	//@Cacheable('voitures')
 	def list(def type, def offset) {
 		log.debug "$type, $offset"
 		Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [type], [max:4, offset:offset])

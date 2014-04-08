@@ -29,7 +29,7 @@ class AccessoiresController {
 	}
 
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='accessoires', allEntries=true)
+	//@CacheEvict(value='accessoires', allEntries=true)
 	def save() {
 		def a = Accessoire.get(params.id)
 		if ( a ) {
@@ -46,7 +46,7 @@ class AccessoiresController {
 	}
 
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='accessoires', allEntries=true)
+	//@CacheEvict(value='accessoires', allEntries=true)
 	def delete() {
 		def accessoire = Accessoire.get(params.id)
 		accessoire.delete()

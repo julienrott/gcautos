@@ -46,7 +46,7 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='voitures', allEntries=true)
+	//@CacheEvict(value='voitures', allEntries=true)
 	def save() {
 		try{
 			log.debug "Save : params = $params"
@@ -93,7 +93,7 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='voitures', allEntries=true)
+	//@CacheEvict(value='voitures', allEntries=true)
 	def delete() {
 		def v = Voiture.get(params.id)
 		if (v) {
@@ -276,7 +276,7 @@ class VoituresController {
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='photos', allEntries=true)
+	//@CacheEvict(value='photos', allEntries=true)
 	//@CacheEvict(value='voitures', allEntries=true)
 	def deletePhoto() {
 		log.debug "deletePhoto params : ${params}"

@@ -65,7 +65,7 @@ class PhotoSliderController{
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	//@CacheEvict(value='photosSliderAccueil', allEntries=true)
 	def deletePhotoSlider() {
 		def photo = PhotoSlider.get(params.id)
 		photo.delete()
@@ -73,7 +73,7 @@ class PhotoSliderController{
 	}
 
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	//@CacheEvict(value='photosSliderAccueil', allEntries=true)
 	def upload() {
 		
 		try {

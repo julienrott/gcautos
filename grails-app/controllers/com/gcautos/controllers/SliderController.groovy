@@ -55,7 +55,7 @@ class SliderController{
 	}
 	
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	//@CacheEvict(value='photosSliderAccueil', allEntries=true)
 	def deletePhotoSlider() {
 		def photo = PhotoSlider.get(params.id)
 		photo.delete()
@@ -63,7 +63,7 @@ class SliderController{
 	}
 
 	@Secured(['ROLE_ADMIN'])
-	@CacheEvict(value='photosSliderAccueil', allEntries=true)
+	//@CacheEvict(value='photosSliderAccueil', allEntries=true)
 	def upload() {
 		log.error "upload params : ${params}"
 		
