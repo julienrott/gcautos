@@ -6,7 +6,7 @@ body {
 
 .narrow {
 	margin: 0 auto;
-	max-width: 940px;
+	//max-width: 940px;
 }
 
 .logo-bg {
@@ -50,16 +50,26 @@ a.logo {
 }
 .navbar .nav li li a {
 	font: 10px/26px Arial, sans-serif;
-	color: #2e2e2e;
+	//color: #2e2e2e;
 	border: 1px solid #ffffff;
 	padding-left: 13px;
+}
+
+.navbar-inner {
+	-webkit-box-shadow: 0 0 !important;
+	box-shadow: 0 0 !important;
+	border-width: 0px !important;
+}
+
+.navbar-inner-custom {
+	background: #e6e6e6;
 }
 
 .nav {
 	background: #580707 url('../img/nav-bg.jpg') repeat-x;
 	margin: 0px !important;
-	padding-left: 340px;
-	min-height: 45px;
+	padding-left: 0px;
+	min-height: 46px;
 }
 .nav > li > a {
 	font: 700 14px/29px 'Open Sans', sans-serif;

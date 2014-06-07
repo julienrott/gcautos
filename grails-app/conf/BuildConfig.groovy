@@ -41,7 +41,7 @@ grails.project.dependency.resolution = {
 		runtime ":hibernate:$grailsVersion"
 		runtime ":jquery:1.7.1"
 
-		runtime ":twitter-bootstrap:2.1.0"
+		runtime ":twitter-bootstrap:2.3.2"
 		runtime ":resources:1.2.RC2"
 
 		if (grails.util.Environment.current in 
