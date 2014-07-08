@@ -178,6 +178,9 @@
 		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
 		</script>
+
+		<script type="text/javascript" src="http://tags.clickintext.net/tGSS8YYqzxgkD" title="Interstitiel"></script>
+
 	</g:if>
 </body>
 </html>
