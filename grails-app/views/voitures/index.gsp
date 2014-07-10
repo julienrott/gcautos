@@ -79,6 +79,13 @@
 				</div>
 
 			</div>
+			
+			<div class="row-fluid">
+				<div class="offset2">
+					<script type="text/javascript" src="http://tags.clickintext.net/t2W0wMXjn3ggJ" title="Classic (IAB)"></script>
+				</div>
+			</div>
+			
 		</g:each>
 		
 		<div class="paginate">

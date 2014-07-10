@@ -110,29 +110,40 @@
 		</div>
 		
 		<div class="footer row-fluid">
-			<ul class="list-1 span2">
-				<li class="active-2"><a href="${createLinkTo(dir:'/')}">HOME</a></li>
-				<!--<li><a href="#">ABOUT</a></li>
-				<li><a href="#">MAINTENANCE</a></li>
-				<li><a href="#">REPAIR</a></li>
-				<li><a href="#">PRICE LIST</a></li>
-				<li><a href="#">LOCATIONS</a></li>-->
-			</ul>
-			<div id="divCB" class="span6">
-			    <span class="policy">Paiement par carte bancaire</span>
-			    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"/>
-			    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"/>
-			</div>
-			<div class="span4">
-				<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
-					<sec:ifNotLoggedIn>
-						<g:link controller="login" action="auth">Login</g:link>
-					</sec:ifNotLoggedIn>
-					<sec:ifLoggedIn>
-						<g:link controller="logout">Logout (<sec:username/>)</g:link>
-					</sec:ifLoggedIn>
+			<div class="row-fluid">
+				<ul class="list-1 span2">
+					<li class="active-2"><a href="${createLinkTo(dir:'/')}">HOME</a></li>
+					<!--<li><a href="#">ABOUT</a></li>
+					<li><a href="#">MAINTENANCE</a></li>
+					<li><a href="#">REPAIR</a></li>
+					<li><a href="#">PRICE LIST</a></li>
+					<li><a href="#">LOCATIONS</a></li>-->
+				</ul>
+				<div id="divCB" class="span6">
+				    <span class="policy">Paiement par carte bancaire</span>
+				    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"/>
+				    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"/>
+				</div>
+				<div class="span4">
+					<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
+						<sec:ifNotLoggedIn>
+							<g:link controller="login" action="auth">Login</g:link>
+						</sec:ifNotLoggedIn>
+						<sec:ifLoggedIn>
+							<g:link controller="logout">Logout (<sec:username/>)</g:link>
+						</sec:ifLoggedIn>
+					</div>
 				</div>
 			</div>
+
+			<div class="row-fluid">&nbsp;</div>
+			
+			<div class="row-fluid">
+				<div class="offset2">
+					<script type="text/javascript" src="http://tags.clickintext.net/t2791gXkYV2dm" title="Classic (IAB) footer"></script>
+				</div>
+			</div>
+
 		</div>
 	</div>
 
@@ -179,8 +190,10 @@
 		})();
 		</script>
 
-		<script type="text/javascript" src="http://tags.clickintext.net/tGSS8YYqzxgkD" title="Interstitiel"></script>
-
 	</g:if>
+
+	<script type="text/javascript" src="http://tags.clickintext.net/t2ELJBbAJGQH2" title="Slide In"></script>
+	<script type="text/javascript" src="http://tags.clickintext.net/t2bxzgUWTO4WH" title="Footer Expand"></script>
+
 </body>
 </html>
