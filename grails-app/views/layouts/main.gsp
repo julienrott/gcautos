@@ -193,7 +193,7 @@
 	</g:if>
 
 	<script type="text/javascript" src="http://tags.clickintext.net/t2ELJBbAJGQH2" title="Slide In"></script>
-	<script type="text/javascript" src="http://tags.clickintext.net/t2bxzgUWTO4WH" title="Footer Expand"></script>
+	<!-- <script type="text/javascript" src="http://tags.clickintext.net/t2bxzgUWTO4WH" title="Footer Expand"></script> -->
 
 </body>
 </html>

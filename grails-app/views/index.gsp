@@ -52,6 +52,20 @@
 			<div>&nbsp;</div>
 		</div>
 		
+		<div class="row-fluid">
+			<div class="offset2">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- leaderboard -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-5871598473810001"
+				     data-ad-slot="3730173376"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+		
 		<div class="margin10">
 			<h2 class="span12">Nos dernières <span class="h2">occasions</span></h2>
 			<g:if test="${voitures?.size > 0}">
@@ -117,6 +131,20 @@
 					<a class="link-1" href="#" id="addNews">Ajouter</a> <img src="img/extra-2.png" alt="">
 				</sec:ifAllGranted>
 			</div>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="offset2">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- leaderboard -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:728px;height:90px"
+			     data-ad-client="ca-pub-5871598473810001"
+			     data-ad-slot="3730173376"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
 		</div>
 	</div>
 	
