@@ -12,6 +12,7 @@ import com.gcautos.domain.Service;
 import com.gcautos.domain.Voiture;
 import com.gcautos.services.VoituresService;
 
+import grails.converters.JSON
 import grails.plugins.springsecurity.Secured
 import grails.plugin.cache.CacheEvict
 
@@ -43,6 +44,19 @@ class VoituresController {
 		service = Service.list(max:1,sort:"id",order:"desc")[0]
 		photosSlider = photosService.photosSliderAccueil()
 		render(view:"/index", model:[voitures:voitures, photosVoitures: photosVoitures, service:service, photosSlider:photosSlider])
+	}
+	
+	def photoSliders() {
+		def res = ["photoSlider":[]]
+		photosSlider = photosService.photosSliderAccueil()
+		photosSlider.eachWithIndex{it, idx ->
+			res.photoSlider.push (id: it.id, 
+				idd: it.id,
+				url: createLink(controller:'photoSlider', action:'showPhotoSlider', id:"${it.id}", params:[type:'slider']),
+				css: idx == 0 ? 'active' : ''
+				)
+		}
+		render res as JSON
 	}
 	
 	@Secured(['ROLE_ADMIN'])

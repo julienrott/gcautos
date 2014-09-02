@@ -253,6 +253,10 @@ div.photo span {
 	color: #494949;
 }
 
+.paginate .active {
+	color: black !important;
+}
+
 .voitureListe {
 	background: none repeat scroll 0 0 transparent/*#E6E6E6*/;
   border: 3px solid #8B8B8B;

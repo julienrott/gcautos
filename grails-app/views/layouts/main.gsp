@@ -1,6 +1,6 @@
 ﻿<%@ page import="com.gcautos.domain.Accessoire" %>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -15,7 +15,7 @@
 	}
 	</style>
 
-	<r:require modules="bootstrap,bootstrap-responsive-css,myStyle"/>
+	<r:require modules="jquery,bootstrap-css,bootstrap-responsive-css,myStyle"/>
 
 	<script type="text/javascript">
 		var urlContext = '${grailsApplication.config.grails.serverURL}';
@@ -40,13 +40,14 @@
 		<span itemprop="telephone">06 63 56 43 43</span>
 	</div>
 
+<script type="text/x-handlebars">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner navbar-inner-custom">
 			<div class="container">
 			
 				<div class="divtel pull-right span3">
 					<div class="font-1">Tel: 06 63 56 43 43</div>
-					<div class="font-1"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
+					<div class="font-1">{{#link-to 'contact'}}Nous contacter{{/link-to}}</div>
 				</div>
 				
 				<div class="pull-right span3">
@@ -60,24 +61,24 @@
 		        </button>
 		        
 		        <div class="span4" style="margin-left: 0;">
-					<a href="${createLinkTo(dir:'/')}" class="" title="GC AUTOS">
+					{{#link-to 'index' title="GC AUTOS"}}
 						<img src="${createLinkTo(dir:'img', file: 'logo-bg.png')}"/>
-					</a>
+					{{/link-to}}
 				</div>
 				
 		        <div class="nav-collapse collapse">
 					<ul class="nav nav-pills pull-right">
-						<li><a href="${createLinkTo(dir:'/')}"><i class="icon-home icon-white"></i></a></li>
-						<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
-						<li><g:link controller="voitures" action="neuves"><g:message code="menu.neufs"/></g:link></li>
-						<li><g:link controller="voitures" action="quads"><g:message code="menu.quads"/></g:link></li>
-						<li><g:link controller="voitures" action="buggys"><g:message code="menu.buggys"/></g:link></li>
-						<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
-						<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
+						<li>{{#link-to 'index'}}<i class="icon-home icon-white"></i>{{/link-to}}</li>
+						<li>{{#link-to 'occasions'}}Occasions{{/link-to}}</li>
+						<li>{{#link-to 'neuves'}}<g:message code="menu.neufs"/>{{/link-to}}</li>
+						<li>{{#link-to 'quads'}}<g:message code="menu.quads"/>{{/link-to}}</li>
+						<li>{{#link-to 'buggys'}}<g:message code="menu.buggys"/>{{/link-to}}</li>
+						<li>{{#link-to 'dirts'}}<g:message code="menu.dirts"/>{{/link-to}}</li>
+						<li>{{#link-to 'electriques'}}<g:message code="menu.electriques"/>{{/link-to}}</li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<g:each in="${Accessoire.list().sort{it.titre}}">
-									<li><g:link controller="accessoires" action="view" id="${it.id}">${it.titre}</g:link></li>
+									<li>{{#link-to 'accessoires' ${it.id} }}${it.titre}{{/link-to}}</li>
 								</g:each>
 							</ul>
 						</li>
@@ -85,15 +86,12 @@
 							<sec:ifAllGranted roles="ROLE_ADMIN">
 								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin menu<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
 										<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
 										<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
 										<li><g:link controller="accessoires" ><g:message code="menu.manage.accessoires"/></g:link></li>
-										<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
 									</ul>
 								</li>
 							</sec:ifAllGranted>
-							<li><g:link controller="logout">Logout (<sec:username/>)</g:link></li>
 						</sec:ifLoggedIn>
 					</ul>
 	          	</div>
@@ -106,18 +104,18 @@
 		
 		<!-- <div class="container content row-fluid"> -->
 		<div class="content row-fluid">
+			
+			
+				{{outlet}}
+			
+		
 			<g:layoutBody/>
 		</div>
 		
 		<div class="footer row-fluid">
 			<div class="row-fluid">
 				<ul class="list-1 span2">
-					<li class="active-2"><a href="${createLinkTo(dir:'/')}">HOME</a></li>
-					<!--<li><a href="#">ABOUT</a></li>
-					<li><a href="#">MAINTENANCE</a></li>
-					<li><a href="#">REPAIR</a></li>
-					<li><a href="#">PRICE LIST</a></li>
-					<li><a href="#">LOCATIONS</a></li>-->
+					<li class="active-2">{{#link-to 'index' title="GC AUTOS"}}HOME{{/link-to}}</a></li>
 				</ul>
 				<div id="divCB" class="span6">
 				    <span class="policy">Paiement par carte bancaire</span>
@@ -146,35 +144,230 @@
 
 		</div>
 	</div>
+</script>
 
-	<r:require module="application"/>
+	<script type="text/x-handlebars" id="index">
+		<!-- slider -->
+		<div id="myCarousel" class="carousel slide">
+			<div class="carousel-inner">
+				{{#each model}}
+					<div {{bind-attr class="css :item"}}>
+						<img {{bind-attr src=url}}  width="100%" height="415"/>
+					</div>
+				{{/each}}
+			</div>
+		</div>
+		<!-- end slider -->
+
+<sec:ifAllGranted roles="ROLE_ADMIN">
+<button {{action 'sendMessage'}}>Send Message</button>
+</sec:ifAllGranted>
+	</script>
 	
-	<g:javascript>
-		$(document).ready(function() {
-			if ($( "#dateAchat" )[0])
-				$( "#dateAchat" ).datepicker();
-			if ($( "#dateVente" )[0])
-				$( "#dateVente" ).datepicker();
-		});
+	<script type="text/x-handlebars" id="contact">
+		<section>
+			<article>&nbsp;</article>
+			<article>
+				<center><h2 class="ident-bot-5 ident-top-2">Les véhicules sont visibles uniquement sur rendez-vous</h2></center>
+			</article>
+		</section>
+
+		<div class="">&nbsp;</div>
+
+		<div class="voitureListe">
+			<div role="main">
+				<section id="content-2">
+					<div class="container_12">
+						<div class="ident-bot-4">
+							<h2 class="ident-bot-5 ident-top-2">GC Autos</h2>
+							<div class="font-3">1 rue du Muhlwasser</div>
+							<div class="font-3">67150 Matzenheim</div>
+							<div class="font-3">Tel: 06 63 56 43 43</div>
+							<div class="font-3">email: <a href="mailto:gc.autos@orange.fr?subject=${'[Contact du site]'.encodeAsHTML()}">gc.autos[at]orange.fr</a></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+
+					<article>&nbsp;</article>
+
+				</section>
+  			</div>
+		</div>
+	</script>
 	
-		$(function() {
-	           $('textarea.tinymce').tinymce({
-	                   script_url : urlContext + "/js/libs/tiny_mce-3.5.8/tiny_mce.js",
-	                   theme : "advanced",
-	                   plugins : "media",
-	                   //theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
-	                   //theme_advanced_buttons2 : "media, styleselect,formatselect,fontselect,fontsizeselect",
-	                   theme_advanced_buttons2_add : "media",
-	                   //theme_advanced_toolbar_location : "top",
-	                   //theme_advanced_toolbar_align : "left",
-	                   //theme_advanced_statusbar_location : "bottom",
-	                   theme_advanced_resizing : true,
-	                   width: "80%",
-	                   height: "300"
-	           });
-	   	});
+	<script type="text/x-handlebars" id="accessoires">
+
+    	<div>&nbsp;</div>
+    	
+		<div class="voitureListe">
+			<div class="row-fluid">
+				<h2>{{titre}}</h2>
+				<div class="customDivReset">{{{contenu}}}</div>
+			</div>
+
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+			<div class="row-fluid">
+				<g:form controller="accessoires" action="save" name="form" id="${accessoire?.id}">
+					<div><g:textField name="titre" value="${accessoire?.titre}" /></div>
+					<div><textarea id="editor" name="contenu" class="tinymce">
+						${accessoire?.contenu}
+					</textarea></div>
+					<g:submitButton name="enregistrer" value="enregistrer"/>
+				</g:form>
+			</div>
+			</sec:ifAllGranted>
+		</div>
+
+	</script>
 	
-	</g:javascript>
+	<script type="text/x-handlebars" id="listeVoitures">
+		<div class="paginate">
+			{{#each page in meta.pagesTotal}}
+				{{#link-to meta.route (query-params page=page) class="step"}}
+					{{page}}
+				{{/link-to}}
+			{{/each}}
+		</div>
+
+		{{#each voiture in model}}
+		<div class="voitureListe">
+			<div class="row-fluid">
+				<h2 class="span10">
+					{{#link-to 'detailsVoiture' voiture}}
+						{{voiture.titre}}
+					{{/link-to}}
+				</h2>
+			</div>
+
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<div class="">
+					{{#link-to 'editVoiture' voiture.id}}modifier{{/link-to}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="${createLink(controller:'voitures', action:'delete', id:"")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<div>&nbsp;</div>
+				</div>
+			</sec:ifAllGranted>
+
+			<div>
+				{{{voiture.description}}}
+			</div>
+
+			<div class="row-fluid">
+					{{#link-to 'detailsVoiture' voiture}}
+						<img class="img-polaroid span6" {{bind-attr src=voiture.photo1}} />
+					{{/link-to}}
+					{{#link-to 'detailsVoiture' voiture}}
+						<img class="img-polaroid span6" {{bind-attr src=voiture.photo2}} />
+					{{/link-to}}
+			</div>
+		</div>
+		{{else}}
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+			
+			<div class="voitureListe">
+				<strong class="strong-1">
+					Désolé, aucun véhicule n'est à vendre dans cette catégorie pour le moment. 
+					Revenez vérifier régulièrement.
+				</strong>
+			</div>
+		
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+			<div class="">&nbsp;</div>
+		{{/each}}
+
+		<div class="paginate">
+			{{#each page in meta.pagesTotal}}
+				{{#link-to 'occasions' (query-params page=page) class="step"}}
+					{{page}}
+				{{/link-to}}
+			{{/each}}
+		</div>
+
+	</script>
+	
+	<script type="text/x-handlebars" id="detailsVoiture">
+		<div>&nbsp;</div>
+		<div class="voitureListe">
+			<div class="row-fluid">
+				<h2 class="span10">
+					{{titre}}
+				</h2>
+			</div>
+
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<div class="">
+					{{#link-to 'editVoiture' id}}modifier{{/link-to}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<a href="${createLink(controller:'voitures', action:'delete', id:"")}">supprimer</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					<div>&nbsp;</div>
+				</div>
+			</sec:ifAllGranted>
+
+			<div>
+				{{{description}}}
+			</div>
+
+			<div class="row-fluid">
+				{{#each photo in photos}}
+					<img class="img-polaroid span5" {{bind-attr src=photo}} />
+				{{/each}}
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/x-handlebars" id="editVoiture">
+		<div>&nbsp;</div>
+		<div class="voitureListe">
+
+			<div class="row-fluid">
+				<h2 class="span10">
+					{{titre}}
+				</h2>
+			</div>
+
+			<div>
+				Type {{vehicleType}}
+			</div>
+
+			<div>
+				{{{description}}}
+			</div>
+
+			<div class="">&nbsp;</div>
+
+			<div class="row-fluid">
+				Titre {{input type='text' name='titre' value=titre}}
+			</div>
+
+			<div class="row-fluid">
+				Type {{view Ember.Select
+					content=vehicleTypes
+					optionValuePath="content.type"
+					optionLabelPath="content.label"
+					value=vehicleType}}
+			</div>
+
+			<div class="">&nbsp;</div>
+
+			<div>
+            	Description
+				{{view App.TinymceView valueBinding='description' class='tinymce'}}
+			</div>
+
+			<div class="row-fluid">
+				{{#each photo in photos}}
+					<img class="img-polaroid span5" {{bind-attr src=photo}} />
+				{{/each}}
+			</div>
+
+			<div class="row-fluid">
+				<button {{action 'save'}}>Enregistrer</button>
+			</div>
+		</div>
+	</script>
+	
+	<r:require modules="application,bootstrap-transition"/>
 	
 	<r:layoutResources />
 

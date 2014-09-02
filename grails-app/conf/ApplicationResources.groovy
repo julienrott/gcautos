@@ -4,6 +4,11 @@ modules = {
 		resource url:'js/jquery-ui-1.8.21.custom.min.js'
 		resource url:'js/jquery.ui.datepicker-fr.js'
 		resource url:'js/jquery.jscroll.min.js'
+		resource url:'js/bootstrap-carousel-custom.js'
+		resource url:'js/handlebars-1.3.0.js'
+		resource url:'js/ember-1.7.0.min.js'
+		resource url:'js/ember-data-latest.js'
+		resource url:'js/emberApplication.js'
 		resource url:'js/application.js'
 	}
 	
