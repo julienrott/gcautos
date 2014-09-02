@@ -109,13 +109,16 @@ App.IndexRoute = Ember.Route.extend({
 
 App.EditVoitureController = Ember.ObjectController.extend({
 	vehicleTypes: [
-       {label: 'Occasion', type: '0'},
-       {label: 'Neuve', type: '1'},
-       {label: 'Quad', type: '2'},
-       {label: 'Dirt', type: '3'},
-       {label: 'Electrique', type: '4'},
-       {label: 'Buggy', type: '5'}
+       {label: 'Occasion', type: 0},
+       {label: 'Neuve', type: 1},
+       {label: 'Quad', type: 2},
+       {label: 'Dirt', type: 3},
+       {label: 'Electrique', type: 4},
+       {label: 'Buggy', type: 5}
 	],
+	getType: function() {
+		return "gnarf"
+	},
 	actions: {
 		save: function() {
 			this.store.find('voiture', this.model.get('id')).then(function(voiture) {
