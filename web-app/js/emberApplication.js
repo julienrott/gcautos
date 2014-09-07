@@ -304,8 +304,10 @@ App.AjaxUploaderView = Ember.View.extend({
 });
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-	host: "http://localhost:8080",
-	namespace: "gcautos/ember",
+	//host: "http://localhost:8080",
+	host: urlContext,
+	//namespace: "gcautos/voitures"
+	namespace: "ember"
 	//plurals: {"neuve": "neuves"}
 });
 
@@ -319,8 +321,10 @@ App.PhotoSlider = DS.Model.extend({
 });
 
 App.PhotoSliderAdapter = DS.RESTAdapter.extend({
-	host: "http://localhost:8080",
-	namespace: "gcautos/voitures"
+	//host: "http://localhost:8080",
+	host: urlContext,
+	//namespace: "gcautos/voitures"
+	namespace: "voitures"
 });
 
 App.Accessoire = DS.Model.extend({
