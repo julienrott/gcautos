@@ -11,59 +11,45 @@ class EmberController {
 	def voituresService
 	
 	def voitures() {
+		log.debug params
+		log.debug request.JSON
 		switch (request.method) {
 		case "PUT":
-			log.debug params
-			log.debug request.JSON
+			long[] idsFromRequest = request.JSON.voiture.photos.id
 			Voiture v = Voiture.get(params.id)
 			v.titre = request.JSON.voiture.titre
 			v.description = request.JSON.voiture.description
 			v.vehicleType = request.JSON.voiture.vehicleType
+			v.mention = request.JSON.voiture.mention
+			if(request.JSON.voiture.deletePhoto && v.photos.id.contains(idsFromRequest[0])) {
+				Photo photo = Photo.get(idsFromRequest[0])
+				v.removeFromPhotos(photo)
+				photo.delete()
+			}
 			v.save()
 			def res = [voitures: []]
-					res.voitures.push(
-							idd: v.id,
-							titre: v.titre,
-							description: v.description,
-							vehicleType: v.vehicleType)
+			res.voitures.push(getVoitureArray(v))
 			render res as JSON
 			break
 		case "GET":
 			Voiture v = Voiture.get(params.id)
 			def res = [voitures: []]
-					res.voitures.push(
-							idd: v.id,
-							titre: v.titre,
-							description: v.description,
-							vehicleType: v.vehicleType)
+			res.voitures.push(getVoitureArray(v))
 			render res as JSON
 			break
 		default:
 			break
 		}
-		
 	}
 	
 	private def car(String nom, int type, String route) {
-		log.debug params
-		log.debug request.method
 		try {
 			def res = ["$nom": []]
 			res."$nom" = []
 			def voitures = voituresService.list type, params.page?((params.page as int) - 1)*4:0
 			def vTotal = voituresService.count type
 			voitures.each {
-				res."$nom".push(idd: it.id,
-					titre: it.titre,
-					description: it.description,
-					photo1: createLink(controller:'voitures', action:'showPhoto', 
-							id:"${it.photos.toArray().size() > 0 ? it.photos.toArray()[0].id : ''}", 
-							params:[type:'small']),
-					photo2: createLink(controller:'voitures', action:'showPhoto', 
-							id:"${it.photos.toArray().size() > 1 ? it.photos.toArray()[1].id : ''}", 
-							params:[type:'small']),
-					photos: getPhotosUrls(it.photos)
-				)
+				res."$nom".push(getVoitureArray(it))
 			}
 			
 			def pagesTotal
@@ -82,12 +68,38 @@ class EmberController {
 		}
 	}
 	
-	private String[] getPhotosUrls(def photos) {
-		def urls = []
+	private def getVoitureArray(Voiture v) {
+		[	idd: v.id,
+			id: v.id,
+			titre: v.titre,
+			description: v.description,
+			vehicleType: v.vehicleType,
+			mention: v.mention,
+			prixVente: g.formatNumber(number: v.prixVente, format: "###,##0"),
+			photos: getPhotosUrls(v.photos),
+			photo1: createLink(controller:'voitures', action:'showPhoto', 
+					id:"${v.photos.toArray().size() > 0 ? v.photos.toArray()[0].id : ''}", 
+					params:[type:'small']),
+			photo2: createLink(controller:'voitures', action:'showPhoto', 
+					id:"${v.photos.toArray().size() > 1 ? v.photos.toArray()[1].id : ''}", 
+					params:[type:'small'])]
+	}
+	
+	private def getPhotosUrls(def photos) {
+		def res = []
 		photos.each{
-			urls << createLink(controller:'voitures', action:'showPhoto', id: it.id, params: [type: "small"])
+			res.push( id: it.id, url: createLink(controller:'voitures', action:'showPhoto', id: it.id, params: [type: "small"]) )
 		}
-		urls
+		res
+	}
+	
+	def voituresHomes() {
+		def voitures = voituresService.home()
+		def res = [voituresHomes: []]
+		voitures.each {
+			res.voituresHomes.push(getVoitureArray(it))
+		}
+		render res as JSON
 	}
 	
 	def occasions() {
@@ -119,6 +131,11 @@ class EmberController {
 		def res = [accessoires: []]
 		res.accessoires.push(idd: acc.id, titre: acc.titre, contenu: acc.contenu)
 		render res as JSON
+	}
+	
+	def ajaxUploader() {
+		log.debug params
+		render template: '/ajaxUploader/ajaxUploader', model: [id: params.id]
 	}
 	
 }

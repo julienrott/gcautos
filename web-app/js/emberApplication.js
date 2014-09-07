@@ -80,7 +80,7 @@ App.TinymceView = Ember.TextArea.extend({
     }
 });
 
-App.IndexController = Ember.ObjectController.extend({
+App.IndexController = Ember.ArrayController.extend({
 	actions: {
 		sendMessage: function() {
 			var occ = this.store.createRecord('occasion', {
@@ -89,7 +89,10 @@ App.IndexController = Ember.ObjectController.extend({
 			});
 			occ.save();
 		}
-	}
+	},
+	voituresHome: function() {
+		return this.store.find('voituresHome');
+	}.property('voituresHome')
 });
 
 App.IndexRoute = Ember.Route.extend({
@@ -103,7 +106,18 @@ App.IndexRoute = Ember.Route.extend({
 			console.log("photos", photos);
 		});
 		return photos;*/
+		
 		return this.store.find('photoSlider');
+	},
+	renderTemplate: function() {
+		this.render('index');
+		Ember.run.schedule('afterRender', function task3(){
+			Ember.$(".blink").each(function(){
+				$(this).effect("pulsate", { times:500 }, 1500);
+			});
+			updateService()
+			updateNews()
+		});
 	}
 });
 
@@ -116,6 +130,11 @@ App.EditVoitureController = Ember.ObjectController.extend({
        {label: 'Electrique', type: 4},
        {label: 'Buggy', type: 5}
 	],
+	vehicleMentions: [
+       {label: 'Aucune', type: 0},
+       {label: 'Nouveauté', type: 1},
+       {label: 'Vendu(e)', type: 2}
+	],
 	getType: function() {
 		return "gnarf"
 	},
@@ -125,6 +144,25 @@ App.EditVoitureController = Ember.ObjectController.extend({
 				//voiture.set('titre', this.model.get('titre'));
 				voiture.save();
 			});
+		},
+		deletePhoto: function(idVoiture, idPhoto) {
+			this.store.find('voiture', this.model.get('id')).then(function(voiture) {
+				var photos = voiture.get('photos');
+				var photoToDelete = null;
+				$.each(photos, function(idx, photo){
+					if ($(photo.id).is($(idPhoto))) {
+						photos = [photo]
+						return false
+					}
+					else{}
+				})
+				voiture.set('photos', photos)
+				voiture.set('deletePhoto', true)
+				voiture.save();
+			});
+		},
+		reloadCar: function() {
+			this.model.reload()
 		}
 	}
 });
@@ -142,6 +180,11 @@ App.VoituresRoute = Ember.Route.extend({
 	},
 	renderTemplate: function() {
 		this.render('listeVoitures');
+		Ember.run.schedule('afterRender', function task3(){
+			Ember.$(".blink").each(function(){
+				$(this).effect("pulsate", { times:500 }, 1500);
+			});
+		});
 	}
 });
 
@@ -252,6 +295,14 @@ App.IndexView = Ember.View.extend({
 	}
 });
 
+App.AjaxUploaderView = Ember.View.extend({
+	didInsertElement : function(){
+		Ember.$.get('ember/ajaxUploader', {id: this.get('controller').model.id}, function(a, b, c){
+			Ember.$('#divAjaxUploader').html(a)
+		});
+	}
+});
+
 App.ApplicationAdapter = DS.RESTAdapter.extend({
 	host: "http://localhost:8080",
 	namespace: "gcautos/ember",
@@ -282,10 +333,22 @@ App.Voiture = DS.Model.extend({
 	idd: DS.attr('number'),
 	titre: DS.attr('string'),
 	description: DS.attr('string'),
+	mention: DS.attr('number'),
 	vehicleType: DS.attr('number'),
+	prixVente: DS.attr('string'),
 	photo1: DS.attr('string'),
 	photo2: DS.attr('string'),
-	photos: DS.attr()
+	photos: DS.attr(),
+	deletePhoto: DS.attr('boolean'),
+	isNew: function() {
+		return this.get('mention') === 1
+	}.property('mention'),
+	isSold: function() {
+		return this.get('mention') === 2
+	}.property('mention')
+});
+
+App.VoituresHome = App.Voiture.extend({
 });
 
 App.Occasion = App.Voiture.extend({

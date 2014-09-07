@@ -52,7 +52,6 @@ class NewsController {
 	}
 
 	def getLastNews = {
-		log.error params
 		def max = -1
 		if (params.action.equals("getLastNews")) max = 2
 		news = News.list(sort: "id", order: "desc", max: max)

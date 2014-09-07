@@ -15,7 +15,7 @@
 	}
 	</style>
 
-	<r:require modules="jquery,bootstrap-css,bootstrap-responsive-css,myStyle"/>
+	<r:require modules="jquery,bootstrap-css,bootstrap-responsive-css,myStyle,fileuploader"/>
 
 	<script type="text/javascript">
 		var urlContext = '${grailsApplication.config.grails.serverURL}';
@@ -159,9 +159,81 @@
 		</div>
 		<!-- end slider -->
 
-<sec:ifAllGranted roles="ROLE_ADMIN">
-<button {{action 'sendMessage'}}>Send Message</button>
-</sec:ifAllGranted>
+	<div class="bg-grey">
+	
+		<div class="row-fluid">
+			<div>&nbsp;</div>
+		</div>
+		
+		<div class="row-fluid">
+			<h2 class="span12 center">
+				<span>Les véhicules sont visibles uniquement sur rendez-vous</span>
+			</h2>
+		</div>
+		<div class="row-fluid center">
+			<div class="span5">
+				<img src="${resource(dir: 'images', file: 'livraison.jpg')}">
+			</div>
+			
+			<div class="span2">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				{{#link-to 'contact' class="blink big"}}Nous contacter{{/link-to}}
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+			</div>
+			
+			<div class="span5">
+				<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FGC-AUTOS-V%C3%A9hicules-Neufs-Occasions-Quads-Dirt-Bikes-Buggy-Alsace%2F234904276569945&amp;width&amp;height=300&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:123px;" allowtransparency="true"></iframe>
+			</div>
+		</div>
+	
+		<div class="row-fluid">
+			<div>&nbsp;</div>
+		</div>
+		
+		<div class="margin10">
+			<h2 class="span12">Nos dernières <span class="h2">occasions</span></h2>
+			
+			<div id="voituresHome" class="row-fluid">
+				
+				{{#each v in voituresHome}}
+					<div class="span3">
+						<div class="span12">
+							{{#link-to 'detailsVoiture' v}}
+								<img class="img-polaroid span12" width="100%" {{bind-attr src=v.photo1}}>
+							{{/link-to}}
+						</div>
+						<div class="lignes-2 span12">
+							<h2>{{#link-to 'detailsVoiture' v}}{{v.titre}}{{/link-to}}</h2>
+							<h2 class="h2">{{#if v.isSold}}Vendu(e){{else}}{{{v.prixVente}}}&euro;{{/if}}</h2>
+						</div>
+						<div class="lignes-6 span12">{{{v.description}}}</div>
+					</div>
+				{{/each}}
+				
+			</div>
+		</div>
+	</div>
+
+		<div class="row-fluid">
+			<div>&nbsp;</div>
+		</div>
+		
+		<div class="row-fluid">
+			<div class="span6">
+				<h2>&nbsp;Nos <span class="h2">Services</span></h2>
+				<div id="service" class="margin10"></div>
+			</div>
+
+			<div class="span6">
+				<h2 class="ident-bot-5 ident-top-2">Nos <span class="h2 inner-ident-1">News</span></h2>
+				<div class="block-2">
+					<div id="news" class="margin10"></div>
+				</div>
+			</div>
+		</div>
+
 	</script>
 	
 	<script type="text/x-handlebars" id="contact">
@@ -234,8 +306,11 @@
 			<div class="row-fluid">
 				<h2 class="span10">
 					{{#link-to 'detailsVoiture' voiture}}
-						{{voiture.titre}}
+						{{#if voiture.isNew}}<span class="blink">Nouveauté : </span>{{/if}} {{voiture.titre}}
 					{{/link-to}}
+				</h2>
+				<h2 class="h2 span2">
+					{{#if voiture.isSold}}Vendu(e){{else}}{{{voiture.prixVente}}}&euro;{{/if}}
 				</h2>
 			</div>
 
@@ -292,7 +367,10 @@
 		<div class="voitureListe">
 			<div class="row-fluid">
 				<h2 class="span10">
-					{{titre}}
+					{{#if isNew}}<span class="blink">Nouveauté : </span>{{/if}} {{titre}}
+				</h2>
+				<h2 class="h2 span2">
+					{{#if isSold}}Vendu(e){{else}}{{{prixVente}}}&euro;{{/if}}
 				</h2>
 			</div>
 
@@ -310,7 +388,12 @@
 
 			<div class="row-fluid">
 				{{#each photo in photos}}
-					<img class="img-polaroid span5" {{bind-attr src=photo}} />
+					<div class="photo span5">
+						<img class="img-polaroid span12" {{bind-attr src=photo.url}} />
+						<sec:ifAllGranted roles="ROLE_ADMIN">
+							<span {{bind-attr id=photo.id}} {{action 'deletePhoto' model}} class="deletePhoto" title="Supprimer"></span>
+						</sec:ifAllGranted>
+					</div>
 				{{/each}}
 			</div>
 		</div>
@@ -322,12 +405,8 @@
 
 			<div class="row-fluid">
 				<h2 class="span10">
-					{{titre}}
+					{{#if isNew}}<span class="blink">Nouveauté : </span>{{/if}} {{titre}}
 				</h2>
-			</div>
-
-			<div>
-				Type {{vehicleType}}
 			</div>
 
 			<div>
@@ -348,6 +427,14 @@
 					value=vehicleType}}
 			</div>
 
+			<div class="row-fluid">
+				Mention {{view Ember.Select
+					content=vehicleMentions
+					optionValuePath="content.type"
+					optionLabelPath="content.label"
+					value=mention}}
+			</div>
+
 			<div class="">&nbsp;</div>
 
 			<div>
@@ -355,14 +442,31 @@
 				{{view App.TinymceView valueBinding='description' class='tinymce'}}
 			</div>
 
-			<div class="row-fluid">
-				{{#each photo in photos}}
-					<img class="img-polaroid span5" {{bind-attr src=photo}} />
-				{{/each}}
-			</div>
+			<div class="">&nbsp;</div>
 
 			<div class="row-fluid">
 				<button {{action 'save'}}>Enregistrer</button>
+			</div>
+
+			<div class="">&nbsp;</div>
+
+			<div class="row-fluid">
+				<h2 class="span10">Photos</h2>
+			</div>
+
+			<button {{action 'reloadCar'}} id="reloadCarBtn" style="display: none;">reload</button>
+
+			<div id="divAjaxUploader">{{view App.AjaxUploaderView}}</div>
+
+			<div class="row-fluid">
+				{{#each photo in photos}}
+					<div class="photo span5">
+						<img class="img-polaroid span12" {{bind-attr src=photo.url}} />
+						<sec:ifAllGranted roles="ROLE_ADMIN">
+							<span {{bind-attr id=photo.id}} {{action 'deletePhoto' model.id photo.id}} class="deletePhoto" title="Supprimer"></span>
+						</sec:ifAllGranted>
+					</div>
+				{{/each}}
 			</div>
 		</div>
 	</script>

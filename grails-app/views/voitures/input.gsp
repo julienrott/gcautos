@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title><g:message code="menu.occasions" /></title>
-	<meta name="layout" content="main" />
+	<meta name="layout" content="mainOLD" />
 	<r:require module="fileuploader" />
 	<jv:generateValidation domain="voiture" form="carForm" />
 </head>

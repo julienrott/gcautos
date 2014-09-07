@@ -280,3 +280,11 @@ div.photo span {
 	max-height: 110px;
     overflow: hidden;
 }
+
+.big {
+	font-size: xx-large;
+}
+
+#voituresHome > div {
+	margin-left: 15px;
+}

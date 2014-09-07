@@ -153,3 +153,7 @@ if ($("#saveService").length > 0) {
 		return false;
 	});
 }
+
+reloadCar = function() {
+	$('#reloadCarBtn').click()
+}

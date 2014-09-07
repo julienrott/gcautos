@@ -24,6 +24,7 @@ class StorageController {
 	//@CacheEvict(value='voitures', allEntries=true)
 	def upload() {
 		//log.error "upload params : ${params}"
+		log.debug params
 		
 		try {
 			def photo = new Photo()
@@ -47,7 +48,7 @@ class StorageController {
 			ImageIO.write(croppedImage3, "jpg", baos3);
 			photo.data_small_homepage = baos3.toByteArray();
 
-			photo.voiture = Voiture.get(params["id"])
+			photo.voiture = Voiture.get(params["id"] as long)
 			photo.titre = request.getHeader('X-File-Name') as String
 			
 			if (photo.save()) {
