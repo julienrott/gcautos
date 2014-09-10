@@ -2,8 +2,10 @@ if (typeof jQuery !== 'undefined') {
 	(function($) {
 		$('#spinner').ajaxStart(function() {
 			$(this).fadeIn();
+			//$(this).modal('show');
 		}).ajaxStop(function() {
 			$(this).fadeOut();
+			//$(this).modal('hide');
 		});
 	})(jQuery);
 }

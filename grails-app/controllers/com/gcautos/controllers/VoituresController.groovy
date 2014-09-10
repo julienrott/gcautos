@@ -275,15 +275,29 @@ class VoituresController {
 					render(status: 304)
 				}
 			}
-
+			
+//			response.setHeader('Content-type',"image/jpg")
+			
 			switch (params.type)
 			{
-				case "small" : response.outputStream << photo.data_small; break;// write the image to the outputstream
+				case "full" : response.outputStream << photo.data; break;
+				case "small" : response.outputStream << photo.data_small; break;
 				case "slider" : response.outputStream << photo.data_slider; break;
 				case "small_homepage" : response.outputStream << photo.data_small_homepage; break;
+				case "medium" : if(!photo.data_medium) {
+						photosService.populatePhoto(photo, 1000, 1000, "data_medium")
+						photo.save()
+					}
+					response.outputStream << photo.data_medium;
+					break;
 			}
+
+//			render "<img src='data:image/jpeg;base64,${photo.data_small.encodeAsBase64()}'/>"
+//			response.setHeader("Content-disposition")
+//			response.setHeader('Content-length', photo.data_small.length as String)
+//			response.outputStream << photo.data_small
+//			response.contentType = "image/jpg"
 			response.outputStream.flush()
-			
 		} catch(Exception e) {
 			log.error "showPhoto : ${e}"
 		}

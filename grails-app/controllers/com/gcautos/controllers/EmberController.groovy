@@ -79,16 +79,16 @@ class EmberController {
 			photos: getPhotosUrls(v.photos),
 			photo1: createLink(controller:'voitures', action:'showPhoto', 
 					id:"${v.photos.toArray().size() > 0 ? v.photos.toArray()[0].id : ''}", 
-					params:[type:'small']),
+					params:[type:'medium']),
 			photo2: createLink(controller:'voitures', action:'showPhoto', 
 					id:"${v.photos.toArray().size() > 1 ? v.photos.toArray()[1].id : ''}", 
-					params:[type:'small'])]
+					params:[type:'medium'])]
 	}
 	
 	private def getPhotosUrls(def photos) {
 		def res = []
 		photos.each{
-			res.push( id: it.id, url: createLink(controller:'voitures', action:'showPhoto', id: it.id, params: [type: "small"]) )
+			res.push( id: it.id, url: createLink(controller:'voitures', action:'showPhoto', id: it.id, params: [type: "medium"]) )
 		}
 		res
 	}

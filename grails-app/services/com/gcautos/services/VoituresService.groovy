@@ -25,7 +25,12 @@ class VoituresService {
 	//@Cacheable('voitures')
 	def list(def type, def offset) {
 		log.debug "$type, $offset"
-		Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [type], [max:4, offset:offset])
+//		Voiture.findAll("from Voiture v where v.dateVente is null and vehicleType = ? order by v.prixVente", [type], [max:4, offset:offset])
+		Voiture.where {
+			isNull "dateVente"
+			eq "vehicleType", type
+			order "prixVente", "asc"
+		}.list(max: 4, offset: offset)
 	}
 	
     def count(def type) {

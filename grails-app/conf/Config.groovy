@@ -65,7 +65,8 @@ environments {
     development {
 		grails.resources.debug=false
         grails.logging.jul.usebridge = true
-        grails.serverURL = "http://localhost:8080/${appName}"
+//        grails.serverURL = "http://localhost:8080/${appName}"
+        grails.serverURL = "http://roje.hd.free.fr:8080/${appName}"
     }
     test {
         grails.logging.jul.usebridge = false

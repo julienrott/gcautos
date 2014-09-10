@@ -31,22 +31,10 @@ class StorageController {
 			photo.data = request.getInputStream().getBytes()
 			ByteArrayInputStream buff = new ByteArrayInputStream( photo.data )
 
-			BufferedImage croppedImage = photosService.resize(buff, 350, 350)
-			ByteArrayOutputStream baos = new ByteArrayOutputStream(1000);
-			ImageIO.write(croppedImage, "jpg", baos);
-			photo.data_small = baos.toByteArray();
-
-			ByteArrayInputStream buff2 = new ByteArrayInputStream( photo.data )
-			BufferedImage croppedImage2 = photosService.resize(buff2, 990, 415)
-			ByteArrayOutputStream baos2 = new ByteArrayOutputStream(1000);
-			ImageIO.write(croppedImage2, "jpg", baos2);
-			photo.data_slider = baos2.toByteArray();
-
-			ByteArrayInputStream buff3 = new ByteArrayInputStream( photo.data )
-			BufferedImage croppedImage3 = photosService.resize(buff3, 210, 132)
-			ByteArrayOutputStream baos3 = new ByteArrayOutputStream(1000);
-			ImageIO.write(croppedImage3, "jpg", baos3);
-			photo.data_small_homepage = baos3.toByteArray();
+			photosService.resize(photo,  350,  350, "data_small")
+			photosService.resize(photo,  990,  415, "data_slider")
+			photosService.resize(photo,  210,  132, "data_small_homepage")
+			photosService.resize(photo, 1000, 1000, "data_medium")
 
 			photo.voiture = Voiture.get(params["id"] as long)
 			photo.titre = request.getHeader('X-File-Name') as String

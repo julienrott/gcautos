@@ -471,6 +471,8 @@
 		</div>
 	</script>
 	
+	<div id="spinner" class="spinner" style="display:none;">Chargement&hellip;</div>
+	
 	<r:require modules="application,bootstrap-transition"/>
 	
 	<r:layoutResources />
