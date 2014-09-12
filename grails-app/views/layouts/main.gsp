@@ -62,7 +62,7 @@
 		        
 		        <div class="span4" style="margin-left: 0;">
 					{{#link-to 'index' title="GC AUTOS"}}
-						<img src="${createLinkTo(dir:'img', file: 'logo-bg.png')}"/>
+						<img src="${createLinkTo(dir:'img', file: 'logo-bg.png')}" width="340" height="92"/>
 					{{/link-to}}
 				</div>
 				
@@ -119,8 +119,8 @@
 				</ul>
 				<div id="divCB" class="span6">
 				    <span class="policy">Paiement par carte bancaire</span>
-				    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"/>
-				    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"/>
+				    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}" width="371" height="136"/>
+				    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"/ width="90" height="40">
 				</div>
 				<div class="span4">
 					<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
@@ -172,7 +172,7 @@
 		</div>
 		<div class="row-fluid center">
 			<div class="span5">
-				<img src="${resource(dir: 'images', file: 'livraison.jpg')}">
+				<img src="${resource(dir: 'images', file: 'livraison.jpg')}" width="213" height="124">
 			</div>
 			
 			<div class="span2">
@@ -354,7 +354,7 @@
 
 		<div class="paginate">
 			{{#each page in meta.pagesTotal}}
-				{{#link-to 'occasions' (query-params page=page) class="step"}}
+				{{#link-to meta.route (query-params page=page) class="step"}}
 					{{page}}
 				{{/link-to}}
 			{{/each}}

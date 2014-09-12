@@ -32,7 +32,7 @@ grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
-//grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/img/*']
+grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/img/*', '*.css']
 grails.resources.adhoc.excludes = ['/js/libs/tiny_mce/**/*.*']
 grails.resources.debug=false
 
@@ -78,7 +78,9 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        grails.serverURL = "http://www.gcautos.fr"
+//        grails.serverURL = "http://www.gcautos.fr"
+//        grails.serverURL = "http://62.210.192.42"
+        grails.serverURL = "http://roje.hd.free.fr:8080/${appName}"
     }
 }
 

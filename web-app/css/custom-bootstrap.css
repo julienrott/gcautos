@@ -293,7 +293,7 @@ div.photo span {
 	background: url("../images/spinner.gif") no-repeat scroll 5% 50% #ffff80;
     height: 16px;
     padding: 0.5em;
-    position: absolute;
+    position: fixed;
     right: 0;
     text-indent: 20px;
     top: 1%;
