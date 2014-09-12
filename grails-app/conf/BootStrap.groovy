@@ -1,25 +1,23 @@
-import com.gcautos.Person;
-import com.gcautos.PersonRole;
-import com.gcautos.Role;
+import fr.gcautos.*;
 
 class BootStrap {
 
-		def springSecurityService
-
     def init = { servletContext ->
-			def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
-			def adminRole = Role.findByAuthority('ROLE_ADMIN') ?: new Role(authority: 'ROLE_ADMIN').save(failOnError: true)
-		
-			def adminUser = Person.findByUsername('admin') ?: new Person(
-							username: 'admin', 
-							password: 'Christophe1973',
-							enabled: true).save(failOnError: true)
-		
-			if (!adminUser.authorities.contains(adminRole)) {
-				PersonRole.create adminUser, adminRole
+		environments {
+			test {
+				Voiture v = new Voiture(
+						titre: "titre",
+						description: "description",
+						type: 0,
+						mention: 0,
+						prixVente: 5890
+					).save()
 			}
+		}
     }
-
+	
     def destroy = {
+		Voiture.list().deleteAll()
     }
+	
 }
