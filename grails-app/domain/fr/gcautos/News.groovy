@@ -1,11 +1,11 @@
 package fr.gcautos
 
-class PhotoSlider extends Photo {
+class News extends Base {
 
     static constraints = {
     }
 	
 	static mapping = {
-		table 'photo_slider'
+		table 'news'
 	}
 }

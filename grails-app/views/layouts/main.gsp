@@ -63,11 +63,11 @@
 		        
 		        <div class="span4" style="margin-left: 0;">
 					{{#link-to 'index' title="GC AUTOS"}}
-						<img src="${createLinkTo(dir:'img', file: 'logo-bg.png')}" width="340" height="92"/>
+						<asset:image src="logo-bg.png" width="340" height="92"/>
 					{{/link-to}}
 				</div>
 				
-		        <div class="nav-collapse collapse">
+		        <div class="">
 					<ul class="nav nav-pills pull-right">
 						<li>{{#link-to 'index'}}<i class="icon-home icon-white"></i>{{/link-to}}</li>
 						<li>{{#link-to 'occasions'}}Occasions{{/link-to}}</li>
@@ -120,8 +120,8 @@
 				</ul>
 				<div id="divCB" class="span6">
 				    <span class="policy">Paiement par carte bancaire</span>
-				    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}" width="371" height="136"/>
-				    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"/ width="90" height="40">
+				    <asset:image src="cartes-bancaires.jpg" width="371" height="136"/>
+				    <asset:image src="3x.jpg" width="90" height="40"/>
 				</div>
 				<div class="span4">
 					<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
@@ -173,7 +173,7 @@
 		</div>
 		<div class="row-fluid center">
 			<div class="span5">
-				<img src="${resource(dir: 'images', file: 'livraison.jpg')}" width="213" height="124">
+				<asset:image src="livraison.jpg" width="213" height="124"/>
 			</div>
 			
 			<div class="span2">

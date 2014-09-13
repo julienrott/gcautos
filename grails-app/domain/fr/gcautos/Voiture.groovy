@@ -8,4 +8,8 @@ class Voiture extends Base {
 
     static constraints = {
     }
+	
+	static mapping = {
+		table 'voiture'
+	}
 }

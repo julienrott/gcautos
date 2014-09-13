@@ -113,7 +113,8 @@ App.IndexRoute = Ember.Route.extend({
 		this.render('index');
 		Ember.run.schedule('afterRender', function task3(){
 			Ember.$(".blink").each(function(){
-				$(this).effect("pulsate", { times:500 }, 1500);
+				//$(this).effect("pulsate", { times:500 }, 1500);
+				$(this).pulse( { times:500, duration: 500 } );
 			});
 			updateService()
 			updateNews()
@@ -182,7 +183,8 @@ App.VoituresRoute = Ember.Route.extend({
 		this.render('listeVoitures');
 		Ember.run.schedule('afterRender', function task3(){
 			Ember.$(".blink").each(function(){
-				$(this).effect("pulsate", { times:500 }, 1500);
+				//$(this).effect("pulsate", { times:500 }, 1500);
+				$(this).pulse( { times:500, duration: 500 } );
 			});
 		});
 	}
