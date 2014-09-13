@@ -88,6 +88,7 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+		grails.serverURL = "http://roje.hd.free.fr:8080/gcautos"
     }
     production {
         grails.logging.jul.usebridge = false
