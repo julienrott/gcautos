@@ -1,11 +1,18 @@
 package fr.gcautos
 
-class Accessoire extends Base {
+class Accessoire {
+
+	Date dateCreated
+	Date lastUpdated
+	
+	String titre
+	String contenu
 
     static constraints = {
     }
 	
 	static mapping = {
-		table 'accessoire'
+		//table "accessoire"
+		contenu type: 'text'
 	}
 }

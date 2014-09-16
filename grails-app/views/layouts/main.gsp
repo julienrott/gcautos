@@ -5,149 +5,140 @@
 <!--[if IE 8 ]>    <html lang="fr" class="no-js ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="fr" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="fr" class="no-js"><!--<![endif]-->
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
-		<meta name="description" content="GC AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules neuf et occasions, vente et réparation de quads pour enfants ados et adultes, dirt bike, Buggy.">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
-		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
-		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
-		
-		<script type="text/javascript">
-			var urlContext = '${grailsApplication.config.grails.serverURL}';
-		</script>
-		
-  		<asset:stylesheet src="application.css"/>
-		<asset:javascript src="application.js"/>
-		<g:layoutHead/>
-	</head>
-	<body>
-
-		<div style="display: none;" itemscope
-			itemtype="http://schema.org/LocalBusiness">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><g:layoutTitle default="Grails"/></title>
+	<meta name="description" content="GC AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules neuf et occasions, vente et réparation de quads pour enfants ados et adultes, dirt bike, Buggy.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
+	<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
+	<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
 	
-			<span itemprop="name">GC Autos</span> <span itemprop="description">GC
-				AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules
-				neuf et occasions, vente et réparation de quads pour enfants ados et
-				adultes, dirt bike, Buggy.</span>
-			<div itemprop="address" itemscope
-				itemtype="http://schema.org/PostalAddress">
-				<span itemprop="streetAddress">1 rue du Muhlwasser</span> <span
-					itemprop="addressLocality">Matzenheim</span> <span
-					itemprop="postalCode">67150</span> <span itemprop="addressCountry">France</span>
-			</div>
-			<span itemprop="telephone">06 63 56 43 43</span>
-		</div>
+	<script type="text/javascript">
+		var urlContext = '${grailsApplication.config.grails.serverURL}';
+	</script>
+	
+		<asset:stylesheet src="application.css"/>
+	<asset:javascript src="application.js"/>
+	<g:layoutHead/>
+</head>
+<body>
 
-		<script type="text/x-handlebars">
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner navbar-inner-custom">
-			<div class="container">
-			
-				<div class="divtel pull-right span3">
-					<div class="font-1">Tel: 06 63 56 43 43</div>
+	<div style="display: none;" itemscope
+		itemtype="http://schema.org/LocalBusiness">
+
+		<span itemprop="name">GC Autos</span> <span itemprop="description">GC
+			AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules
+			neuf et occasions, vente et réparation de quads pour enfants ados et
+			adultes, dirt bike, Buggy.</span>
+		<div itemprop="address" itemscope
+			itemtype="http://schema.org/PostalAddress">
+			<span itemprop="streetAddress">1 rue du Muhlwasser</span> <span
+				itemprop="addressLocality">Matzenheim</span> <span
+				itemprop="postalCode">67150</span> <span itemprop="addressCountry">France</span>
+		</div>
+		<span itemprop="telephone">06 63 56 43 43</span>
+	</div>
+
+	<script type="text/x-handlebars">
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container navbar-container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse-1">
+        			<span class="sr-only">Toggle navigation</span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</button>
+      			{{#link-to 'index' title="GC AUTOS"}}
+					<asset:image src="logo-bg.png" width="208" height="80" class="navbar-brand"/>
+				{{/link-to}}
+			</div>
+
+			<div class="collapse navbar-collapse" id="main-navbar-collapse-1">
+
+				<div class="nav navbar-nav navbar-right col-md-2">
+					<div class="font-1"><a href="tel:+33663564343">Tel: 06 63 56 43 43</a></div>
+				</div>
+				<div class="nav navbar-nav navbar-right col-md-2">
 					<div class="font-1">{{#link-to 'contact'}}Nous contacter{{/link-to}}</div>
 				</div>
 				
-				<div class="pull-right span3">
-					<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FGC-AUTOS-V%C3%A9hicules-Neufs-Occasions-Quads-Dirt-Bikes-Buggy-Alsace%2F234904276569945&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=40&amp;" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:40px;" allowTransparency="true"></iframe>
+				<div class="nav navbar-nav navbar-right col-md-5">
+					<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FGC-AUTOS-V%C3%A9hicules-Neufs-Occasions-Quads-Dirt-Bikes-Buggy-Alsace%2F234904276569945&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=20&amp;" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:20px; width: 100%;" allowTransparency="true"></iframe>
 				</div>
 				
-				<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
-	            	<span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		        </button>
-		        
-		        <div class="span4" style="margin-left: 0;">
-					{{#link-to 'index' title="GC AUTOS"}}
-						<asset:image src="logo-bg.png" width="340" height="92"/>
-					{{/link-to}}
-				</div>
-				
-		        <div class="">
-					<ul class="nav nav-pills pull-right">
-						<li>{{#link-to 'index'}}<i class="icon-home icon-white"></i>{{/link-to}}</li>
-						<li>{{#link-to 'occasions'}}Occasions{{/link-to}}</li>
-						<li>{{#link-to 'neuves'}}<g:message code="menu.neufs"/>{{/link-to}}</li>
-						<li>{{#link-to 'quads'}}<g:message code="menu.quads"/>{{/link-to}}</li>
-						<li>{{#link-to 'buggys'}}<g:message code="menu.buggys"/>{{/link-to}}</li>
-						<li>{{#link-to 'dirts'}}<g:message code="menu.dirts"/>{{/link-to}}</li>
-						<li>{{#link-to 'electriques'}}<g:message code="menu.electriques"/>{{/link-to}}</li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<g:each in="${Accessoire.list().sort{it.titre}}">
-									<li>{{#link-to 'accessoires' ${it.id} }}${it.titre}{{/link-to}}</li>
-								</g:each>
-							</ul>
-						</li>
-						<sec:ifLoggedIn>
-							<sec:ifAllGranted roles="ROLE_ADMIN">
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin menu<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-										<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
-										<li><g:link controller="accessoires" ><g:message code="menu.manage.accessoires"/></g:link></li>
-									</ul>
-								</li>
-							</sec:ifAllGranted>
-						</sec:ifLoggedIn>
-					</ul>
-	          	</div>
-	          	
+				<ul class="nav navbar-nav navbar-right nav-custom">
+					<li>{{#link-to 'index'}}<span class="glyphicon glyphicon-home icon-white"></span>{{/link-to}}</li>
+					<li>{{#link-to 'occasions'}}Occasions{{/link-to}}</li>
+					<li>{{#link-to 'neuves'}}<g:message code="menu.neufs"/>{{/link-to}}</li>
+					<li>{{#link-to 'quads'}}<g:message code="menu.quads"/>{{/link-to}}</li>
+					<li>{{#link-to 'buggys'}}<g:message code="menu.buggys"/>{{/link-to}}</li>
+					<li>{{#link-to 'dirts'}}<g:message code="menu.dirts"/>{{/link-to}}</li>
+					<li>{{#link-to 'electriques'}}<g:message code="menu.electriques"/>{{/link-to}}</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<g:each in="${Accessoire.list().sort{it.titre}}">
+								<li>{{#link-to 'accessoires' ${it.id} }}${it.titre}{{/link-to}}</li>
+							</g:each>
+						</ul>
+					</li>
+					<sec:ifLoggedIn>
+						<sec:ifAllGranted roles="ROLE_ADMIN">
+							<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin menu<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
+									<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
+									<li><g:link controller="accessoires" ><g:message code="menu.manage.accessoires"/></g:link></li>
+								</ul>
+							</li>
+						</sec:ifAllGranted>
+					</sec:ifLoggedIn>
+				</ul>
 			</div>
 		</div>
 	</div>
 	
-	<div class="container narrow">
+	<div class="container main-container">
 		
-		<!-- <div class="container content row-fluid"> -->
-		<div class="content row-fluid">
-			
-			
-				{{outlet}}
-			
-		
+			{{outlet}}
 			<g:layoutBody/>
-		</div>
 		
-		<div class="footer row-fluid">
-			<div class="row-fluid">
-				<ul class="list-1 span2">
-					<li class="active-2">{{#link-to 'index' title="GC AUTOS"}}HOME{{/link-to}}</a></li>
-				</ul>
-				<div id="divCB" class="span6">
+		<div class="footer">
+			<div class="row">
+				<div id="divCB" class="col-md-8">
 				    <span class="policy">Paiement par carte bancaire</span>
-				    <asset:image src="cartes-bancaires.jpg" width="371" height="136"/>
+				    <asset:image src="cartes-bancaires.jpg" width="100" height="40"/>
 				    <asset:image src="3x.jpg" width="90" height="40"/>
 				</div>
-				<div class="span4">
-					<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
+				<div class="col-md-4">
+					<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/>
 						<sec:ifNotLoggedIn>
 							<g:link controller="login" action="auth">Login</g:link>
 						</sec:ifNotLoggedIn>
 						<sec:ifLoggedIn>
-							<g:link controller="logout">Logout (<sec:username/>)</g:link>
+							<g:form name="logoutform" controller="logout" >
+								<g:link onclick="javascript:jQuery('#logoutform').submit();">Logout (<sec:username/>)</g:link>
+							</g:form>
 						</sec:ifLoggedIn>
 					</div>
 				</div>
 			</div>
 
-			<div class="row-fluid">&nbsp;</div>
+			<div class="row">&nbsp;</div>
 			
-			<div class="row-fluid">
-				<div class="offset2">
+			<div class="row">
+				<div class="col-md-12">
 					<script type="text/javascript" src="http://tags.clickintext.net/t2791gXkYV2dm" title="Classic (IAB) footer"></script>
-		</div>
-		</div>
+				</div>
+			</div>
 	
 		</div>
-		</div>
-		</script>
+	</div>
+	</script>
 	
-		<script type="text/x-handlebars" id="index">
+	<script type="text/x-handlebars" id="index">
 		<!-- slider -->
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
@@ -162,86 +153,111 @@
 
 	<div class="bg-grey">
 	
-		<div class="row-fluid">
+		<div class="row">
 			<div>&nbsp;</div>
 		</div>
 		
-		<div class="row-fluid">
+		<div class="row">
+		<div class="col-md-12">
 			<h2 class="span12 center">
 				<span>Les véhicules sont visibles uniquement sur rendez-vous</span>
 			</h2>
 		</div>
-		<div class="row-fluid center">
-			<div class="span5">
+		</div>
+
+		<div class="row center">
+			<div class="col-md-5">
 				<asset:image src="livraison.jpg" width="213" height="124"/>
 			</div>
 			
-			<div class="span2">
+			<div class="col-md-2">
 				<div>&nbsp;</div>
 				<div>&nbsp;</div>
-				{{#link-to 'contact' class="blink big"}}Nous contacter{{/link-to}}
+				{{#link-to 'contact' class="blink big font-1"}}Nous contacter{{/link-to}}
 				<div>&nbsp;</div>
 				<div>&nbsp;</div>
 			</div>
 			
-			<div class="span5">
+			<div class="col-md-5">
 				<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FGC-AUTOS-V%C3%A9hicules-Neufs-Occasions-Quads-Dirt-Bikes-Buggy-Alsace%2F234904276569945&amp;width&amp;height=300&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:123px;" allowtransparency="true"></iframe>
 			</div>
 		</div>
 	
-		<div class="row-fluid">
+		<div class="row">
 			<div>&nbsp;</div>
 		</div>
 		
-		<div class="margin10">
-			<h2 class="span12">Nos dernières <span class="h2">occasions</span></h2>
+			<div class="row">
+			<div class="col-md-12">
+				<h2 class="col-md-12">Nos dernières <span class="h2">occasions</span></h2>
+			</div>
+			</div>
 			
-			<div id="voituresHome" class="row-fluid">
+			<div id="voituresHome" class="row">
+			<div class="col-md-12">
 				
 				{{#each v in voituresHome}}
-					<div class="span3">
-						<div class="span12">
+					<div class="col-md-3">
+						<div class="">
 							{{#link-to 'detailsVoiture' v}}
-								<img class="img-polaroid span12" width="100%" {{bind-attr src=v.photo1}}>
+								<img class="img-thumbnail " width="100%" {{bind-attr src=v.photo1}}>
 							{{/link-to}}
 						</div>
-						<div class="lignes-2 span12">
+						<div class="lignes-2">
 							<h2>{{#link-to 'detailsVoiture' v}}{{v.titre}}{{/link-to}}</h2>
 							<h2 class="h2">{{#if v.isSold}}Vendu(e){{else}}{{{v.prixVente}}}&euro;{{/if}}</h2>
 						</div>
-						<div class="lignes-6 span12">{{{v.description}}}</div>
+						<div class="lignes-6">{{{v.description}}}</div>
 					</div>
 				{{/each}}
 				
 			</div>
-		</div>
+			</div>
 	</div>
 
-		<div class="row-fluid">
+	<div class="bg-white">
+		<div class="row">
 			<div>&nbsp;</div>
 		</div>
 		
-		<div class="row-fluid">
-			<div class="span6">
+		<div class="row">
+			{{#each service in services}}
+			<div class="col-md-6">
 				<h2>&nbsp;Nos <span class="h2">Services</span></h2>
-				<div id="service" class="margin10"></div>
+				<div class="col-md-12">
+					<strong class="strong-1">{{service.titre}}</strong>
+				</div>
+				<div class="row">&nbsp;</div>
+				<div class="row">&nbsp;</div>
+				<div class="col-md-12">
+					{{{service.contenu}}}
+				</div>
 			</div>
+			{{/each}}
 
-			<div class="span6">
-				<h2 class="ident-bot-5 ident-top-2">Nos <span class="h2 inner-ident-1">News</span></h2>
-				<div class="block-2">
-					<div id="news" class="margin10"></div>
+			<div class="col-md-6">
+				<h2 class="">Nos <span class="h2 inner-ident-1">News</span></h2>
+				<div class="">
+				{{#each new in news}}
+					<div class="">
+						<div class="strong-1">{{{new.titre}}}</div>
+						<div>{{{new.description}}}</div>
+						<div class=""></div>
+					</div>
+				{{/each}}
 				</div>
 			</div>
 		</div>
+	</div>
 
 	</script>
 	
-		<script type="text/x-handlebars" id="contact">
+	<script type="text/x-handlebars" id="contact">
+	<div class="bg-white">
 		<section>
 			<article>&nbsp;</article>
 			<article>
-				<center><h2 class="ident-bot-5 ident-top-2">Les véhicules sont visibles uniquement sur rendez-vous</h2></center>
+				<center><h2 class="">Les véhicules sont visibles uniquement sur rendez-vous</h2></center>
 			</article>
 		</section>
 
@@ -249,14 +265,14 @@
 
 		<div class="voitureListe">
 			<div role="main">
-				<section id="content-2">
-					<div class="container_12">
-						<div class="ident-bot-4">
-							<h2 class="ident-bot-5 ident-top-2">GC Autos</h2>
-							<div class="font-3">1 rue du Muhlwasser</div>
-							<div class="font-3">67150 Matzenheim</div>
-							<div class="font-3">Tel: 06 63 56 43 43</div>
-							<div class="font-3">email: <a href="mailto:gc.autos@orange.fr?subject=${'[Contact du site]'.encodeAsHTML()}">gc.autos[at]orange.fr</a></div>
+				<section id="">
+					<div class="">
+						<div class="">
+							<h2 class="">GC Autos</h2>
+							<div class="">1 rue du Muhlwasser</div>
+							<div class="">67150 Matzenheim</div>
+							<div class="">Tel: 06 63 56 43 43</div>
+							<div class="">email: <a href="mailto:gc.autos@orange.fr?subject=${'[Contact du site]'.encodeAsHTML()}">gc.autos[at]orange.fr</a></div>
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -266,20 +282,22 @@
 				</section>
   			</div>
 		</div>
+		<div class="">&nbsp;</div>
+	</div>
 	</script>
 	
-		<script type="text/x-handlebars" id="accessoires">
-
+	<script type="text/x-handlebars" id="accessoires">
+	<div class="bg-white">
     	<div>&nbsp;</div>
     	
 		<div class="voitureListe">
-			<div class="row-fluid">
-				<h2>{{titre}}</h2>
-				<div class="customDivReset">{{{contenu}}}</div>
+			<div class="row">
+				<h2 class="col-md-12">{{titre}}</h2>
+				<div class="col-md-12">{{{contenu}}}</div>
 			</div>
 
 			<sec:ifAllGranted roles="ROLE_ADMIN">
-			<div class="row-fluid">
+			<div class="row">
 				<g:form controller="accessoires" action="save" name="form" id="${accessoire?.id}">
 					<div><g:textField name="titre" value="${accessoire?.titre}" /></div>
 					<div><textarea id="editor" name="contenu" class="tinymce">
@@ -290,10 +308,13 @@
 			</div>
 			</sec:ifAllGranted>
 		</div>
-
+		<div class="">&nbsp;</div>
+	</div>
 	</script>
 	
 		<script type="text/x-handlebars" id="listeVoitures">
+		<div class="bg-white ">
+
 		<div class="paginate">
 			{{#each page in meta.pagesTotal}}
 				{{#link-to meta.route (query-params page=page) class="step"}}
@@ -304,13 +325,13 @@
 
 		{{#each voiture in model}}
 		<div class="voitureListe">
-			<div class="row-fluid">
-				<h2 class="span10">
+			<div class="row">
+				<h2 class="col-md-10">
 					{{#link-to 'detailsVoiture' voiture}}
 						{{#if voiture.isNew}}<span class="blink">Nouveauté : </span>{{/if}} {{voiture.titre}}
 					{{/link-to}}
 				</h2>
-				<h2 class="h2 span2">
+				<h2 class="h2 col-md-2">
 					{{#if voiture.isSold}}Vendu(e){{else}}{{{voiture.prixVente}}}&euro;{{/if}}
 				</h2>
 			</div>
@@ -323,17 +344,21 @@
 				</div>
 			</sec:ifAllGranted>
 
-			<div>
-				{{{voiture.description}}}
+			<div class="row">
+				<div class="col-md-12">
+					{{{voiture.description}}}
+				</div>
 			</div>
 
-			<div class="row-fluid">
+			<div class="row">
+				<div class="col-md-12">
 					{{#link-to 'detailsVoiture' voiture}}
-						<img class="img-polaroid span6" {{bind-attr src=voiture.photo1}} />
+						<img class="img-thumbnail col-md-6" {{bind-attr src=voiture.photo1}} />
 					{{/link-to}}
 					{{#link-to 'detailsVoiture' voiture}}
-						<img class="img-polaroid span6" {{bind-attr src=voiture.photo2}} />
+						<img class="img-thumbnail col-md-6" {{bind-attr src=voiture.photo2}} />
 					{{/link-to}}
+				</div>
 			</div>
 		</div>
 		{{else}}
@@ -361,16 +386,18 @@
 			{{/each}}
 		</div>
 
-	</script>
+		</div>
+		</script>
 	
 		<script type="text/x-handlebars" id="detailsVoiture">
+		<div class="bg-white ">
 		<div>&nbsp;</div>
 		<div class="voitureListe">
-			<div class="row-fluid">
-				<h2 class="span10">
+			<div class="row">
+				<h2 class="col-md-10">
 					{{#if isNew}}<span class="blink">Nouveauté : </span>{{/if}} {{titre}}
 				</h2>
-				<h2 class="h2 span2">
+				<h2 class="h2 col-md-2">
 					{{#if isSold}}Vendu(e){{else}}{{{prixVente}}}&euro;{{/if}}
 				</h2>
 			</div>
@@ -383,28 +410,32 @@
 				</div>
 			</sec:ifAllGranted>
 
-			<div>
-				{{{description}}}
+			<div class="row">
+				<div class="col-md-12">
+					{{{description}}}
+				</div>
 			</div>
 
-			<div class="row-fluid">
-				{{#each photo in photos}}
-					<div class="photo span5">
-						<img class="img-polaroid span12" {{bind-attr src=photo.url}} />
-						<sec:ifAllGranted roles="ROLE_ADMIN">
-							<span {{bind-attr id=photo.id}} {{action 'deletePhoto' model}} class="deletePhoto" title="Supprimer"></span>
-						</sec:ifAllGranted>
-					</div>
-				{{/each}}
+			{{#each photo in photos}}
+			<div class="row">
+				<div class="photo col-md-12">
+					<img class="img-thumbnail col-md-12" {{bind-attr src=photo.url}} />
+					<sec:ifAllGranted roles="ROLE_ADMIN">
+						<span {{bind-attr id=photo.id}} {{action 'deletePhoto' model}} class="deletePhoto" title="Supprimer"></span>
+					</sec:ifAllGranted>
+				</div>
 			</div>
+			{{/each}}
 		</div>
-	</script>
+		<div>&nbsp;</div>
+		</div>
+		</script>
 	
 		<script type="text/x-handlebars" id="editVoiture">
 		<div>&nbsp;</div>
 		<div class="voitureListe">
 
-			<div class="row-fluid">
+			<div class="row">
 				<h2 class="span10">
 					{{#if isNew}}<span class="blink">Nouveauté : </span>{{/if}} {{titre}}
 				</h2>
@@ -416,11 +447,11 @@
 
 			<div class="">&nbsp;</div>
 
-			<div class="row-fluid">
+			<div class="row">
 				Titre {{input type='text' name='titre' value=titre}}
 			</div>
 
-			<div class="row-fluid">
+			<div class="row">
 				Type {{view Ember.Select
 					content=vehicleTypes
 					optionValuePath="content.type"
@@ -428,7 +459,7 @@
 					value=vehicleType}}
 			</div>
 
-			<div class="row-fluid">
+			<div class="row">
 				Mention {{view Ember.Select
 					content=vehicleMentions
 					optionValuePath="content.type"
@@ -445,13 +476,13 @@
 
 			<div class="">&nbsp;</div>
 
-			<div class="row-fluid">
+			<div class="row">
 				<button {{action 'save'}}>Enregistrer</button>
 			</div>
 
 			<div class="">&nbsp;</div>
 
-			<div class="row-fluid">
+			<div class="row">
 				<h2 class="span10">Photos</h2>
 			</div>
 
@@ -459,10 +490,10 @@
 
 			<div id="divAjaxUploader">{{view App.AjaxUploaderView}}</div>
 
-			<div class="row-fluid">
+			<div class="row">
 				{{#each photo in photos}}
 					<div class="photo span5">
-						<img class="img-polaroid span12" {{bind-attr src=photo.url}} />
+						<img class="img-thumbnail span12" {{bind-attr src=photo.url}} />
 						<sec:ifAllGranted roles="ROLE_ADMIN">
 							<span {{bind-attr id=photo.id}} {{action 'deletePhoto' model.id photo.id}} class="deletePhoto" title="Supprimer"></span>
 						</sec:ifAllGranted>
@@ -473,7 +504,7 @@
 	</script>
 	
 		<div id="spinner" class="spinner" style="display:none;">Chargement&hellip;</div>
-	
+		
 		<g:if env="production">
 			<script type="text/javascript">
 				var _gaq = _gaq || [];

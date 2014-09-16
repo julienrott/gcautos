@@ -1,11 +1,18 @@
 package fr.gcautos
 
-class News extends Base {
+class News {
+
+	Date dateCreated
+	Date lastUpdated
+	
+	String titre
+	String description
 
     static constraints = {
     }
 	
 	static mapping = {
-		table 'news'
+		//table 'news'
+		description type: 'text'
 	}
 }

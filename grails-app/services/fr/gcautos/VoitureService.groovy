@@ -5,19 +5,23 @@ import grails.transaction.Transactional
 @Transactional
 class VoitureService {
 
-    Voiture[] list(int type, int offset) {
+    Voiture[] list(int vehicleType, int offset) {
 		Voiture.where {
-			eq "type", type
+			eq "vehicleType", vehicleType
 			order "prixVente", "asc"
-			max 4
-		}.list(offset: offset)
+		}.list(offset: offset, max: 4)
     }
 	
-	def count(def type) {
-		Voiture.executeQuery("select count(v) from Voiture v where type = ?", [type])[0]
+	def count(def vehicleType) {
+		Voiture.where {
+			eq "vehicleType", vehicleType
+		}.count()
 	}
 	
 	def home() {
-		Voiture.findAll("from Voiture v where type = ? order by v.id desc", [0], [max:4])
+		Voiture.where {
+			eq "vehicleType", 0
+			order "id", "desc"
+		}.list(max: 4)
 	}
 }

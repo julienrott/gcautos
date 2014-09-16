@@ -92,7 +92,9 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+//		grails.serverURL = "http://www.gcautos.fr"
+		grails.serverURL = "http://62.210.192.42"
+//		grails.serverURL = "http://roje.hd.free.fr:8080/${appName}"
     }
 }
 
@@ -115,4 +117,41 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+	
+   environments {
+		development {
+			warn 'org.grails.plugin.resource'
+			warn 'com.blockconsult.yuiminifyresources'
+			debug 'grails.app.controllers.fr.gcautos'
+			debug 'grails.app.services.fr.gcautos'
+		}
+	}
 }
+
+grails.plugin.springsecurity.password.algorithm = 'SHA-256'
+grails.plugin.springsecurity.password.hash.iterations = 1
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'fr.gcautos.Person'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'fr.gcautos.PersonRole'
+grails.plugin.springsecurity.authority.className = 'fr.gcautos.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+    '/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+    //"/console/**": ["hasRole('ROLE_ADMIN') && (hasIpAddress('127.0.0.1') || hasIpAddress('::1'))"],
+    "/console/**": ["hasRole('ROLE_ADMIN')"],
+    "/plugins/console*/**": ["hasRole('ROLE_ADMIN')"],
+    "/ember/**": ["permitAll"],
+    "/photoSlider/**": ["permitAll"],
+    "/service/**": ["permitAll"],
+    "/news/**": ["permitAll"],
+    "/voiture/**": ["permitAll"],
+    "/logout/**": ["hasRole('ROLE_ADMIN')"]
+]
+

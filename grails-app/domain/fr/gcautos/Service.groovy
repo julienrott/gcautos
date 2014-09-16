@@ -1,17 +1,13 @@
 package fr.gcautos
 
-class Base {
-	
+class Service {
+
 	Date dateCreated
 	Date lastUpdated
-	
 	String titre
-	String description
+	String contenu
 
     static constraints = {
+		contenu type: 'text'
     }
-	
-	static mapping = {
-		description type: 'text'
-	}
 }

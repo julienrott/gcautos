@@ -92,7 +92,13 @@ App.IndexController = Ember.ArrayController.extend({
 	},
 	voituresHome: function() {
 		return this.store.find('voituresHome');
-	}.property('voituresHome')
+	}.property('voituresHome'),
+	services: function() {
+		return this.store.find('service');
+	}.property('services'),
+	news: function() {
+		return this.store.find('news');
+	}.property('news')
 });
 
 App.IndexRoute = Ember.Route.extend({
@@ -116,8 +122,8 @@ App.IndexRoute = Ember.Route.extend({
 				//$(this).effect("pulsate", { times:500 }, 1500);
 				$(this).pulse( { times:500, duration: 500 } );
 			});
-			updateService()
-			updateNews()
+			//updateService()
+			//updateNews()
 		});
 	}
 });
@@ -326,6 +332,18 @@ App.Accessoire = DS.Model.extend({
 	idd: DS.attr('number'),
 	titre: DS.attr('string'),
 	contenu: DS.attr('string')
+});
+
+App.Service = DS.Model.extend({
+	idd: DS.attr('number'),
+	titre: DS.attr('string'),
+	contenu: DS.attr('string')
+});
+
+App.News = DS.Model.extend({
+	idd: DS.attr('number'),
+	titre: DS.attr('string'),
+	description: DS.attr('string')
 });
 
 App.Voiture = DS.Model.extend({
