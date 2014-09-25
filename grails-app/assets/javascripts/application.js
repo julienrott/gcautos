@@ -8,11 +8,12 @@
 //= require jquery
 //= require handlebars-1.3.0
 //= require bootstrap
-//= require_tree .
+//= require bootstrap-carousel-custom
+//= require ember-1.7.0
+//= require ember-data-latest
+//= require emberApplication
+// require_tree .
 //= require_self
-
-$(document).ready(function() {
-});
 
 $(document).ajaxStart(function() {
 	$('#spinner').fadeIn();
@@ -22,14 +23,13 @@ $(document).ajaxStart(function() {
 
 function blink() {
 	$(".blink").each(function(){
-		//$(this).effect("pulsate", { times:500 }, 1500);
 		$(this).pulse( { times:500, duration: 500 } );
 	});
 }
 
 reloadCar = function() {
-	$('#reloadCarBtn').click()
-}
+	$('#reloadCarBtn').click();
+};
 
 $.fn.pulse = function(options) {
 

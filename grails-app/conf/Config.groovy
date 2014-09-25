@@ -92,8 +92,8 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-//		grails.serverURL = "http://www.gcautos.fr"
-		grails.serverURL = "http://62.210.192.42"
+		grails.serverURL = "http://www.gcautos.fr"
+//		grails.serverURL = "http://62.210.192.42"
 //		grails.serverURL = "http://roje.hd.free.fr:8080/${appName}"
     }
 }
@@ -144,7 +144,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-    //"/console/**": ["hasRole('ROLE_ADMIN') && (hasIpAddress('127.0.0.1') || hasIpAddress('::1'))"],
+//    "/console/**": ["hasRole('ROLE_ADMIN') && (hasIpAddress('127.0.0.1') || hasIpAddress('::1'))"],
     "/console/**": ["hasRole('ROLE_ADMIN')"],
     "/plugins/console*/**": ["hasRole('ROLE_ADMIN')"],
     "/ember/**": ["permitAll"],
@@ -152,6 +152,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     "/service/**": ["permitAll"],
     "/news/**": ["permitAll"],
     "/voiture/**": ["permitAll"],
-    "/logout/**": ["hasRole('ROLE_ADMIN')"]
+//    "/logout/**": ["hasRole('ROLE_ADMIN')"],
+    "/logout/**": ["permitAll"],
+    "/storage/**": ["hasRole('ROLE_ADMIN')"],
+    "/storage/reupload/**": ["permitAll"]
 ]
 

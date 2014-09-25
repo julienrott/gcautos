@@ -52,8 +52,16 @@ class PhotoService {
 		return resizedImage;
 	}
 	
-	public void populatePhoto(Photo photo, int width, int height, String field) {
-		ByteArrayInputStream buff = new ByteArrayInputStream( photo.data )
+	public void populatePhoto(Photo photo, int width, int height, String field, boolean createFromFile = false) {
+		ByteArrayInputStream buff
+		if(createFromFile) {
+			log.debug "create file"
+			File f = new File(photo.data)
+			buff = f.getByteArrayInputStream()
+		}
+		else {
+			buff = new ByteArrayInputStream( photo.data )
+		}
 		BufferedImage croppedImage = resize(buff, width, height)
 		ByteArrayOutputStream baos = new ByteArrayOutputStream(1000);
 		ImageIO.write(croppedImage, "jpg", baos);

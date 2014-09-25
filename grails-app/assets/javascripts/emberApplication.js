@@ -33,7 +33,7 @@ App.TinymceView = Ember.TextArea.extend({
            }
         });*/
         $('textarea.tinymce').tinymce({
-            script_url : urlContext + "/js/libs/tiny_mce-3.5.8/tiny_mce.js",
+            script_url : urlContext + "/assets/tiny_mce-3.5.8/tiny_mce.js",
             theme : "advanced",
             plugins : "media",
             //theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
@@ -165,6 +165,27 @@ App.EditVoitureController = Ember.ObjectController.extend({
 				})
 				voiture.set('photos', photos)
 				voiture.set('deletePhoto', true)
+				voiture.save();
+			});
+		},
+		reloadPhoto: function(idVoiture, idPhoto) {
+			/*$.post(urlContext + "/ember/reloadPhoto/" + idVoiture, {idPhoto: idPhoto}, function(res){
+				console.log(res);
+			}).fail(function(res) {
+				console.log("error", res);
+			});*/
+			this.store.find('voiture', this.model.get('id')).then(function(voiture) {
+				var photos = voiture.get('photos');
+				var photoToDelete = null;
+				$.each(photos, function(idx, photo){
+					if ($(photo.id).is($(idPhoto))) {
+						photos = [photo]
+						return false
+					}
+					else{}
+				})
+				voiture.set('photos', photos)
+				voiture.set('reloadPhoto', true)
 				voiture.save();
 			});
 		},
@@ -357,6 +378,7 @@ App.Voiture = DS.Model.extend({
 	photo2: DS.attr('string'),
 	photos: DS.attr(),
 	deletePhoto: DS.attr('boolean'),
+	reloadPhoto: DS.attr('boolean'),
 	isNew: function() {
 		return this.get('mention') === 1
 	}.property('mention'),

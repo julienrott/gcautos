@@ -21,6 +21,11 @@
 	
 		<asset:stylesheet src="application.css"/>
 	<asset:javascript src="application.js"/>
+	
+	<sec:ifAllGranted roles="ROLE_ADMIN">
+		<asset:javascript src="tiny_mce-3.5.8/jquery.tinymce.js"/>
+	</sec:ifAllGranted>
+	
 	<g:layoutHead/>
 </head>
 <body>
@@ -431,27 +436,28 @@
 		</div>
 		</script>
 	
-		<script type="text/x-handlebars" id="editVoiture">
+	<script type="text/x-handlebars" id="editVoiture">
+	<div class="bg-white">
 		<div>&nbsp;</div>
-		<div class="voitureListe">
+		<div class="voitureListe ">
 
-			<div class="row">
-				<h2 class="span10">
+			<div class="row ">
+				<h2 class="col-md-12">
 					{{#if isNew}}<span class="blink">Nouveauté : </span>{{/if}} {{titre}}
 				</h2>
 			</div>
 
-			<div>
+			<div class="row col-md-12">
 				{{{description}}}
 			</div>
 
-			<div class="">&nbsp;</div>
+			<div class="row col-md-12">&nbsp;</div>
 
-			<div class="row">
+			<div class="row col-md-12">
 				Titre {{input type='text' name='titre' value=titre}}
 			</div>
 
-			<div class="row">
+			<div class="row col-md-12">
 				Type {{view Ember.Select
 					content=vehicleTypes
 					optionValuePath="content.type"
@@ -459,7 +465,7 @@
 					value=vehicleType}}
 			</div>
 
-			<div class="row">
+			<div class="row col-md-12">
 				Mention {{view Ember.Select
 					content=vehicleMentions
 					optionValuePath="content.type"
@@ -467,40 +473,47 @@
 					value=mention}}
 			</div>
 
-			<div class="">&nbsp;</div>
+			<div class="row col-md-12">&nbsp;</div>
 
-			<div>
+			<div class="row col-md-12">
             	Description
 				{{view App.TinymceView valueBinding='description' class='tinymce'}}
 			</div>
 
-			<div class="">&nbsp;</div>
+			<div class="row col-md-12">&nbsp;</div>
 
-			<div class="row">
+			<div class="row col-md-12">
 				<button {{action 'save'}}>Enregistrer</button>
 			</div>
 
-			<div class="">&nbsp;</div>
+			<div class="row col-md-12">&nbsp;</div>
 
-			<div class="row">
-				<h2 class="span10">Photos</h2>
+			<div class="row col-md-12">
+				<h2 class="col-md-12">Photos</h2>
 			</div>
 
 			<button {{action 'reloadCar'}} id="reloadCarBtn" style="display: none;">reload</button>
 
-			<div id="divAjaxUploader">{{view App.AjaxUploaderView}}</div>
-
-			<div class="row">
+			<div class="row col-md-12">
+				<div id="divAjaxUploader" class="col-md-2 btn btn-primary">{{view App.AjaxUploaderView}}</div>
+			</div>
+			
+			<div class="row col-md-12">&nbsp;</div>
+			
+			<div class="row ">
 				{{#each photo in photos}}
-					<div class="photo span5">
-						<img class="img-thumbnail span12" {{bind-attr src=photo.url}} />
+					<div class="photo col-md-3">
+						<img class="img-thumbnail col-md-12" {{bind-attr src=photo.url}} />
 						<sec:ifAllGranted roles="ROLE_ADMIN">
+							<span {{action 'reloadPhoto' model.id photo.id}} class="glyphicon glyphicon-refresh refreshPhoto" title="Recharger"></span>
 							<span {{bind-attr id=photo.id}} {{action 'deletePhoto' model.id photo.id}} class="deletePhoto" title="Supprimer"></span>
 						</sec:ifAllGranted>
 					</div>
 				{{/each}}
 			</div>
 		</div>
+		<div>&nbsp;</div>
+	</div>
 	</script>
 	
 		<div id="spinner" class="spinner" style="display:none;">Chargement&hellip;</div>
@@ -523,8 +536,8 @@
 			</script>
 	
 	
-			<script type="text/javascript"
-				src="http://tags.clickintext.net/t2ELJBbAJGQH2" title="Slide In"></script>
+			<script type="text/javascript" src="http://tags.clickintext.net/t2ELJBbAJGQH2" title="Slide In"></script>
+			<script type="text/javascript" src="http://tags.clickintext.net/t2vdfy9ppS6Qs" title="Site Under"></script>
 	
 		</g:if>
 </body>

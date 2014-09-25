@@ -35,7 +35,12 @@ class EmberController {
 					v.removeFromPhotos(photo)
 					photo.delete()
 				}
-				v.save()
+				if(request.JSON.voiture.reloadPhoto && v.photos.id.contains(idsFromRequest[0])) {
+					Photo photo = Photo.get(idsFromRequest[0])
+					photoService.populatePhoto(photo, 1000, 1000, "data_medium")
+					photo.save(flush: true)
+				}
+				v.save(flush: true)
 				def res = [voitures: []]
 				res.voitures.push(getVoitureArray(v))
 				render res as JSON
@@ -171,4 +176,5 @@ class EmberController {
 		}
 		render res as JSON
 	}
+	
 }

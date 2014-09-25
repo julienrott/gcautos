@@ -53,6 +53,7 @@ grails.project.dependency.resolution = {
         runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
 //		runtime 'postgresql:postgresql:9.1-901.jdbc3'
         test "org.grails:grails-datastore-test-support:1.0-grails-2.4"
+		compile "org.codehaus.groovy.modules.http-builder:http-builder:0.7.1"
     }
 
     plugins {
@@ -67,6 +68,7 @@ grails.project.dependency.resolution = {
 		compile ":twitter-bootstrap:3.2.0.2"
 		compile ":console:1.5.0"
         compile ":spring-security-core:2.0-RC4"
+		compile ":ajax-uploader:1.3"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.5.5" // or ":hibernate:3.6.10.17"
