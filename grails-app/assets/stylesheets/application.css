@@ -18,11 +18,38 @@ body {
 }
 
 .spinner {
-    background: url("images/spinner.gif") no-repeat scroll 5% 50% #ffff80;
+//    background: url("images/spinner.gif") no-repeat scroll 5% 50% #ffff80;
+    background-color: #ffff80;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 6px;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     height: 30px;
+    left: 30%;
+    outline: medium none;
+//    padding: 0.5em;
+    position: fixed;
+    right: 0;
+    text-indent: 20px;
+    top: 20px;
+    width: 160px;
+    z-index: 1050;
+}
+
+.spinnerSprite {
+	width: 26px;
+	height: 26px;
+	background-image: url(images/spinner.png);
+	background-position: 0px 0px;
+	display: inline-block;
+}
+
+.errorMsg {
+    //background-image: url("spinner.gif");
+    background-position: 5% 50%;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     left: 30%;
     outline: medium none;
     padding: 0.5em;
@@ -30,7 +57,7 @@ body {
     right: 0;
     text-indent: 20px;
     top: 20px;
-    width: 120px;
+    width: 260px;
     z-index: 1050;
 }
 

@@ -24,23 +24,39 @@ class EmberController {
 	def voitures() {
 		switch (request.method) {
 			case "PUT":
-				long[] idsFromRequest = request.JSON.voiture.photos.id
-				Voiture v = Voiture.get(params.id)
-				v.titre = request.JSON.voiture.titre
-				v.description = request.JSON.voiture.description
-				v.vehicleType = request.JSON.voiture.vehicleType
-				v.mention = request.JSON.voiture.mention
-				if(request.JSON.voiture.deletePhoto && v.photos.id.contains(idsFromRequest[0])) {
-					Photo photo = Photo.get(idsFromRequest[0])
-					v.removeFromPhotos(photo)
-					photo.delete()
+			Voiture v
+				if (params.id) {
+					long[] idsFromRequest = request.JSON.voiture.photos.id
+					v = Voiture.get(params.id)
+					v.titre = request.JSON.voiture.titre
+					v.description = request.JSON.voiture.description
+					v.vehicleType = request.JSON.voiture.vehicleType
+					v.mention = request.JSON.voiture.mention
+					v.prixVente = request.JSON.voiture.prixVente.replaceAll(" ", "") as int
+					if(request.JSON.voiture.deletePhoto && v.photos.id.contains(idsFromRequest[0])) {
+						Photo photo = Photo.get(idsFromRequest[0])
+						v.removeFromPhotos(photo)
+						photo.delete()
+					}
+					if(request.JSON.voiture.reloadPhoto && v.photos.id.contains(idsFromRequest[0])) {
+						Photo photo = Photo.get(idsFromRequest[0])
+						photoService.populatePhoto(photo, 1000, 1000, "data_medium")
+						photo.save(flush: true)
+					}
 				}
-				if(request.JSON.voiture.reloadPhoto && v.photos.id.contains(idsFromRequest[0])) {
-					Photo photo = Photo.get(idsFromRequest[0])
-					photoService.populatePhoto(photo, 1000, 1000, "data_medium")
-					photo.save(flush: true)
+				else {
+					v = new Voiture(
+						titre: request.JSON.voiture.titre,
+						description: request.JSON.voiture.description,
+						vehicleType: request.JSON.voiture.vehicleType,
+						mention: request.JSON.voiture.mention,
+						prixVente: request.JSON.voiture.prixVente.replaceAll(" ", "") as int)
 				}
-				v.save(flush: true)
+				if (!v.save(flush: true)) {
+					v.errors.each {
+						log.error it
+					}
+				}
 				def res = [voitures: []]
 				res.voitures.push(getVoitureArray(v))
 				render res as JSON
@@ -50,6 +66,12 @@ class EmberController {
 				def res = [voitures: []]
 				res.voitures.push(getVoitureArray(v))
 				render res as JSON
+				break
+			case "DELETE":
+				log.debug params
+				Voiture v = Voiture.get(params.id)
+				v.delete(flush: true)
+				render 200
 				break
 			default:
 				break
@@ -89,9 +111,10 @@ class EmberController {
 			description: v.description,
 			vehicleType: v.vehicleType,
 			mention: v.mention,
-			prixVente: g.formatNumber(number: v.prixVente, format: "###,##0"),
+//			prixVente: g.formatNumber(number: v.prixVente, format: "###,##0"),
+			prixVente: v.prixVente,
 			photos: photosUrls,
-			photo1: photosUrls[0].url,
+			photo1: photosUrls[0]?.url,
 			photo2: photosUrls[1]?.url
 		]
 		res
@@ -166,15 +189,31 @@ class EmberController {
 	}
 	
 	def news() {
-		def res = [news: []]
-		def news = News.list(max:2, sort:"id", order:"desc")
-		news.each {
-			res.news.push(idd: it.id,
+		switch (request.method) {
+			case "DELETE":
+				def news = News.get(params.id)
+				news.delete(flush: true)
+				render 200
+				break
+			case "POST":
+				def news = new News(titre: request.JSON.news.titre,
+						description: request.JSON.news.description)
+				news.save(flush:true)
+				render 200
+				break
+			case "GET" :
+				log.debug params
+				def res = [news: []]
+						def news = News.list(max: params.int('maxNews') ?: 2, sort:"id", order:"desc")
+						news.each {
+					res.news.push(idd: it.id,
 //				titre: "${formatDate(format: 'EEEE dd MMMM yyyy', date: it.dateCreated)} : ${it.titre}",
-				titre: "${formatDate(format: 'dd/MM/yyyy', date: it.dateCreated)} : ${it.titre}",
-				description: it.description)
+							titre: "${formatDate(format: 'dd/MM/yyyy', date: it.dateCreated)} : ${it.titre}",
+							description: it.description)
+				}
+				render res as JSON
+				break
 		}
-		render res as JSON
 	}
 	
 }

@@ -152,8 +152,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
     "/service/**": ["permitAll"],
     "/news/**": ["permitAll"],
     "/voiture/**": ["permitAll"],
-//    "/logout/**": ["hasRole('ROLE_ADMIN')"],
-    "/logout/**": ["permitAll"],
     "/storage/**": ["hasRole('ROLE_ADMIN')"],
     "/storage/reupload/**": ["permitAll"]
 ]

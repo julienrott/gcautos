@@ -1,18 +1,56 @@
+//= require_self
+//= require_tree ember/models/
+
 App = Ember.Application.create();
 
+var vehicleTypes = [
+                    {label: 'Occasion', type: 0},
+                    {label: 'Neuve', type: 1},
+                    {label: 'Quad', type: 2},
+                    {label: 'Dirt', type: 3},
+                    {label: 'Electrique', type: 4},
+                    {label: 'Buggy', type: 5}
+             	];
+var vehicleMentions = [
+                      {label: 'Aucune', type: 0},
+                      {label: 'Nouveauté', type: 1},
+                      {label: 'Vendu(e)', type: 2}
+               	];
 App.Router.map(function() {
 	// put your routes here
-	this.resource('contact', { path: '/contact' });
-	this.resource('login', { path: '/login' });
-	this.resource('detailsVoiture', { path: '/voiture/:voiture_id' });
-	this.resource('editVoiture', { path: '/editVoiture/:voiture_id' });
-	this.resource('occasions', { path: '/occasions' });
-	this.resource('neuves', { path: '/neuves' });
-	this.resource('quads', { path: '/quads' });
-	this.resource('buggys', { path: '/buggys' });
-	this.resource('dirts', { path: '/dirts' });
-	this.resource('electriques', { path: '/electriques' });
-	this.resource('accessoires', { path: '/accessoires/:accessoire_id' });
+	var self = this;
+	self.resource('contact', { path: '/contact' });
+	self.resource('login', { path: '/login' });
+	self.resource('detailsVoiture', { path: '/voiture/:voiture_id' });
+	self.resource('editVoiture', { path: '/editVoiture/:voiture_id' });
+	self.resource('createVoiture', { path: '/createVoiture' });
+	self.resource('occasions', { path: '/occasions' });
+	self.resource('neuves', { path: '/neuves' });
+	self.resource('quads', { path: '/quads' });
+	self.resource('buggys', { path: '/buggys' });
+	self.resource('dirts', { path: '/dirts' });
+	self.resource('electriques', { path: '/electriques' });
+	self.resource('accessoires', { path: '/accessoires/:accessoire_id' });
+	self.resource('allNews', { path: '/allNews' });
+	self.resource('createNews', { path: '/createNews' });
+});
+
+App.ApplicationRoute = Ember.Route.extend({
+	actions: {
+		ok: function(ok, transition) {
+			$("#okMsg").show();
+			setTimeout(function(){
+				$("#okMsg").hide();
+			}, 3000);
+		},
+		error: function(error, transition) {
+			console.log(error)
+			$("#errorMsg").show();
+			setTimeout(function(){
+				$("#errorMsg").hide();
+			}, 3000);
+		}
+	}
 });
 
 App.TinymceView = Ember.TextArea.extend({
@@ -88,7 +126,27 @@ App.IndexController = Ember.ArrayController.extend({
 				description: 'description'
 			});
 			occ.save();
+		},
+		deleteNews: function(id) {
+			var self = this
+			self.store.find('news', id).then(function(news) {
+				news.destroyRecord().then(function() {
+					self.send('refreshNews');
+				});
+			});
+		},
+		refreshNews: function() {
+			this.set('news', this.store.find('news', {maxNews: 2}))
+		},
+		refreshVoituresHome: function() {
+//			this.set('voituresHome', this.store.find('voituresHome'))
+//			this.get('voituresHome').reload()
+//			this.send('reloadIndex')
+		},
+		reloadIndex: function() {
+			this.reload()
 		}
+		
 	},
 	voituresHome: function() {
 		return this.store.find('voituresHome');
@@ -97,7 +155,7 @@ App.IndexController = Ember.ArrayController.extend({
 		return this.store.find('service');
 	}.property('services'),
 	news: function() {
-		return this.store.find('news');
+		return this.store.find('news', {maxNews: 2});
 	}.property('news')
 });
 
@@ -115,6 +173,11 @@ App.IndexRoute = Ember.Route.extend({
 		
 		return this.store.find('photoSlider');
 	},
+	actions: {
+		reloadIndexRoute: function() {
+			this.refresh();
+		}
+	},
 	renderTemplate: function() {
 		this.render('index');
 		Ember.run.schedule('afterRender', function task3(){
@@ -129,28 +192,18 @@ App.IndexRoute = Ember.Route.extend({
 });
 
 App.EditVoitureController = Ember.ObjectController.extend({
-	vehicleTypes: [
-       {label: 'Occasion', type: 0},
-       {label: 'Neuve', type: 1},
-       {label: 'Quad', type: 2},
-       {label: 'Dirt', type: 3},
-       {label: 'Electrique', type: 4},
-       {label: 'Buggy', type: 5}
-	],
-	vehicleMentions: [
-       {label: 'Aucune', type: 0},
-       {label: 'Nouveauté', type: 1},
-       {label: 'Vendu(e)', type: 2}
-	],
+	vehicleTypes: vehicleTypes,
+	vehicleMentions: vehicleMentions,
 	getType: function() {
 		return "gnarf"
 	},
 	actions: {
-		save: function() {
-			this.store.find('voiture', this.model.get('id')).then(function(voiture) {
-				//voiture.set('titre', this.model.get('titre'));
-				voiture.save();
-			});
+		update: function() {
+			var controller = this;
+			controller.model.save().then(function(reason) {controller.send('ok');}).catch(function(reason) {controller.send('error');});
+//			controller.store.find('voiture', controller.model.get('id')).then(function(voiture) {
+//				voiture.save().then(function(reason) {controller.send('ok');}).catch(function(reason) {controller.send('error');});
+//			});
 		},
 		deletePhoto: function(idVoiture, idPhoto) {
 			this.store.find('voiture', this.model.get('id')).then(function(voiture) {
@@ -195,9 +248,90 @@ App.EditVoitureController = Ember.ObjectController.extend({
 	}
 });
 
+App.CreateVoitureController = Ember.ObjectController.extend({
+	needs: ['index'],
+	vehicleTypes: vehicleTypes,
+	vehicleMentions: vehicleMentions,
+	actions: {
+		createCar: function() {
+			var self = this;
+			var voiture = self.store.createRecord('voiture', {
+				titre: self.get('titre'),
+				description: self.get('description'),
+				vehicleType: self.get('vehicleType'),
+				mention: self.get('mention'),
+				prixVente: self.get('prixVente'),
+			});
+			voiture.save().then(function() {
+				self.transitionToRoute('editVoiture', voiture)
+				self.get('controllers.index').send('refreshVoituresHome')
+			});
+		}
+	}
+});
+
+App.CreateVoitureRoute = Ember.Route.extend({
+	model: function() {
+		return this.store.createRecord('voiture', {
+			titre: "nouvelle voiture",
+			description: 'description',
+			vehicleType: 0,
+			mention: 0,
+			prixVente: 10000,
+		});
+	}
+});
+
+App.CreateNewsController = Ember.ObjectController.extend({
+	needs: ['index'],
+	actions: {
+		createNews: function() {
+			var self = this;
+			var news = self.model;
+			news.save().then(function(reason) {
+				self.get('controllers.index').send('refreshNews');
+				self.send('ok');
+				self.transitionToRoute('index');
+			}).catch(function(reason) {self.send('error', reason);});
+		}
+	}
+});
+
+App.CreateNewsRoute = Ember.Route.extend({
+	model: function() {
+		return this.store.createRecord('news', {
+			titre: "nouvelle news",
+			description: 'description'
+		});
+	}
+});
+
+App.AllNewsController = Ember.ArrayController.extend({
+	
+});
+
+App.AllNewsRoute = Ember.Route.extend({
+	model: function() {
+		return this.store.find('news', {maxNews: 5});
+	}
+});
+
 App.VoituresController = Ember.ObjectController.extend({
+	needs: ['index'],
 	queryParams: ['page', 'type', 'route'],
-	page: 1
+	page: 1,
+	actions: {
+		deleteCar: function(id) {
+			var controller = this;
+			controller.store.find('voiture', id).then(function(voiture) {
+				voiture.destroyRecord().then(function(a,b,c,d) {
+					console.log(controller)
+					controller.send("reloadRoute")
+					controller.get('controllers.index').send('refreshVoituresHome')
+				});
+			});
+		}
+	}
 });
 
 App.VoituresRoute = Ember.Route.extend({
@@ -214,6 +348,11 @@ App.VoituresRoute = Ember.Route.extend({
 				$(this).pulse( { times:500, duration: 500 } );
 			});
 		});
+	},
+	actions: {
+		reloadRoute: function() {
+			this.refresh();
+		}
 	}
 });
 
@@ -342,74 +481,4 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
 
 App.ApplicationSerializer = DS.RESTSerializer.extend({
 	primaryKey: 'idd'
-});
-
-App.PhotoSlider = DS.Model.extend({
-	css: DS.attr('string'),
-	url: DS.attr('string')
-});
-
-App.Accessoire = DS.Model.extend({
-	idd: DS.attr('number'),
-	titre: DS.attr('string'),
-	contenu: DS.attr('string')
-});
-
-App.Service = DS.Model.extend({
-	idd: DS.attr('number'),
-	titre: DS.attr('string'),
-	contenu: DS.attr('string')
-});
-
-App.News = DS.Model.extend({
-	idd: DS.attr('number'),
-	titre: DS.attr('string'),
-	description: DS.attr('string')
-});
-
-App.Voiture = DS.Model.extend({
-	idd: DS.attr('number'),
-	titre: DS.attr('string'),
-	description: DS.attr('string'),
-	mention: DS.attr('number'),
-	vehicleType: DS.attr('number'),
-	prixVente: DS.attr('string'),
-	photo1: DS.attr('string'),
-	photo2: DS.attr('string'),
-	photos: DS.attr(),
-	deletePhoto: DS.attr('boolean'),
-	reloadPhoto: DS.attr('boolean'),
-	isNew: function() {
-		return this.get('mention') === 1
-	}.property('mention'),
-	isSold: function() {
-		return this.get('mention') === 2
-	}.property('mention')
-});
-
-App.VoituresHome = App.Voiture.extend({
-});
-
-App.Occasion = App.Voiture.extend({
-	type: 0
-});
-
-App.Neuf = App.Voiture.extend({
-	type: 1
-});
-
-App.Quad = App.Voiture.extend({
-	type: 2
-});
-
-App.Buggy = App.Voiture.extend({
-	type: 5
-});
-
-App.Dirt = App.Voiture.extend({
-	type: 3
-});
-
-App.Electrique = App.Voiture.extend({
-	type: 4
 });

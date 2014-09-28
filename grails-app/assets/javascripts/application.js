@@ -6,6 +6,7 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery
+//= require jquery.spritely
 //= require handlebars-1.3.0
 //= require bootstrap
 //= require bootstrap-carousel-custom
@@ -17,8 +18,16 @@
 
 $(document).ajaxStart(function() {
 	$('#spinner').fadeIn();
+//	$('#spinnerSprite').spStart();
 }).ajaxStop(function() {
 	$('#spinner').fadeOut();
+//	$('#spinnerSprite').spStop();
+});
+
+$(document).ready(function() {
+	$('.spinnerSprite').sprite({ fps: 10, no_of_frames: 12 }).spStart();
+//	$('#spinnerSprite').spStart();
+//	$('#spinnerSprite').sprite();
 });
 
 function blink() {
