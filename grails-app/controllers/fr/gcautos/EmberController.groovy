@@ -23,35 +23,14 @@ class EmberController {
 
 	def voitures() {
 		switch (request.method) {
-			case "PUT":
-			Voiture v
-				if (params.id) {
-					long[] idsFromRequest = request.JSON.voiture.photos.id
-					v = Voiture.get(params.id)
-					v.titre = request.JSON.voiture.titre
-					v.description = request.JSON.voiture.description
-					v.vehicleType = request.JSON.voiture.vehicleType
-					v.mention = request.JSON.voiture.mention
-					v.prixVente = request.JSON.voiture.prixVente.replaceAll(" ", "") as int
-					if(request.JSON.voiture.deletePhoto && v.photos.id.contains(idsFromRequest[0])) {
-						Photo photo = Photo.get(idsFromRequest[0])
-						v.removeFromPhotos(photo)
-						photo.delete()
-					}
-					if(request.JSON.voiture.reloadPhoto && v.photos.id.contains(idsFromRequest[0])) {
-						Photo photo = Photo.get(idsFromRequest[0])
-						photoService.populatePhoto(photo, 1000, 1000, "data_medium")
-						photo.save(flush: true)
-					}
-				}
-				else {
-					v = new Voiture(
-						titre: request.JSON.voiture.titre,
-						description: request.JSON.voiture.description,
-						vehicleType: request.JSON.voiture.vehicleType,
-						mention: request.JSON.voiture.mention,
-						prixVente: request.JSON.voiture.prixVente.replaceAll(" ", "") as int)
-				}
+			case "POST":
+				Voiture v = new Voiture(
+					titre: request.JSON.voiture.titre,
+					description: request.JSON.voiture.description,
+					vehicleType: request.JSON.voiture.vehicleType,
+					mention: request.JSON.voiture.mention,
+					prixVente: request.JSON.voiture.prixVente.replaceAll(" ", "") as int)
+				
 				if (!v.save(flush: true)) {
 					v.errors.each {
 						log.error it
@@ -61,18 +40,50 @@ class EmberController {
 				res.voitures.push(getVoitureArray(v))
 				render res as JSON
 				break
+				
+			case "PUT":
+				long[] idsFromRequest = request.JSON.voiture.photos.id
+				Voiture v = Voiture.get(params.id)
+				v.titre = request.JSON.voiture.titre
+				v.description = request.JSON.voiture.description
+				v.vehicleType = request.JSON.voiture.vehicleType
+				v.mention = request.JSON.voiture.mention
+				v.prixVente = request.JSON.voiture.prixVente.replaceAll(" ", "") as int
+				if(request.JSON.voiture.deletePhoto && v.photos.id.contains(idsFromRequest[0])) {
+					Photo photo = Photo.get(idsFromRequest[0])
+					v.removeFromPhotos(photo)
+					photo.delete()
+				}
+				if(request.JSON.voiture.reloadPhoto && v.photos.id.contains(idsFromRequest[0])) {
+					Photo photo = Photo.get(idsFromRequest[0])
+					photoService.populatePhoto(photo, 1000, 1000, "data_medium")
+					photo.save(flush: true)
+				}
+				
+				if (!v.save(flush: true)) {
+					v.errors.each {
+						log.error it
+					}
+				}
+				def res = [voitures: []]
+				res.voitures.push(getVoitureArray(v))
+				render res as JSON
+				break
+				
 			case "GET":
 				Voiture v = Voiture.get(params.id)
 				def res = [voitures: []]
 				res.voitures.push(getVoitureArray(v))
 				render res as JSON
 				break
+				
 			case "DELETE":
 				log.debug params
 				Voiture v = Voiture.get(params.id)
 				v.delete(flush: true)
 				render 200
 				break
+				
 			default:
 				break
 		}

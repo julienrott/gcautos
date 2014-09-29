@@ -30,7 +30,7 @@ App.Voiture = DS.Model.extend({
 	vehicleType: DS.attr('number'),
 	prixVente: DS.attr('string'),
 	prixVenteFormatted: function() {
-		return this.get('prixVente').replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+		return this.get('prixVente').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 	}.property('prixVente'),
 	prixVenteFormattedChanged: function() {
 		

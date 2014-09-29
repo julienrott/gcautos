@@ -277,7 +277,7 @@ App.CreateVoitureRoute = Ember.Route.extend({
 			description: 'description',
 			vehicleType: 0,
 			mention: 0,
-			prixVente: 10000,
+			prixVente: 0,
 		});
 	}
 });
