@@ -20,6 +20,6 @@ class Voiture {
 	static mapping = {
 		//table 'voiture'
 		description type: 'text'
-		photos sort:'id'
+		photos sort: 'position'
 	}
 }

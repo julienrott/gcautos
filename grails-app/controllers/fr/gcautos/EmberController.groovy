@@ -141,8 +141,7 @@ class EmberController {
 	}
 	
 	private def getPhotosIds(def idVoiture) {
-		def res2 = Voiture.executeQuery("select p.id from Photo p inner join p.voiture as v where v.id = p.voiture and v.id=?", [idVoiture])
-		res2
+		Voiture.executeQuery("select p.id from Photo p inner join p.voiture as v where v.id = p.voiture and v.id=? order by p.position, p.id", [idVoiture])
 	}
 	
 	def voituresHomes() {
@@ -227,4 +226,13 @@ class EmberController {
 		}
 	}
 	
+	def updatePhotosPositions() {
+		def positionData = JSON.parse(params.json).positionData
+		positionData.each {
+			Photo photo = Photo.get(it.id as long)
+			photo.position = it.position as int
+			photo.save(flush: true)
+		}
+		render 200
+	}
 }

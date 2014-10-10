@@ -191,6 +191,30 @@ App.IndexRoute = Ember.Route.extend({
 	}
 });
 
+App.EditVoitureView = Ember.View.extend({
+	didInsertElement : function(){
+		Ember.run.schedule('afterRender', this.makeEditable());
+	},
+	makeEditable: function(){
+		var _this = this;
+			$('.sortable').sortable('destroy');
+			$('.sortable').sortable({items: 'div'}).bind('sortupdate', function() {
+				var a = []
+				$(".sortable div").each(function(index,l){
+					var positionData = {};
+					positionData.id = $(l).data('id')
+					positionData.position = index
+					a.push(positionData)
+				});
+				var positionData = {positionData: a}
+				$.post(urlContext + '/ember/updatePhotosPositions', {json: JSON.stringify(positionData)}, function() {
+//					_this.controller.model.reload();
+//					Ember.run.schedule('afterRender', _this.makeEditable());
+				});
+			});
+	}
+});
+
 App.EditVoitureController = Ember.ObjectController.extend({
 	vehicleTypes: vehicleTypes,
 	vehicleMentions: vehicleMentions,
@@ -201,9 +225,6 @@ App.EditVoitureController = Ember.ObjectController.extend({
 		update: function() {
 			var controller = this;
 			controller.model.save().then(function(reason) {controller.send('ok');}).catch(function(reason) {controller.send('error');});
-//			controller.store.find('voiture', controller.model.get('id')).then(function(voiture) {
-//				voiture.save().then(function(reason) {controller.send('ok');}).catch(function(reason) {controller.send('error');});
-//			});
 		},
 		deletePhoto: function(idVoiture, idPhoto) {
 			this.store.find('voiture', this.model.get('id')).then(function(voiture) {
@@ -222,11 +243,6 @@ App.EditVoitureController = Ember.ObjectController.extend({
 			});
 		},
 		reloadPhoto: function(idVoiture, idPhoto) {
-			/*$.post(urlContext + "/ember/reloadPhoto/" + idVoiture, {idPhoto: idPhoto}, function(res){
-				console.log(res);
-			}).fail(function(res) {
-				console.log("error", res);
-			});*/
 			this.store.find('voiture', this.model.get('id')).then(function(voiture) {
 				var photos = voiture.get('photos');
 				var photoToDelete = null;
@@ -456,11 +472,32 @@ App.IndexView = Ember.View.extend({
 	didInsertElement : function(){
 		var that = this;
 		Ember.run.schedule('afterRender',function(){
-		//Ember.run.next(function(){
 			$('.carousel').carousel();
-			//this.$().get('.carousel').carousel();
 		});
 	}
+});
+
+App.PubsClickInTextView = Ember.View.extend({
+	didInsertElement : function(){
+		this._super();
+	    Ember.run.scheduleOnce('afterRender', this, function(){
+	    	Ember.$('#pubsClickInText').appendTo(Ember.$('#pubsClickInTextFooter'));
+	    });
+	}
+});
+
+App.PubsGoogleView = Ember.View.extend({
+	template: Ember.Handlebars.compile('\
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>\
+			<!-- leaderboard -->\
+			<ins class="adsbygoogle"\
+			     style="display:inline-block;width:728px;height:90px"\
+			     data-ad-client="ca-pub-5871598473810001"\
+			     data-ad-slot="3730173376"></ins>\
+			<script>\
+			(adsbygoogle = window.adsbygoogle || []).push({});\
+			</script>\
+			')
 });
 
 App.AjaxUploaderView = Ember.View.extend({
@@ -472,11 +509,8 @@ App.AjaxUploaderView = Ember.View.extend({
 });
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-	//host: "http://localhost:8080",
 	host: urlContext,
-	//namespace: "gcautos/voitures"
 	namespace: "ember"
-	//plurals: {"neuve": "neuves"}
 });
 
 App.ApplicationSerializer = DS.RESTSerializer.extend({

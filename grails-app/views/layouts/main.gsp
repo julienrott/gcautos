@@ -104,27 +104,9 @@
 		<span style="vertical-align: super; padding-left: 5px;">Une erreur s'est produite&hellip;</span>
 	</div>
 	
-	<g:if env="production">
-		<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push([ '_setAccount', 'UA-3781580-4' ]);
-			_gaq.push([ '_trackPageview' ]);
-			(function() {
-				var ga = document.createElement('script');
-				ga.type = 'text/javascript';
-				ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl'
-						: 'http://www')
-						+ '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
-		</script>
-
-
-		<script type="text/javascript" src="http://tags.clickintext.net/t2ELJBbAJGQH2" title="Slide In"></script>
-		<script type="text/javascript" src="http://tags.clickintext.net/t2vdfy9ppS6Qs" title="Site Under"></script>
-
-	</g:if>
+	<div class="row" style="text-align: center;" id="pubsClickInText">
+		<script src="//tags.clickintext.net/t2791gXkYV2dm" title="Classic (IAB) footer"></script>
+	</div>
+	
 </body>
 </html>

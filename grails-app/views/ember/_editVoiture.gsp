@@ -56,9 +56,9 @@
 
 		<div class="row col-md-12">&nbsp;</div>
 
-		<div class="row ">
+		<div class="row col-md-12 sortable">
 			{{#each photo in photos}}
-			<div class="photo col-md-3">
+			<div class="photo photoSortable col-md-3" {{bind-attr data-id=photo.id}}>
 				<img class="img-thumbnail col-md-12" {{bind-attr src=photo.url}} />
 
 				<span {{action 'reloadPhoto' model.id
@@ -66,10 +66,10 @@
 					title="Recharger"></span> <span {{bind-attr id=photo.id}}
 					{{action 'deletePhoto' model.id photo.id}} class="deletePhoto"
 					title="Supprimer"></span>
-
 			</div>
 			{{/each}}
 		</div>
+		
 	</div>
 	<div>&nbsp;</div>
 </div>

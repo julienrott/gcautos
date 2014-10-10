@@ -7,6 +7,7 @@
 //
 //= require jquery
 //= require jquery.spritely
+//= require jquery.sortable
 //= require handlebars-1.3.0
 //= require bootstrap
 //= require bootstrap-carousel-custom

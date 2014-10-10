@@ -4,6 +4,7 @@ class Photo {
 	Date dateCreated
 	Date lastUpdated
 	String titre
+	Integer position
 	byte[] data
 	byte[] data_small
 	byte[] data_medium
@@ -13,6 +14,7 @@ class Photo {
 	static belongsTo = [voiture: Voiture]
 
 	static constraints = {
+		position(defaultValue: 0, nullable: true)
 		data maxSize: 1024 * 1024 * 5 // 5MB
 		data_small maxSize: 1024 * 1024 * 1 // 1MB
 		data_medium(nullable: true, maxSize: 1024 * 1024 * 2) // 2MB
