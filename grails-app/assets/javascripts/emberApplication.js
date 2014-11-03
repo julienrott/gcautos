@@ -33,6 +33,7 @@ App.Router.map(function() {
 	self.resource('accessoires', { path: '/accessoires/:accessoire_id' });
 	self.resource('allNews', { path: '/allNews' });
 	self.resource('createNews', { path: '/createNews' });
+	self.resource('editPhotoSlider', { path: '/editPhotoSlider' });
 });
 
 App.ApplicationRoute = Ember.Route.extend({
@@ -188,6 +189,28 @@ App.IndexRoute = Ember.Route.extend({
 			//updateService()
 			//updateNews()
 		});
+	}
+});
+
+App.EditPhotoSliderRoute = Ember.Route.extend({
+	model: function() {
+		return this.store.find('photoSlider')
+	},
+	actions: {
+		'deletePhoto': function(id) {
+			_this = this
+			_this.store.find('photoSlider', id).then(function(photo) {
+				photo.destroyRecord().then(function() {
+					_this.send('refreshPhotoSlider');
+				});
+			});
+		},
+		refreshPhotoSlider: function() {
+			this.set('photoSlider', this.store.find('photoSlider'))
+		},
+		reloadPhotos: function() {
+			this.set('photoSlider', this.store.find('photoSlider'))
+		}
 	}
 });
 
@@ -503,6 +526,14 @@ App.PubsGoogleView = Ember.View.extend({
 App.AjaxUploaderView = Ember.View.extend({
 	didInsertElement : function(){
 		Ember.$.get('ember/ajaxUploader', {id: this.get('controller').model.id}, function(a, b, c){
+			Ember.$('#divAjaxUploader').html(a)
+		});
+	}
+});
+
+App.AjaxUploaderPhotoSliderView = Ember.View.extend({
+	didInsertElement : function(){
+		Ember.$.get('ember/ajaxUploaderPhotoSlider', {}, function(a, b, c){
 			Ember.$('#divAjaxUploader').html(a)
 		});
 	}

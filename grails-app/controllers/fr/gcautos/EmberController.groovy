@@ -9,16 +9,26 @@ class EmberController {
 	def photoService
 
 	def photoSliders() {
-		def res = ["photoSlider":[]]
-		def photosSlider = photoService.photosSliderAccueil()
-		photosSlider.eachWithIndex{it, idx ->
-			res.photoSlider.push (id: it.id,
-			idd: it.id,
-			url: createLink(controller:'photoSlider', action:'show', id:"${it.id}"),
-			css: idx == 0 ? 'active' : ''
-			)
+		switch (request.method) {
+			case "DELETE":
+				def photo = PhotoSlider.get(params.id.toLong())
+				photo.delete(flush: true)
+				render 200
+			break;
+			
+			case "GET":
+				def res = ["photoSlider":[]]
+						def photosSlider = photoService.photosSliderAccueil()
+						photosSlider.eachWithIndex{it, idx ->
+						res.photoSlider.push (id: it.id,
+								idd: it.id,
+								url: createLink(controller:'photoSlider', action:'show', id:"${it.id}"),
+								css: idx == 0 ? 'active' : ''
+								)
+				}
+				render res as JSON
+			break;
 		}
-		render res as JSON
 	}
 
 	def voitures() {
@@ -185,8 +195,11 @@ class EmberController {
 	}
 	
 	def ajaxUploader() {
-		log.debug params
 		render template: '/ajaxUploader/ajaxUploader', model: [id: params.id]
+	}
+	
+	def ajaxUploaderPhotoSlider() {
+		render template: '/ajaxUploader/ajaxUploaderPhotoSlider'
 	}
 	
 	def services() {

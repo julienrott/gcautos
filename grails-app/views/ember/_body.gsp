@@ -66,13 +66,13 @@
 								<li>{{#link-to 'createVoiture'}}
 										<g:message code="menu.create.voiture" />
 									{{/link-to}}</li>
-								<%--<li><g:link controller="photoSlider">
+								<li>{{#link-to 'editPhotoSlider'}}
 										<g:message code="menu.manage.photoSlider" />
-									</g:link></li>
-								<li><g:link controller="accessoires">
+									{{/link-to}}</li>
+								<%--<li><g:link controller="accessoires">
 										<g:message code="menu.manage.accessoires" />
-									</g:link></li>
-							--%></ul></li>
+									</g:link></li>--%>
+							</ul></li>
 					</sec:ifAllGranted>
 				</sec:ifLoggedIn>
 			</ul>

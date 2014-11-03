@@ -87,6 +87,10 @@
 			<g:render template="ember/createNews"/>
 		</script>
 	
+		<script type="text/x-handlebars" id="editPhotoSlider">
+			<g:render template="ember/editPhotoSlider"/>
+		</script>
+	
 	</sec:ifAllGranted>
 	
 	<div id="spinner" class="spinner" style="">

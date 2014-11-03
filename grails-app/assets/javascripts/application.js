@@ -41,6 +41,10 @@ reloadCar = function() {
 	$('#reloadCarBtn').click();
 };
 
+reloadPhotos = function() {
+	$('#reloadPhotosBtn').click();
+}
+
 $.fn.pulse = function(options) {
 
     var options = $.extend({
