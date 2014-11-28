@@ -1,14 +1,6 @@
 <div class="bg-white">
-	<section>
-		<article>&nbsp;</article>
-		<article>
-			<center>
-				<h2 class="">Les véhicules sont visibles uniquement sur
-					rendez-vous</h2>
-			</center>
-		</article>
-	</section>
 
+	<div class="">&nbsp;</div>
 	<div class="">&nbsp;</div>
 
 	<div class="voitureListe">

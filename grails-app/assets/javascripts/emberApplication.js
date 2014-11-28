@@ -45,7 +45,6 @@ App.ApplicationRoute = Ember.Route.extend({
 			}, 3000);
 		},
 		error: function(error, transition) {
-			console.log(error)
 			$("#errorMsg").show();
 			setTimeout(function(){
 				$("#errorMsg").hide();
@@ -139,13 +138,16 @@ App.IndexController = Ember.ArrayController.extend({
 		refreshNews: function() {
 			this.set('news', this.store.find('news', {maxNews: 2}))
 		},
+		refreshService: function() {
+			this.set('services', this.store.find('service'))
+		},
 		refreshVoituresHome: function() {
 //			this.set('voituresHome', this.store.find('voituresHome'))
 //			this.get('voituresHome').reload()
 //			this.send('reloadIndex')
 		},
 		reloadIndex: function() {
-			this.reload()
+			this.refresh()
 		}
 		
 	},
@@ -161,6 +163,7 @@ App.IndexController = Ember.ArrayController.extend({
 });
 
 App.IndexRoute = Ember.Route.extend({
+	needs: ['index'],
 	model: function() {
 		/*var photos = [];
 		Ember.$.getJSON('http://localhost:8080/gcautos/voitures/homeJSON', function(p){
@@ -177,17 +180,32 @@ App.IndexRoute = Ember.Route.extend({
 	actions: {
 		reloadIndexRoute: function() {
 			this.refresh();
+		},
+		showEditService: function() {
+			this.store.find('service').then(function(services) {
+				var s = services.content[0]
+				var c = s.get('contenu')
+				tinyMCE.get('serviceContenu').setContent(c);
+				$("#modalEditService").modal("show")
+			})
+		},
+		saveService: function() {
+			_this = this
+			_this.store.find('service').then(function(services) {
+				var s = services.content[0]
+				var c = tinyMCE.get('serviceContenu').getContent();
+				s.set('contenu', c)
+				s.save()
+				$("#modalEditService").modal("hide")
+			})
 		}
 	},
 	renderTemplate: function() {
 		this.render('index');
 		Ember.run.schedule('afterRender', function task3(){
 			Ember.$(".blink").each(function(){
-				//$(this).effect("pulsate", { times:500 }, 1500);
 				$(this).pulse( { times:500, duration: 500 } );
 			});
-			//updateService()
-			//updateNews()
 		});
 	}
 });
@@ -364,7 +382,6 @@ App.VoituresController = Ember.ObjectController.extend({
 			var controller = this;
 			controller.store.find('voiture', id).then(function(voiture) {
 				voiture.destroyRecord().then(function(a,b,c,d) {
-					console.log(controller)
 					controller.send("reloadRoute")
 					controller.get('controllers.index').send('refreshVoituresHome')
 				});

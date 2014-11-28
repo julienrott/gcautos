@@ -203,12 +203,35 @@ class EmberController {
 	}
 	
 	def services() {
-		def res = [services: []]
-		def service = Service.list(max:1,sort:"id",order:"desc")[0]
-				res.services.push(idd: service.id,
-				titre: service.titre,
-				contenu: service.contenu)
-		render res as JSON
+		switch (request.method) {
+			case "DELETE":
+				render 200
+				break
+			
+			case "POST":
+				render 200
+				break
+			
+			case "PUT":
+				def service = Service.get(params.id)
+				service.contenu = request.JSON.service.contenu
+				if(!service.save(flush: true)) {
+					service.errors.each {
+						log.error it
+					}
+				}
+				render 200
+				break
+				
+			case "GET" :
+				def res = [services: []]
+				def service = Service.list(max:1,sort:"id",order:"desc")[0]
+						res.services.push(idd: service.id,
+						titre: service.titre,
+						contenu: service.contenu)
+				render res as JSON
+				break
+		}
 	}
 	
 	def news() {

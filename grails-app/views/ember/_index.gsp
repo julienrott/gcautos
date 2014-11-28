@@ -15,14 +15,7 @@
 
 	<div class="row">
 		<div>&nbsp;</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="span12 center">
-				<span>Les véhicules sont visibles uniquement sur rendez-vous</span>
-			</h2>
-		</div>
+		<div>&nbsp;</div>
 	</div>
 
 	<div class="row center">
@@ -88,11 +81,35 @@
 	</div>
 
 	<div class="row">
+
+		<div class="modal fade" id="modalEditService">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title">Nos services</h4>
+		      </div>
+		      <div class="modal-body">
+		        {{view App.TinymceView id='serviceContenu' class='tinymce'}}
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+		        <button type="button" class="btn btn-primary" id="saveServiceBtn" {{action 'saveService'}}>Enregistrer</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
 		{{#each service in services}}
 		<div class="col-md-6">
 			<h2>
 				&nbsp;Nos <span class="h2">Services</span>
 			</h2>
+			
+			<sec:ifAllGranted roles="ROLE_ADMIN">
+				<a href="#" {{action 'showEditService'}}>Modifier</a>
+			</sec:ifAllGranted>
+			
 			<div class="col-md-12">
 				<strong class="strong-1">{{service.titre}}</strong>
 			</div>
