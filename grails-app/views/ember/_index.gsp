@@ -82,23 +82,25 @@
 
 	<div class="row">
 
-		<div class="modal fade" id="modalEditService">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		        <h4 class="modal-title">Nos services</h4>
-		      </div>
-		      <div class="modal-body">
-		        {{view App.TinymceView id='serviceContenu' class='tinymce'}}
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-		        <button type="button" class="btn btn-primary" id="saveServiceBtn" {{action 'saveService'}}>Enregistrer</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+		<sec:ifAllGranted roles="ROLE_ADMIN">
+			<div class="modal fade" id="modalEditService">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        <h4 class="modal-title">Nos services</h4>
+			      </div>
+			      <div class="modal-body">
+			        {{view App.TinymceView id='serviceContenu' class='tinymce'}}
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+			        <button type="button" class="btn btn-primary" id="saveServiceBtn" {{action 'saveService'}}>Enregistrer</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</sec:ifAllGranted>
 		
 		{{#each service in services}}
 		<div class="col-md-6">
