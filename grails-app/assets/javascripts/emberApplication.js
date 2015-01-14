@@ -36,6 +36,15 @@ App.Router.map(function() {
 	self.resource('editPhotoSlider', { path: '/editPhotoSlider' });
 });
 
+App.Router.reopen({
+  notifyGoogleAnalytics: function() {
+    return ga('send', 'pageview', {
+        'page': this.get('url'),
+        'title': this.get('url')
+      });
+  }.on('didTransition')
+});
+
 App.ApplicationRoute = Ember.Route.extend({
 	actions: {
 		ok: function(ok, transition) {
