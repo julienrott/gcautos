@@ -188,10 +188,27 @@ class EmberController {
 	}
 	
 	def accessoires() {
-		Accessoire acc = Accessoire.get(params.id as long)
-		def res = [accessoires: []]
-		res.accessoires.push(idd: acc.id, titre: acc.titre, contenu: acc.contenu)
-		render res as JSON
+		switch (request.method) {
+			case "GET" :
+				Accessoire acc = Accessoire.get(params.id as long)
+				def res = [accessoires: []]
+				res.accessoires.push(idd: acc.id, titre: acc.titre, contenu: acc.contenu)
+				render res as JSON
+				break
+			case "PUT" :
+				Accessoire acc = Accessoire.get(params.id as long)
+				acc.titre = request.JSON.accessoire.titre
+				acc.contenu = request.JSON.accessoire.contenu
+				if(!acc.save(flush: true)) {
+					acc.errors.each {
+						log.error it
+					}
+				}
+				def res = [accessoires: []]
+				res.accessoires.push(idd: acc.id, titre: acc.titre, contenu: acc.contenu)
+				render res as JSON
+				break
+		}
 	}
 	
 	def ajaxUploader() {

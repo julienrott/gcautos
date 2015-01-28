@@ -241,6 +241,15 @@ App.EditPhotoSliderRoute = Ember.Route.extend({
 	}
 });
 
+App.AccessoiresController = Ember.ObjectController.extend({
+	actions: {
+		update: function() {
+			var controller = this;
+			controller.model.save().then(function(reason) {controller.send('ok');}).catch(function(reason) {controller.send('error');});
+		}
+	}
+});
+
 App.EditVoitureView = Ember.View.extend({
 	didInsertElement : function(){
 		Ember.run.schedule('afterRender', this.makeEditable());
