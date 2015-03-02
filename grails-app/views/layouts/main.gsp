@@ -1,157 +1,126 @@
-﻿<%@ page import="com.gcautos.domain.Accessoire" %>
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="fr" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="fr" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="fr" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="fr" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="fr" class="no-js"><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>GC Autos</title>
-	<meta name="description" content="">
-	
+	<title><g:layoutTitle default="Grails"/></title>
+	<meta name="description" content="GC AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules neuf et occasions, vente et réparation de quads pour enfants ados et adultes, dirt bike, Buggy.">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-
-	<r:require modules="bootstrap,bootstrap-responsive-css,myStyle"/>
-
+	<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
+	<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
+	<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
+	
 	<script type="text/javascript">
 		var urlContext = '${grailsApplication.config.grails.serverURL}';
 	</script>
+	
+	<asset:stylesheet src="application.css"/>
+	<asset:javascript src="application.js"/>
+	
+	<sec:ifAllGranted roles="ROLE_ADMIN">
+		<asset:javascript src="tiny_mce-3.5.8/jquery.tinymce.js"/>
+	</sec:ifAllGranted>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+	  ga('create', 'UA-3781580-4', 'auto');
+	  ga('send', 'pageview');
+	</script>
+	
 	<g:layoutHead/>
-	<r:layoutResources />
 </head>
 <body>
-	<div class="container narrow">
-	
-		<div class="navbar">
-			<div class="">
-				<div class="divtel pull-right offset1">
-					<div class="font-1">Tel: 06 63 56 43 43</div>
-					<div class="font-1"><a href="${createLink(controller:'contact')}" class="font-1">Nous contacter</a></div>
-				</div>
-				
-				<a target="_blank" class="pull-right clearfix"
-						href="https://www.facebook.com/christophe.gcautoserstein">
-					<r:img uri="/img/logo-facebook.png" width="86" height="26"/>
-				</a>
-				
-				<div class="logo-bg">
-					<a href="${createLinkTo(dir:'/')}" class="logo" title="GC AUTOS"></a>
-				</div>
-					<div class="container">
-						<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
-			            	<span class="icon-bar"></span>
-				            <span class="icon-bar"></span>
-				            <span class="icon-bar"></span>
-				        </button>
-				        
-				        <div class="nav-collapse collapse">
-							<ul class="nav nav-pills pull-right" >
-								<li><a href="${createLinkTo(dir:'/')}"><g:message code="menu.accueil"/></a></li>
-								<li><g:link controller="voitures" action="occasions"><g:message code="menu.occasions"/></g:link></li>
-								<li><g:link controller="voitures" action="neuves"><g:message code="menu.neufs"/></g:link></li>
-								<li><g:link controller="voitures" action="quads"><g:message code="menu.quads"/></g:link></li>
-								<li><g:link controller="voitures" action="dirts"><g:message code="menu.dirts"/></g:link></li>
-								<li><g:link controller="voitures" action="electriques"><g:message code="menu.electriques"/></g:link></li>
-								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<g:each in="${Accessoire.list().sort{it.titre}}">
-											<li><g:link controller="accessoires" action="view" id="${it.id}">${it.titre}</g:link></li>
-										</g:each>
-									</ul>
-								</li>
-								<sec:ifLoggedIn>
-									<sec:ifAllGranted roles="ROLE_ADMIN">
-										<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin menu<b class="caret"></b></a>
-											<ul class="dropdown-menu">
-												<li><g:link controller="voitures" action="vendues"><g:message code="menu.vendues"/></g:link></li>
-												<li><g:link controller="voitures" action="create"><g:message code="menu.create.voiture"/></g:link></li>
-												<li><g:link controller="photoSlider" ><g:message code="menu.manage.photoSlider"/></g:link></li>
-												<li><g:link controller="accessoires" ><g:message code="menu.manage.accessoires"/></g:link></li>
-												<li><g:link controller="statistiques" ><g:message code="menu.statistiques"/></g:link></li>
-											</ul>
-										</li>
-									</sec:ifAllGranted>
-									<li><g:link controller="logout">Logout (<sec:username/>)</g:link></li>
-								</sec:ifLoggedIn>
-							</ul>
-			          	</div>
-		          	</div>
-			</div>
+
+	<div style="display: none;" itemscope
+		itemtype="http://schema.org/LocalBusiness">
+
+		<span itemprop="name">GC Autos</span> <span itemprop="description">GC
+			AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules
+			neuf et occasions, vente et réparation de quads pour enfants ados et
+			adultes, dirt bike, Buggy.</span>
+		<div itemprop="address" itemscope
+			itemtype="http://schema.org/PostalAddress">
+			<span itemprop="streetAddress">1 rue du Muhlwasser</span> <span
+				itemprop="addressLocality">Matzenheim</span> <span
+				itemprop="postalCode">67150</span> <span itemprop="addressCountry">France</span>
 		</div>
-		<div class="container content row-fluid">
-			<g:layoutBody/>
-		</div>
-		
-		<div class="footer row-fluid">
-			<ul class="list-1 span2">
-				<li class="active-2"><a href="${createLinkTo(dir:'/')}">HOME</a></li>
-				<!--<li><a href="#">ABOUT</a></li>
-				<li><a href="#">MAINTENANCE</a></li>
-				<li><a href="#">REPAIR</a></li>
-				<li><a href="#">PRICE LIST</a></li>
-				<li><a href="#">LOCATIONS</a></li>-->
-			</ul>
-			<div id="divCB" class="span6">
-			    <span class="policy">Paiement par carte bancaire</span>
-			    <img src="${createLinkTo(dir: "images", file: "cartes-bancaires.jpg")}"/>
-			    <img src="${createLinkTo(dir: "images", file: "3x.jpg")}"/>
-			</div>
-			<div class="span4">
-				<div class="policy">GC Autos © <g:formatDate format="yyyy" date="${new Date()}"/> <a href="#">Privacy Policy</a>
-					<sec:ifNotLoggedIn>
-						<g:link controller="login" action="auth">Login</g:link>
-					</sec:ifNotLoggedIn>
-					<sec:ifLoggedIn>
-						<g:link controller="logout">Logout (<sec:username/>)</g:link>
-					</sec:ifLoggedIn>
-				</div>
-			</div>
-		</div>
+		<span itemprop="telephone">06 63 56 43 43</span>
 	</div>
 
-	<r:require module="application"/>
+	<script type="text/x-handlebars">
+		<g:render template="ember/body"/>
+	</script>
 	
-	<g:javascript>
-		$(document).ready(function() {
-			if ($( "#dateAchat" )[0])
-				$( "#dateAchat" ).datepicker();
-			if ($( "#dateVente" )[0])
-				$( "#dateVente" ).datepicker();
-		});
+	<script type="text/x-handlebars" id="index">
+		<g:render template="ember/index"/>
+	</script>
 	
-		$(function() {
-	           $('textarea.tinymce').tinymce({
-	                   script_url : urlContext + "/js/libs/tiny_mce-3.5.8/tiny_mce.js",
-	                   theme : "advanced",
-	                   plugins : "media",
-	                   //theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull",
-	                   //theme_advanced_buttons2 : "media, styleselect,formatselect,fontselect,fontsizeselect",
-	                   theme_advanced_buttons2_add : "media",
-	                   //theme_advanced_toolbar_location : "top",
-	                   //theme_advanced_toolbar_align : "left",
-	                   //theme_advanced_statusbar_location : "bottom",
-	                   theme_advanced_resizing : true,
-	                   width: "80%",
-	                   height: "300"
-	           });
-	   	});
+	<script type="text/x-handlebars" id="contact">
+		<g:render template="ember/contact"/>
+	</script>
 	
-	</g:javascript>
+	<script type="text/x-handlebars" id="accessoires">
+		<g:render template="ember/accessoires"/>
+	</script>
 	
-	<r:layoutResources />
-
-	<g:if env="production">
-		<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-3781580-4']);
-		_gaq.push(['_trackPageview']);
-		(function() {
-		  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
+	<script type="text/x-handlebars" id="listeVoitures">
+		<g:render template="ember/listeVoitures"/>
+	</script>
+	
+	<script type="text/x-handlebars" id="detailsVoiture">
+		<g:render template="ember/detailsVoiture"/>
+	</script>
+	
+	<script type="text/x-handlebars" id="allNews">
+		<g:render template="ember/allNews"/>
+	</script>
+	
+	<sec:ifAllGranted roles="ROLE_ADMIN">
+	
+		<script type="text/x-handlebars" id="editVoiture">
+			<g:render template="ember/editVoiture"/>
 		</script>
-	</g:if>
+	
+		<script type="text/x-handlebars" id="createVoiture">
+			<g:render template="ember/createVoiture"/>
+		</script>
+	
+		<script type="text/x-handlebars" id="createNews">
+			<g:render template="ember/createNews"/>
+		</script>
+	
+		<script type="text/x-handlebars" id="editPhotoSlider">
+			<g:render template="ember/editPhotoSlider"/>
+		</script>
+	
+	</sec:ifAllGranted>
+	
+	<div id="spinner" class="spinner" style="">
+		<span id="spinnerSprite" class="spinnerSprite"></span>
+		<span style="vertical-align: super; padding-left: 5px;">Chargement&hellip;</span>
+	</div>
+	
+	<div id="okMsg" class="errorMsg btn btn-success" style="display:none;">
+		<span id="spinnerSprite" class="spinnerSprite"></span>
+		<span style="vertical-align: super; padding-left: 5px;">OK&hellip;</span>
+	</div>
+	
+	<div id="errorMsg" class="errorMsg btn btn-danger" style="display:none;">
+		<span id="spinnerSprite" class="spinnerSprite"></span>
+		<span style="vertical-align: super; padding-left: 5px;">Une erreur s'est produite&hellip;</span>
+	</div>
+	
+	<div class="row" style="text-align: center;" id="pubsClickInText">
+		<script src="//tags.clickintext.net/t2791gXkYV2dm" title="Classic (IAB) footer"></script>
+	</div>
+
 </body>
 </html>

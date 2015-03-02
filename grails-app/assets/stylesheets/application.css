@@ -1,0 +1,255 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS file within this directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the top of the
+* compiled file, but it's generally better to create a new file per style scope.
+*
+*= require bootstrap
+*= require_self
+*/
+
+body {
+    background: none repeat scroll 0 0 #e6e6e6;
+    color: #494949;
+    font: 12px/18px Arial,sans-serif;
+}
+
+.spinner {
+//    background: url("images/spinner.gif") no-repeat scroll 5% 50% #ffff80;
+    background-color: #ffff80;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    height: 30px;
+    left: 30%;
+    outline: medium none;
+//    padding: 0.5em;
+    position: fixed;
+    right: 0;
+    text-indent: 20px;
+    top: 20px;
+    width: 160px;
+    z-index: 1050;
+}
+
+.spinnerSprite {
+	width: 26px;
+	height: 26px;
+	background-image: url(images/spinner.png);
+	background-position: 0px 0px;
+	display: inline-block;
+}
+
+.errorMsg {
+    //background-image: url("spinner.gif");
+    background-position: 5% 50%;
+    background-repeat: no-repeat;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    left: 30%;
+    outline: medium none;
+    padding: 0.5em;
+    position: fixed;
+    right: 0;
+    text-indent: 20px;
+    top: 20px;
+    width: 260px;
+    z-index: 1050;
+}
+
+.font-1, .font-1 > a, .font-1 > a:active, .font-1 > a:focus, .font-1 > a:visited {
+    color: #6d0b0b;
+    font: 600 16px/20px "Open Sans",sans-serif;
+    text-decoration: underline;
+}
+
+.big {
+    font-size: xx-large;
+}
+
+.strong-1 {
+    color: #991111;
+    font: bold 17px/23px Arial,sans-serif;
+}
+
+.main-container {
+	margin-top: 56px;
+}
+
+.navbar-brand {
+	height: auto;
+	padding: 0;
+	margin-left: 0px !important;
+}
+
+.navbar-container {
+	background: none repeat scroll 0 0 #e6e6e6;
+}
+
+.navbar-default {
+    background-color: inherit;
+    border-color: transparent;
+}
+
+.nav-custom {
+	margin-right: 0 !important;
+	background: #a90329; /* Old browsers */
+	background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 72%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a90329),
+		color-stop(44%, #8f0222), color-stop(72%, #6d0019));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 72%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 72%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 72%);
+	/* IE10+ */
+	background: linear-gradient(to bottom, #a90329 0%, #8f0222 44%, #6d0019 72%);
+	/* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329',
+		endColorstr='#6d0019', GradientType=0); /* IE6-9 */
+}
+
+.nav-custom > li > a {
+    border: 1px solid transparent;
+    color: #fff !important;
+    font: 700 14px/29px "Open Sans",sans-serif;
+    padding: 0 10px 0 9px;
+    text-shadow: none;
+    float: none;
+    text-decoration: none;
+}
+
+.nav-custom > li > a:hover, .nav-custom > li > a:focus, .nav-custom > li.active > a, .nav-custom > li.sfHover > a {
+    background: repeat-x scroll 0 0 #440606;
+    border: 1px solid #931010;
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: none;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: #440606;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    border-color: #440606;
+}
+
+#myCarousel {
+	//padding: 0 15px;
+}
+
+.center {
+	text-align: center;
+}
+
+h2 {
+    color: #911;
+    font: 700 27px/33px "Open Sans",sans-serif !important;
+    text-transform: uppercase;
+}
+
+h2 a, h2 a:visited {
+    color: #911;
+}
+
+.h2 {
+    color: #494949;
+    font: 400 24px/29px "Open Sans",sans-serif;
+    text-transform: uppercase;
+}
+
+.lignes-2 {
+    max-height: 4.9em;
+    overflow: hidden;
+}
+
+.lignes-6 {
+    max-height: 10em;
+    overflow: hidden;
+    text-align: justify;
+}
+
+.bg-grey {
+    background: none repeat scroll 0 0 #f9f9f9;
+}
+
+.bg-white {
+    background: none repeat scroll 0 0 white;
+}
+
+.footer {
+    background: none repeat scroll 0 0 #212121;
+    padding: 13px 0 110px;
+}
+
+.policy {
+    color: #909090;
+    font: 12px/16px Arial,sans-serif;
+}
+
+.policy a {
+    color: #909090;
+    margin-left: 20px;
+}
+
+.paginate {
+    font: 700 16px/31px "Open Sans",sans-serif;
+    text-align: center;
+}
+
+.paginate .active {
+    color: black !important;
+}
+
+.paginate a, .paginate a:visited {
+    color: #991111;
+}
+
+.paginate * {
+    padding: 0 2px;
+}
+
+.voitureListe {
+    background: none repeat scroll 0 0 transparent;
+    border: 3px solid #8b8b8b;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px #8b8b8b;
+    margin: 0 20px 20px !important;
+    padding: 10px;
+}
+
+div.photo span {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
+	background: url(../images/iconDelete.png) no-repeat;
+	cursor: pointer;
+}
+
+.refreshPhoto {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    left: 18px !important;
+    top: 10px !important;
+}
+
+.sortable-placeholder {
+	border: 1px dashed #CCC;
+	background: none;
+	width: 300px;
+	height: 200px;
+	float: left;
+}
+
+.photoSortable {
+	width: 300px;
+	height: 200px;
+}

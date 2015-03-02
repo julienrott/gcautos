@@ -1,5 +1,6 @@
-// locations to search for config files that get merged into the main config
-// config files can either be Java properties files or ConfigSlurper scripts
+// locations to search for config files that get merged into the main config;
+// config files can be ConfigSlurper scripts, Java properties files, or classes
+// in the classpath in ConfigSlurper format
 
 // grails.config.locations = [ "classpath:${appName}-config.properties",
 //                             "classpath:${appName}-config.groovy",
@@ -10,38 +11,56 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
-grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
-grails.mime.use.accept.header = false
-grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
-                      xml: ['text/xml', 'application/xml'],
-                      text: 'text/plain',
-                      js: 'text/javascript',
-                      rss: 'application/rss+xml',
-                      atom: 'application/atom+xml',
-                      css: 'text/css',
-                      csv: 'text/csv',
-                      all: '*/*',
-                      json: ['application/json','text/json'],
-                      form: 'application/x-www-form-urlencoded',
-                      multipartForm: 'multipart/form-data'
-                    ]
+
+// The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
+grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
+grails.mime.types = [ // the first one is the default format
+    all:           '*/*', // 'all' maps to '*' or the first available format in withFormat
+    atom:          'application/atom+xml',
+    css:           'text/css',
+    csv:           'text/csv',
+    form:          'application/x-www-form-urlencoded',
+    html:          ['text/html','application/xhtml+xml'],
+    js:            'text/javascript',
+    json:          ['application/json', 'text/json'],
+    multipartForm: 'multipart/form-data',
+    rss:           'application/rss+xml',
+    text:          'text/plain',
+    hal:           ['application/hal+json','application/hal+xml'],
+    xml:           ['text/xml', 'application/xml']
+]
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
-// What URL patterns should be processed by the resources plugin
-//grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/img/*']
-grails.resources.adhoc.excludes = ['/js/libs/tiny_mce/**/*.*']
-grails.resources.debug=false
+// Legacy setting for codec used to encode data with ${}
+grails.views.default.codec = "html"
 
-// The default codec used to encode data with ${}
-grails.views.default.codec = "none" // none, html, base64
-grails.views.gsp.encoding = "UTF-8"
+// The default scope for controllers. May be prototype, session or singleton.
+// If unspecified, controllers are prototype scoped.
+grails.controllers.defaultScope = 'singleton'
+
+// GSP settings
+grails {
+    views {
+        gsp {
+            encoding = 'UTF-8'
+            htmlcodec = 'xml' // use xml escaping instead of HTML4 escaping
+            codecs {
+                expression = 'html' // escapes values inside ${}
+                scriptlet = 'html' // escapes output from scriptlets in GSPs
+                taglib = 'none' // escapes output from taglibs
+                staticparts = 'none' // escapes output from static template parts
+            }
+        }
+        // escapes all not-encoded output at final stage of outputting
+        // filteringCodecForContentType.'text/html' = 'html'
+    }
+}
+
+
 grails.converters.encoding = "UTF-8"
-// enable Sitemesh preprocessing of GSP pages
-grails.views.gsp.sitemesh.preprocess = true
 // scaffolding templates configuration
 grails.scaffolding.templates.domainSuffix = 'Instance'
 
@@ -57,167 +76,83 @@ grails.web.disable.multipart=false
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
 
-// enable query caching by default
-grails.hibernate.cache.queries = true
+// configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
+grails.hibernate.cache.queries = false
 
-// set per-environment serverURL stem for creating absolute links
+// configure passing transaction's read-only attribute to Hibernate session, queries and criterias
+// set "singleSession = false" OSIV mode in hibernate configuration after enabling
+grails.hibernate.pass.readonly = false
+// configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
+grails.hibernate.osiv.readonly = false
+
 environments {
     development {
-		grails.resources.debug=false
         grails.logging.jul.usebridge = true
-        grails.serverURL = "http://localhost:8080/${appName}"
-    }
-    test {
-        grails.logging.jul.usebridge = false
-        grails.serverURL = "http://gcautos-test.herokuapp.com"
-    }
-    cftest {
-        grails.logging.jul.usebridge = false
-        grails.serverURL = "http://gcautos-test.cloudfoundry.com"
+		grails.serverURL = "http://roje.hd.free.fr:8080/gcautos"
     }
     production {
         grails.logging.jul.usebridge = false
-        grails.serverURL = "http://www.gcautos.fr"
+		grails.serverURL = "http://www.gcautos.fr"
+//		grails.serverURL = "http://62.210.192.42"
+//		grails.serverURL = "http://roje.hd.free.fr:8080/${appName}"
     }
 }
 
 // log4j configuration
-log4j = {
-    // Example of changing the log pattern for the default console
-    // appender:
+log4j.main = {
+    // Example of changing the log pattern for the default console appender:
     //
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
-    error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-           'org.codehaus.groovy.grails.web.pages', //  GSP
-           'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
+           'org.codehaus.groovy.grails.web.pages',          // GSP
+           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping', // URL mapping
-           'org.codehaus.groovy.grails.commons', // core / classloading
-           'org.codehaus.groovy.grails.plugins', // plugins
-           'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
+           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+           'org.codehaus.groovy.grails.commons',            // core / classloading
+           'org.codehaus.groovy.grails.plugins',            // plugins
+           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
-		environments {
-			development {
-				warn 'org.grails.plugin.resource'
-				warn 'com.blockconsult.yuiminifyresources'
-				debug 'grails.app.controllers.com.gcautos.controllers'
-				debug 'grails.app.services.com.gcautos.services'
-			}
+	
+   environments {
+		development {
+			warn 'org.grails.plugin.resource'
+			warn 'com.blockconsult.yuiminifyresources'
+			debug 'grails.app.controllers.fr.gcautos'
+			debug 'grails.app.services.fr.gcautos'
 		}
-}
-
-grails {
-	mail {
-    host = "smtp.gmail.com"
-    port = 465
-    username = "julien.rott@gmail.com"
-    password = "dreamtin"
-    props = ["mail.smtp.auth":"true", 					   
-            "mail.smtp.socketFactory.port":"465",
-            "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
-            "mail.smtp.socketFactory.fallback":"false"]
 	}
 }
 
-grails.cache.config = {
-	cache {
-	   name 'voitures'
-	}
-	cache {
-	   name 'accessoires'
-	}
-	cache {
-	   name 'photos'
-	}
-	cache {
-	   name 'photosSliderAccueil'
-	}
-}
+grails.plugin.springsecurity.password.algorithm = 'SHA-256'
+grails.plugin.springsecurity.password.hash.iterations = 1
 
 // Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.gcautos.Person'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.gcautos.PersonRole'
-grails.plugins.springsecurity.authority.className = 'com.gcautos.Role'
-
-// Added by the JQuery Validation UI plugin:
-jqueryValidationUi {
-	errorClass = 'error'
-	validClass = 'valid'
-	onsubmit = true
-	renderErrorsOnTop = false
-	
-	qTip {
-		packed = true
-	  classes = 'ui-tooltip-red ui-tooltip-shadow ui-tooltip-rounded'  
-	}
-	
-	/*
-	  Grails constraints to JQuery Validation rules mapping for client side validation.
-	  Constraint not found in the ConstraintsMap will trigger remote AJAX validation.
-	*/
-	StringConstraintsMap = [
-		blank:'required', // inverse: blank=false, required=true
-		creditCard:'creditcard',
-		email:'email',
-		inList:'inList',
-		minSize:'minlength',
-		maxSize:'maxlength',
-		size:'rangelength',
-		matches:'matches',
-		notEqual:'notEqual',
-		url:'url',
-		nullable:'required',
-		unique:'unique',
-		validator:'validator'
-	]
-	
-	// Long, Integer, Short, Float, Double, BigInteger, BigDecimal
-	NumberConstraintsMap = [
-		min:'min',
-		max:'max',
-		range:'range',
-		notEqual:'notEqual',
-		nullable:'required',
-		inList:'inList',
-		unique:'unique',
-		validator:'validator'
-	]
-	
-	CollectionConstraintsMap = [
-		minSize:'minlength',
-		maxSize:'maxlength',
-		size:'rangelength',
-		nullable:'required',
-		validator:'validator'
-	]
-	
-	DateConstraintsMap = [
-		min:'minDate',
-		max:'maxDate',
-		range:'rangeDate',
-		notEqual:'notEqual',
-		nullable:'required',
-		inList:'inList',
-		unique:'unique',
-		validator:'validator'
-	]
-	
-	ObjectConstraintsMap = [
-		nullable:'required',
-		validator:'validator'
-	]
-	
-	CustomConstraintsMap = [
-		phone:'true', // International phone number validation
-		phoneUS:'true',
-		alphanumeric:'true',
-		letterswithbasicpunc:'true',
-    lettersonly:'true'
-	]	
-}
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'fr.gcautos.Person'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'fr.gcautos.PersonRole'
+grails.plugin.springsecurity.authority.className = 'fr.gcautos.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+    '/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll'],
+//    "/console/**": ["hasRole('ROLE_ADMIN') && (hasIpAddress('127.0.0.1') || hasIpAddress('::1'))"],
+    "/console/**": ["hasRole('ROLE_ADMIN')"],
+    "/plugins/console*/**": ["hasRole('ROLE_ADMIN')"],
+    "/ember/**": ["permitAll"],
+    "/photoSlider/**": ["permitAll"],
+    "/service/**": ["permitAll"],
+    "/news/**": ["permitAll"],
+    "/voiture/**": ["permitAll"],
+    "/storage/**": ["hasRole('ROLE_ADMIN')"],
+    "/storage/reupload/**": ["permitAll"]
+]
 
