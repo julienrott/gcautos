@@ -1,7 +1,7 @@
-<div class="bg-white ">
+<div class="bg-white row">
 	<div>&nbsp;</div>
-	<div class="voitureListe">
-		<div class="row">
+	<div class="">
+		<div class="col-xs-12">
 			<h2 class="col-md-10">
 				{{#if isNewCar}}<span class="blink">Nouveauté : </span>{{/if}}
 				{{titre}}
@@ -18,13 +18,12 @@
 			</div>
 		</sec:ifAllGranted>
 
-		<div class="row">
-			<div class="col-md-12">{{{description}}}</div>
+		<div class="col-xs-12">
+			<div class="col-xs-12">{{{description}}}</div>
 		</div>
 
 		{{#each photo in photos}}
-		<div class="row">
-			<div class="photo col-md-12">
+			<div class="photo col-xs-12 col-md-6">
 				<img class="img-thumbnail col-md-12" {{bind-attr src=photo.url}} />
 				<sec:ifAllGranted roles="ROLE_ADMIN">
 					<span {{bind-attr id=photo.id}}
@@ -32,7 +31,6 @@
 						title="Supprimer"></span>
 				</sec:ifAllGranted>
 			</div>
-		</div>
 		{{/each}}
 	</div>
 	<div>&nbsp;</div>

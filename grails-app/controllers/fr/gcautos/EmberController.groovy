@@ -100,23 +100,24 @@ class EmberController {
 	}
 	
 	private def car(String nom, int type, String route) {
+		def nbVoitures = 18
 		try {
 			def res = ["$nom": []]
 			res."$nom" = []
-			def voitures = voitureService.list type, params.page?((params.page as int) - 1)*4:0
+			def voitures = voitureService.list type, params.page?((params.page as int) - 1)*nbVoitures:0, nbVoitures
 			def vTotal = voitureService.count type
 			voitures.each {
 				res."$nom".push(getVoitureArray(it))
 			}
 			def pagesTotal
 			if(vTotal > 0) {
-				pagesTotal = vTotal % 4 > 0 ? (vTotal/4 as int) + 1 : vTotal/4 as int
+				pagesTotal = vTotal % nbVoitures > 0 ? (vTotal/nbVoitures as int) + 1 : vTotal/nbVoitures as int
 			}
 			else {
 				pagesTotal = 1
 			}
 			res.meta = [pagesTotal: (1..pagesTotal),
-				currentPage: params.offset? params.offset / 4 : 1,
+				currentPage: params.offset? params.offset / nbVoitures : 1,
 				route: route]
 			render res as JSON
 		} catch (Exception e) {

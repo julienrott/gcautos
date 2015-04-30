@@ -1,6 +1,6 @@
 <%@ page import="fr.gcautos.Accessoire" %>
 <div class="navbar navbar-default navbar-fixed-top">
-	<div class="container navbar-container">
+	<div class="container-fluid navbar-container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#main-navbar-collapse-1">
@@ -14,24 +14,34 @@
 			{{/link-to}}
 		</div>
 
-		<div class="collapse navbar-collapse" id="main-navbar-collapse-1">
+		<div class="collapse navbar-collapse sm-small-margin" id="main-navbar-collapse-1">
 
 			<div class="nav navbar-nav navbar-right col-md-2">
-				<div class="font-1">
-					<a href="tel:+33663564343">Tel: 06 63 56 43 43</a>
-				</div>
+				<sec:ifNotLoggedIn>
+					<g:link controller="login" action="auth">Se connecter / Créer un compte</g:link>
+				</sec:ifNotLoggedIn>
+				<sec:ifLoggedIn>
+					<g:form name="logoutform" controller="logout"
+						style="display: inline-block;">
+						<a href="#"
+							onclick="javascript:jQuery('#logoutform').submit();"
+							class="">Se déconnecter (<sec:username/>)</a>
+					</g:form>
+				</sec:ifLoggedIn>
 			</div>
-			<div class="nav navbar-nav navbar-right col-md-2">
-				<div class="font-1">{{#link-to 'contact'}}Nous
-					contacter{{/link-to}}</div>
+			
+			<div class="nav navbar-nav navbar-right col-md-3">
+				<span class="font-1">{{#link-to 'contact'}}Nous
+					contacter{{/link-to}}
+				</span>
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span class="font-1">
+					Tel: <a href="tel:+33663564343">06 63 56 43 43</a>
+				</span>
 			</div>
 
-			<div class="nav navbar-nav navbar-right col-md-5">
-				<iframe
-					src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FGC-AUTOS-V%C3%A9hicules-Neufs-Occasions-Quads-Dirt-Bikes-Buggy-Alsace%2F234904276569945&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=20&amp;"
-					scrolling="no" frameborder="0"
-					style="border: none; overflow: hidden; height: 20px; width: 100%;"
-					allowTransparency="true"></iframe>
+			<div class="nav navbar-nav navbar-right col-md-5" style="height: 25px;">
+				<div class="fb-like" data-href="https://www.facebook.com/pages/GCautos/234904276569945?fref=ts" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
 			</div>
 
 			<ul class="nav navbar-nav navbar-right nav-custom">
@@ -69,6 +79,9 @@
 								<li>{{#link-to 'editPhotoSlider'}}
 										<g:message code="menu.manage.photoSlider" />
 									{{/link-to}}</li>
+								<li>{{#link-to 'users'}}
+										Clients
+									{{/link-to}}</li>
 								<%--<li><g:link controller="accessoires">
 										<g:message code="menu.manage.accessoires" />
 									</g:link></li>--%>
@@ -80,7 +93,7 @@
 	</div>
 </div>
 
-<div class="container main-container">
+<div class="container-fluid main-container">
 
 	{{outlet}}
 

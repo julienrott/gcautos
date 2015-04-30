@@ -22,6 +22,11 @@ App.News = DS.Model.extend({
 	description: DS.attr('string')
 });
 
+App.User = DS.Model.extend({
+	idd: DS.attr('number'),
+	username: DS.attr('string')
+});
+
 App.Voiture = DS.Model.extend({
 	idd: DS.attr('number'),
 	titre: DS.attr('string'),

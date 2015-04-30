@@ -34,6 +34,7 @@ App.Router.map(function() {
 	self.resource('allNews', { path: '/allNews' });
 	self.resource('createNews', { path: '/createNews' });
 	self.resource('editPhotoSlider', { path: '/editPhotoSlider' });
+	self.resource('users', { path: '/users' });
 });
 
 App.Router.reopen({
@@ -526,6 +527,12 @@ App.ElectriquesRoute = App.VoituresRoute.extend({
 	}
 });
 
+App.UsersRoute = Ember.Route.extend({
+	model: function(params) {
+		return this.store.findQuery('user', params);
+	}
+});
+
 App.IndexView = Ember.View.extend({
 	didInsertElement : function(){
 		var that = this;
@@ -577,6 +584,11 @@ App.AjaxUploaderPhotoSliderView = Ember.View.extend({
 App.ApplicationAdapter = DS.RESTAdapter.extend({
 	host: urlContext,
 	namespace: "ember"
+});
+
+App.UserAdapter = DS.RESTAdapter.extend({
+	host: urlContext,
+	namespace: ""
 });
 
 App.ApplicationSerializer = DS.RESTSerializer.extend({

@@ -170,6 +170,20 @@ h2 a, h2 a:visited {
     overflow: hidden;
 }
 
+@media (max-width: 991px) {
+    .lignes-4 {
+        max-height: 4em;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 992px) {
+    .lignes-4 {
+        max-height: 2em;
+        overflow: hidden;
+    }
+}
+
 .lignes-6 {
     max-height: 10em;
     overflow: hidden;
@@ -186,7 +200,7 @@ h2 a, h2 a:visited {
 
 .footer {
     background: none repeat scroll 0 0 #212121;
-    padding: 13px 0 110px;
+    padding: 5px;
 }
 
 .policy {
@@ -252,4 +266,78 @@ div.photo span {
 .photoSortable {
 	width: 300px;
 	height: 200px;
+}
+
+.ribbon {
+  background-color: #a00;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  left: -5px;
+  top: 15px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(-45deg);
+     -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+       -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 10px #888;
+     -moz-box-shadow: 0 0 10px #888;
+          box-shadow: 0 0 10px #888;
+}
+.ribbon p {
+  border: 1px solid #faa;
+  color: #fff;
+  display: block;
+  font: bold 100% 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 1px 0;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* until small */
+@media (max-width: 991px) {
+    /* 2nd child because of ember metamorph tags */
+    .clear-block:nth-child(2n+1) {
+    	clear: both;
+        margin: 10px 0px;
+    }
+    .container-fluid {
+        padding-right: 1px !important;
+        padding-left: 1px !important;
+    }
+
+    .sm-small-padding {
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+    }
+
+    .sm-small-margin {
+        margin-left: 0px !important;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .lignes-4 {
+        max-height: 2em;
+        overflow: hidden;
+    }
+    
+    /* 3rd child because of ember metamorph tags */
+    .clear-block:nth-of-type(3n+1) {
+    	clear: both;
+        margin: 10px 0px;
+    }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
 }

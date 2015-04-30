@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title><g:layoutTitle default="Grails"/></title>
 	<meta name="description" content="GC AUTOS : Situé à Matzenheim en Alsace (Bas-Rhin 67) Vente Véhicules neuf et occasions, vente et réparation de quads pour enfants ados et adultes, dirt bike, Buggy.">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="initial-scale=1.0,user-scalable=0">
 	<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 	<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 	<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
@@ -38,6 +38,16 @@
 	<g:layoutHead/>
 </head>
 <body>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.3&appId=338686093243";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
 
 	<div style="display: none;" itemscope
 		itemtype="http://schema.org/LocalBusiness">
@@ -101,6 +111,10 @@
 			<g:render template="ember/editPhotoSlider"/>
 		</script>
 	
+		<script type="text/x-handlebars" id="users">
+			<g:render template="ember/users"/>
+		</script>
+	
 	</sec:ifAllGranted>
 	
 	<div id="spinner" class="spinner" style="">
@@ -118,9 +132,5 @@
 		<span style="vertical-align: super; padding-left: 5px;">Une erreur s'est produite&hellip;</span>
 	</div>
 	
-	<div class="row" style="text-align: center;" id="pubsClickInText">
-		<script src="//tags.clickintext.net/t2791gXkYV2dm" title="Classic (IAB) footer"></script>
-	</div>
-
 </body>
 </html>

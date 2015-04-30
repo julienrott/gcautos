@@ -96,7 +96,26 @@ environments {
 //		grails.serverURL = "http://62.210.192.42"
 //		grails.serverURL = "http://roje.hd.free.fr:8080/${appName}"
     }
+	qualif {
+		grails.logging.jul.usebridge = false
+		grails.serverURL = "http://www.gcautos.fr:8888/gcautosTEST"
+	}
 }
+
+grails {
+	mail {
+		host = "smtp.gmail.com"
+				port = 465
+				username = "${System.getenv('GCAUTOS_MAIL_USERNAME')}"
+				password = "${System.getenv('GCAUTOS_MAIL_PASSWORD')}"
+				props = ["mail.smtp.auth":"true",
+				         "mail.smtp.socketFactory.port":"465",
+				         "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+				         "mail.smtp.socketFactory.fallback":"false"]
+	}
+}
+grails.mail.default.from = "ne-pas-repondre@gcautos.fr"
+
 
 // log4j configuration
 log4j.main = {
@@ -128,6 +147,12 @@ log4j.main = {
 	}
 }
 
+grails.plugin.databasemigration.updateOnStart = true
+grails.plugin.databasemigration.updateOnStartFileNames = ['changelog.groovy']
+
+// Spring Security UI
+grails.plugin.springsecurity.ui.register.emailFrom = 'ne-pas-repondre@gcautos.fr'
+
 grails.plugin.springsecurity.password.algorithm = 'SHA-256'
 grails.plugin.springsecurity.password.hash.iterations = 1
 
@@ -147,12 +172,17 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 //    "/console/**": ["hasRole('ROLE_ADMIN') && (hasIpAddress('127.0.0.1') || hasIpAddress('::1'))"],
     "/console/**": ["hasRole('ROLE_ADMIN')"],
     "/plugins/console*/**": ["hasRole('ROLE_ADMIN')"],
+    "/plugins/jquery-ui*/**": ["permitAll"],
     "/ember/**": ["permitAll"],
     "/photoSlider/**": ["permitAll"],
     "/service/**": ["permitAll"],
     "/news/**": ["permitAll"],
     "/voiture/**": ["permitAll"],
     "/storage/**": ["hasRole('ROLE_ADMIN')"],
+    "/user/**": ["hasRole('ROLE_ADMIN')"],
+    "/securityInfo/**": ["hasRole('ROLE_ADMIN')"],
+    "/registrationCode/**": ["hasRole('ROLE_ADMIN')"],
+    "/register/**": ["permitAll"],
     "/storage/reupload/**": ["permitAll"]
 ]
 

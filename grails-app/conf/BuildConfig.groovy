@@ -6,7 +6,14 @@ grails.project.work.dir = "target/work"
 grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
-grails.project.war.file = "target/ROOT##${new Date().format('yyyy_MM_dd-HH_mm')}.war"
+environments {
+	production {
+		grails.project.war.file = "target/ROOT##${new Date().format('yyyy_MM_dd-HH_mm')}.war"
+	}
+	qualif {
+		grails.project.war.file = "target/gcautosTEST.war"
+	}
+}
 
 grails.project.fork = [
     // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
@@ -68,12 +75,16 @@ grails.project.dependency.resolution = {
 		compile ":twitter-bootstrap:3.2.0.2"
 		compile ":console:1.5.0"
         compile ":spring-security-core:2.0-RC4"
+		compile ":spring-security-ui:1.0-RC2"
 		compile ":ajax-uploader:1.3"
+		compile ":mail:1.0.7"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.5.5" // or ":hibernate:3.6.10.17"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
+        runtime ":jquery-ui:1.10.4"
+		runtime ":famfamfam:1.0.1"
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
